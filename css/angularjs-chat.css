@@ -1,0 +1,180 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* AngularJS Chat Color Palette */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= *
+
+    green one rgb(107,195,146)
+    green two rgb(122,214,184)
+    action    #DD7766
+    white     #F8F8F8
+    black     #212121
+    gray      #727272
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+body    { background: #FFFFFF; color: #727272; }
+h1, h2,
+h3, h4, { background: #FFFFFF; color: #212121; }
+body    { background: #FFFFFF; color: #727272; }
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Layout */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+html, body, strong, button, small, input, p, div, h1, h2, h3, h4 {
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.4em;
+    font-size: 100%;
+}
+button, a { cursor: pointer; }
+strong { font-weight: 500; }
+p, h1, h2, h3, h4 {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+h1, h2, h3, h4 {
+    font-weight: 200;
+    font-size: 32px;
+}
+html, body, p, div {
+    font-weight: 200;
+    font-size: 17px;
+}
+.container {
+    width: 86vw;
+    padding-right: 7vw;
+    padding-left: 7vw;
+    /*padding-top: 5vw;
+    padding-bottom: 5vw;*/
+    margin-right: auto;
+    margin-left: auto;
+}
+.angularjs-chat-logo {
+    display: inline-block;
+    background: transparent url(../media/angularjs-chat.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Header */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.header {
+    overflow: hidden;
+    position: relative;
+    min-height: 90vh;
+    padding-bottom: 10vh;
+    text-align: center;
+    color: #F8F8F8;
+    background: linear-gradient(
+        to bottom,
+        rgb(107,195,146) 0%,
+        rgb(122,214,184) 100%
+    );
+    /*background: url(https://d13yacurqjgara.cloudfront.net/users/31536/screenshots/1399790/attachments/203128/real-pixels.png); background-size: 100%;*/
+}
+
+.header .angularjs-chat-logo {
+    margin-top: 14vh;
+    width: 7em;
+    height: 7.2em;
+}
+.header h1 {
+    margin-top: 0.6em;
+    font-weight: 200;
+    font-size: 1.6em;
+}
+.header p.angularjs-chat-page-title {
+    margin: 0;
+    margin-top: 1.5em;
+    font-weight: 100;
+    font-size: 2.4em;
+}
+.header p.angularjs-chat-page-description {
+    margin: 0;
+    margin-top: 0.5em;
+    font-weight: 200;
+    font-size: 1.4em;
+    color: rgba(255,255,255,0.8);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Signup */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+input::-webkit-input-placeholder {
+    color: rgba(200,255,255,0.5) !important;
+}
+.header .signup {
+    margin-top: 6em;
+}
+.header input {
+    background: transparent;
+    color: #F8F8F8;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.8);
+    line-height: 2em;
+    font-size: 1.4em;
+    text-align: center;
+    width: 14em;
+}
+.header button {
+    margin-top: 1.4em;
+    border: 0;
+    line-height: 2em;
+    font-size: 1.4em;
+    letter-spacing: 0.04em;
+    width: 10em;
+
+    font-weight: 100;
+    border-radius: 6px;
+    background: #F8F8F8;
+    color: rgb(107,195,146);
+}
+.header button:active {
+    background: #DD7766;
+    color: #F8F8F8;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Bubbles */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.angularjs-chat-bubble-white {
+    position: absolute;
+    display: inline-block;
+    background: transparent url(../media/angularjs-chat-bubble-white.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.header .bubble-one   {
+    top: 15vh; left: 10vw; width: 30px; height: 30px; opacity: 0.1;
+    animation: bubble-move 3s ease-in-out 0s infinite alternate; }
+.header .bubble-two   {
+    top: 44vh; left: 6vw; width: 100px; height: 100px; opacity: 0.1;
+    animation: bubble-move 4s ease-in-out 0s infinite alternate; }
+.header .bubble-three {
+    top: 75vh; left: 22vw; width: 20px; height: 20px; opacity: 0.2;
+    animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.header .bubble-four  {
+    top: 14vh; left: 28vw; width: 15px; height: 15px; opacity: 0.1;
+    animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.header .bubble-five  {
+    top: 30vh; left: 66vw; width: 14px; height: 14px; opacity: 0.2;
+    animation: bubble-move 5s ease-in-out 0s infinite alternate; }
+.header .bubble-six   {
+    top: 8vh; left: 75vw; width: 23px; height: 23px; opacity: 0.2;
+    animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.header .bubble-seven   {
+    top: 33vh; left: 84vw; width: 120px; height: 120px; opacity: 0.2;
+    animation: bubble-move 6s ease-in-out 0s infinite alternate; }
+.header .bubble-eight   {
+    top: 72vh; left: 85vw; width: 360px; height: 360px; opacity: 0.2;   
+    animation: bubble-move 4s ease-in-out 0s infinite alternate; }
+
+@keyframes bubble-move {
+    0%   { opacity: 0.4; transform: scale(1.0); }
+    70%  { opacity: 0.1; transform: scale(1.04); }
+    100% { opacity: 0.2; transform: scale(0.94); }
+}
