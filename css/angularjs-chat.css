@@ -174,7 +174,7 @@ input::-webkit-input-placeholder {
     animation: bubble-move 4s ease-in-out 0s infinite alternate; }
 
 @keyframes bubble-move {
-    0%   { opacity: 0.4; transform: scale(1.0); }
-    70%  { opacity: 0.1; transform: scale(1.04); }
-    100% { opacity: 0.2; transform: scale(0.94); }
+    0%   { opacity: 0.4; transform: scale(1.0) rotate(0deg) translateX(-1px); }
+    70%  { opacity: 0.1; transform: scale(1.04) rotate(-4deg) translateX(2px); }
+    100% { opacity: 0.2; transform: scale(0.94) rotate(2deg) translateX(-4px); }
 }
