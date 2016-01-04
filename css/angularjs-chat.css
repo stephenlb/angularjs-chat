@@ -28,7 +28,7 @@ html, body, strong, button, small, input, p, div, h1, h2, h3, h4 {
     line-height: 1.4em;
     font-size: 100%;
 }
-button, a { cursor: pointer; }
+input[type="text"], button, a { cursor: pointer; }
 strong { font-weight: 500; }
 p, h1, h2, h3, h4 {
     margin-top: 2em;
@@ -123,7 +123,10 @@ input::-webkit-input-placeholder {
     text-align: center;
     width: 14em;
 }
-.header button {
+.header input {
+    border-radius: 6px;
+}
+.header input[type="submit"] {
     margin-top: 1.4em;
     border: 0;
     line-height: 2em;
@@ -132,11 +135,10 @@ input::-webkit-input-placeholder {
     width: 10em;
 
     font-weight: 100;
-    border-radius: 6px;
     background: #F8F8F8;
     color: rgb(107,195,146);
 }
-.header button:active {
+.header input[type="submit"]:active {
     background: #DD7766;
     color: #F8F8F8;
 }

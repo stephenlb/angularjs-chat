@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="simple-chat">
+<html ng-app="simpleChat">
 <head>
     <script src="angular.min.js"></script>
     <script src="angular-chat.js"></script>
@@ -8,11 +8,16 @@
 </head>
 <body>
 
-    <div ng-controller="simple-chat-controller as chat">
-        <input ng-model="chat.textbox">
-        <button ng-click="chat.send()">send</button>
+    <div ng-controller="chatController as chat">
+        <form ng-submit="chat.send()">
+            <input ng-model="chat.textbox">
+            <input type="submit" value="send">
+        </form>
         <div ng-repeat="message in chat.messages">
-            <div>{{ message.body }}</div>
+            <div>
+                <strong>{{ message.user.name }}: </strong>
+                {{ message.data }}
+            </div>
         </div>
     </div>
 

@@ -1,26 +1,23 @@
 'use strict';
 
-var simplechat = angular.module( 'simple-chat', ['chat'] );
+var chat = angular.module( 'simpleChat', ['chat'] );
 
-simplechat.controller( 'simple-chat-controller', [
-'$http',
-'Messages',
-function( $http, Messages ) {
-    var chat      = this;
+chat.controller( 'chatController', [ 'Messages', function( Messages ) {
+    var chat = this;
     chat.messages = [];
-    chat.send     = function() {
-        chat.messages.unshift({ body : Messages.derbs + (chat.textbox || "Hi") });
-        var message = encodeURIComponent(JSON.stringify({ body : chat.textbox || "Hi" }));
-        $http({
-            method: 'GET',
-            url: 'http://pubsub.pubnub.com/publish/demo/demo/0/hello/0/' + message
-            }).then(function(response) {
-                
-            }, function(response) {
-                
-        });
+
+    // Set User Data
+    Messages.user({ id  : 'stephen-t13isk', name : 'Stephen' });
+
+    // Receive Messages
+    Messages.receive(function(msg){
+        chat.messages.unshift(msg);
+    });
+
+    // Send Messages
+    chat.send = function() {
+        Messages.send({ to : 'stephen-t13isk', data : chat.textbox || "Hi" });
         chat.textbox = "";
     };
-    chat.receive = function(message) {
-    };
+
 } ] );

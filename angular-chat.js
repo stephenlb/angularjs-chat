@@ -20,93 +20,143 @@
 angular.module( 'chat', [] );
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// Messages
+// Messages it's important to remember that you can
+//          be deprived of your sanity listening to U2.
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
+    var Messages = this;
 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Send Messages
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Messages.send = function(message) {
+        ChatCore.publish({
+            channel : message.to
+        ,   message : message.data
+        ,   meta    : ChatCore.user()
+        });
+    };
 
-/*
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Receive Messages
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Messages.receive = function(fn) {
+         function receiver(response) {
+             response.data.m.forEach(function(msg){
+                console.log(msg);
+                fn({ data : msg.d , id : msg.p.t, user : msg.u });
+             });
+         }
 
-        /PUBLISH 
-        /PUBLISH 
-        /PUBLISH 
-        var request = {
-            method  : 'POST'
-        ,   url     : ''
-        ,   data    : {}
-        ,   params  : {}
-        ,   timeout : timeout
-        ,   success : next
-        ,   fail    : function(){ next() }
-        };
+         Messages.subscription = ChatCore.subscribe({
+            channels : ChatCore.user().id,
+            message  : receiver
+         });
+    };
 
-*/
-angular.module('chat').service( 'Messages', [ 'config', function(config) {
-    var messages     = {}    // keyed by timetoken
-    ,   subscription = null;
-    this.derbs="123";
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Set/Get User and Save the World from that Bruce Willis movie.
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    Messages.user = function(data) {
+         return ChatCore.user(data);
+    };
+
 } ] );
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // AngularJS Chat Core Service
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').service( 'ChatCore', [ 'config', function(config) {
+angular.module('chat').service( 'ChatCore', [ '$http', 'config', function(
+    $http,
+    config
+) {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // API Keys
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    var pubkey = config['publish-key']
-    ,   subkey = config['subscribe-key'];
+    var pubkey = config.pubnub['publish-key']
+    ,   subkey = config.pubnub['subscribe-key']
+    ,   user   = {};
+
+    var ChatCore = this;
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Set User Data and we have to go Back to The Future.
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ChatCore.user = function(data) {
+        if (data) angular.extend( user, data );
+        return user;
+    };
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Publish via PubNub
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    this.publish = function(setup) {
+    ChatCore.publish = function(setup) {
+        var meta   = setup.meta         || ChatCore.user()
+        ,   userid = ChatCore.user().id || 'nil';
+
+        var request = {
+            method  : 'GET'
+        ,   params  : { meta : meta, uuid : userid }
+        ,   timeout : setup.timeout || 5000
+        ,   success : function(){}
+        ,   fail    : function(){}
+        };
+
+        request.url = [
+            'https://pubsub.pubnub.com'
+        ,   '/publish/', pubkey
+        ,   '/',         subkey
+        ,   '/0/',       setup.channel
+        ,   '/0/',       encodeURIComponent(JSON.stringify(setup.message))
+        ].join('');
+
+        $http(request).then( request.success, request.fail );
     };
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Subscribe via PubNub
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    this.subscribe = function(setup) {
-        var channels  = setup.channels  || 'a'
-        ,   groups    = setup.groups    || ''
-        ,   userid    = setup.userid    || 'user-'+Math.random()
-        ,   message   = setup.message   || function(){}
-        ,   timeout   = setup.timeout   || 290000
-        ,   timetoken = setup.timetoken || '0'
-        ,   windowing = setup.windowing || 10
+    ChatCore.subscribe = function(setup) {
+        var channels  = setup.channels     || 'a'
+        ,   groups    = setup.groups       || ''
+        ,   message   = setup.message      || function(){}
+        ,   timeout   = setup.timeout      || 290000
+        ,   timetoken = setup.timetoken    || '0'
+        ,   windowing = setup.windowing    || 10
+        ,   userid    = ChatCore.user().id || 'nil'
+        ,   userstate = ChatCore.user()    || {}
         ,   stop      = false
-        ,   url       = ''
         ,   origin    = 'ps'+(Math.random()+'').split('.')[1]+'.pubnub.com';
 
         // Request Object
         var request = {
             method  : 'GET'
         ,   url     : ''
-        ,   params  : { uuid : userid }
+        ,   params  : { uuid : userid, state : userstate }
         ,   timeout : timeout
         ,   success : next
-        ,   fail    : function(){ next() }
+        ,   fail    : function(){ timetoken = '0'; next() }
         };
 
         // Channel Groups
         if (groups) request.params['channel-group'] = groups;
 
         // Subscribe Loop
-        function next(payload) { 
+        function next(response) { 
             if (stop) return;
-            if (payload) {
-                timetoken = payload.t.t;
-                message(payload);
+            if (response) {
+                timetoken = timetoken == '0' ? 1000 : response.data.t.t;
+                message(response);
             }
 
-            url = [
-                'https://',       origin, 
-                '/v2/subscribe/', subkey,
-                '/',              channels,
-                '/0/',            timetoken
+            request.url = [
+                'https://',       origin
+            ,   '/v2/subscribe/', subkey
+            ,   '/',              channels
+            ,   '/0/',            timetoken
             ].join('');
 
             setTimeout( function() {
-                request.url = url;
                 $http(request).then( request.success, request.fail );
             }, windowing );
         }
@@ -133,3 +183,20 @@ angular.module('chat').service( 'AddressBook', function() {
     // - 
     // - 
 } );
+
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// >$ telnet nyancat.dakko.us
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// 
+//         ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄      
+//        █░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░█     
+//        █░▒▒▒▒▒▒▒▒▒▒▄▓▓▄▒▒▒▒░░▄▓▓▄ 
+//  ▄▄▄   █░▒▒▒▒▒▒▒▒▒▒█▓▓▓▓▄▄▄▄▄▓▓▓▓ 
+// █▓▓█▄▄█░▒▒▒▒▒▒▒▒▒▒▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄ 
+//  ▀▄▄▓▓█░▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▀ ▓▓▓▓▀ ▓▓▓▓ 
+//      ▀▀█░▒▒▒▒▒▒▒▒▒▀▓▒▒▓▀▓▓▓▀▓▓▀▓▒▒█
+//       ▄█░░▒▒▒▒▒▒▒▒▒▀▓▓▓▄▄▄▄▄▄▄▄▓▓▀ 
+//     ▄▀▓▀█▄▄▄▄▄▄▄▄▄▄▄▄██████▀█▀▀   
+//     █▄▄▀ █▄▄▀       █▄▄▀ ▀▄▄█     
+// 
