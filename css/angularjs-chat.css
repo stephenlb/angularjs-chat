@@ -123,7 +123,7 @@ input::-webkit-input-placeholder {
     line-height: 2em;
     font-size: 1.4em;
     text-align: center;
-    width: 14em;
+    width: 12em;
 }
 .header input {
     border-radius: 6px;
