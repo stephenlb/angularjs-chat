@@ -69,6 +69,10 @@ html, body, p, div {
     text-align: center;
     color: #F8F8F8;
     background: linear-gradient(
+        to left,
+        rgba(122,214,184,0.0) 0%,
+        rgba(122,214,184,0.7) 100%
+    ), linear-gradient(
         to bottom,
         rgb(107,195,146) 0%,
         rgb(122,214,184) 100%
@@ -174,7 +178,7 @@ input::-webkit-input-placeholder {
     animation: bubble-move 4s ease-in-out 0s infinite alternate; }
 
 @keyframes bubble-move {
-    0%   { opacity: 0.4; transform: scale(1.0) rotate(0deg) translateX(-1px); }
-    70%  { opacity: 0.1; transform: scale(1.04) rotate(-4deg) translateX(2px); }
-    100% { opacity: 0.2; transform: scale(0.94) rotate(2deg) translateX(-4px); }
+    0%   { opacity: 0.4; transform: scale(1.0) rotate(-5deg) translate(-1px,-2px); }
+    70%  { opacity: 0.1; transform: scale(1.04) rotate(6deg) translate(2px,1px); }
+    100% { opacity: 0.2; transform: scale(0.94) rotate(4deg) translate(-3px,-1px); }
 }

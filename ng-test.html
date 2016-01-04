@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="simple-chat">
+<head>
+    <script src="angular.min.js"></script>
+    <script src="angular-chat.js"></script>
+    <script src="angular-chat-config.js"></script>
+    <script src="simple-chat.js"></script>
+</head>
+<body>
+
+    <div ng-controller="simple-chat-controller as chat">
+        <input ng-model="chat.textbox">
+        <button ng-click="chat.send()">send</button>
+        <div ng-repeat="message in chat.messages">
+            <div>{{ message.body }}</div>
+        </div>
+    </div>
+
+</body>
+</html>
