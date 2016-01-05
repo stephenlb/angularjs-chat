@@ -1,14 +1,14 @@
 <!doctype html>
-<html ng-app="simpleChat">
+<html ng-app="BasicChat">
 <head>
-    <script src="angular.min.js"></script>
-    <script src="angular-chat.js"></script>
-    <script src="angular-chat-config.js"></script>
-    <script src="simple-chat.js"></script>
+    <script src="../angular.js"></script>
+    <script src="../angular-chat.js"></script>
+    <script src="../angular-chat-config.js"></script>
+    <script src="basic-chat.js"></script>
 </head>
 <body>
 
-    <div ng-controller="chatController as chat">
+    <div ng-controller="BasicController as chat">
         <form ng-submit="chat.send()">
             <input ng-model="chat.textbox">
             <input type="submit" value="send">
