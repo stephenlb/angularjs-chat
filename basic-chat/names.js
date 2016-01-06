@@ -6,7 +6,7 @@ function sillyname() {
     function rnd(n) { return Math.floor(Math.random()*n) }
 
     // First Name
-    return ["Runny","Buttercup","Dinky","Stinky","Crusty",
+    return ["Runny","Buttercup","Dinky","Princess","Crusty",
     "Greasy","Gidget","Cheesypoof","Lumpy","Wacky","Tiny","Flunky",
     "Fluffy","Zippy","Doofus","Gobsmacked","Slimy","Grimy","Salamander",
     "Dr","Burrito","Bumpy","Loopy",
