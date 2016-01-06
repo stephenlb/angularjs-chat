@@ -24,7 +24,7 @@ basicChat.controller( 'BasicController', [ 'Messages', function( Messages ) {
     // This will automatically update the view.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.receive(function(msg){
-        chat.messages.push(msg);
+        chat.messages.unshift(msg);
     });
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

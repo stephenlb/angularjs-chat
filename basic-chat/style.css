@@ -16,17 +16,22 @@ html, body, strong, button, small, input, p, div, h1, h2, h3, h4 {
 Chat Messages
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 div.chat-messages {
+    text-align: right;
     width: 100vw;
-    min-height: 88vh;
+    min-height: 150vh;
     background: linear-gradient(
         to bottom,
-        rgb(55,183,184)  0%,
-        rgb(55,183,184)  2%,
+        rgb(122,214,184) 0%,
+        rgb(122,214,184) 2%,
+        rgb(122,214,184) 2%,
+        rgb(255,255,255) 2%,
         rgb(255,255,255) 2%,
         rgb(255,255,255) 100%
     );
 }
-div.message {
+div.sent-message {
+    margin-top: 10px;
+    margin-right: 10px;
     border-radius: 3px;
     display: inline-block;
     color: rgba(32,40,70,0.9);
@@ -34,15 +39,19 @@ div.message {
     font-size: 0.8em;
     font-weight: 400;
     background: rgba(233,234,243,1.0);
-    animation: send-message 1s ease-in-out 0s;
+    animation: sent-message 0.9s ease-out 0s;
 }
 span.username {
     font-weight: 600;
 }
 
-@keyframes send-message {
-    0%   { transform: translate(0px,90vh) }
-    100% { transform: translate(0px,0px) }
+@keyframes sent-message {
+    0%   { color: rgba(32,40,70,0.9);    transform: translate(100px,50px); opacity: 0 }
+    42%  { color: rgba(32,40,70,0.9);    transform: translate(80px,40px);  opacity: 0.8 }
+    60%  { color: rgba(122,214,184,0.3); transform: translate(-3px,-7px);  opacity: 1 }
+    80%  { color: rgba(32,40,70,0.5);    transform: translate(2px,3px);    opacity: 1 }
+    90%  { color: rgba(32,40,70,0.7);    transform: translate(-1px,-2px);  opacity: 1 }
+    100% { color: rgba(32,40,70,0.9);    transform: translate(0px,0px);    opacity: 1 }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
