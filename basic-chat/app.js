@@ -13,6 +13,9 @@ basicChat.controller( 'BasicController', [ 'Messages', function( Messages ) {
     // Self Object
     var chat = this;
 
+    // Sent Indicator
+    chat.status = "";
+
     // Keep an Array of Messages
     chat.messages = [];
 
@@ -31,8 +34,10 @@ basicChat.controller( 'BasicController', [ 'Messages', function( Messages ) {
     // Send Messages
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     chat.send = function() {
-        Messages.send({ data : chat.textbox || "Hi" });
+        Messages.send({ data : chat.textbox });
+        chat.status = "sending";
         chat.textbox = "";
+        setTimeout( function() { chat.status = "" }, 1200 );
     };
 
 } ] );

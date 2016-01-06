@@ -46,6 +46,8 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // Send Messages
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.send = function(message) {
+        if (!message.data) return;
+
         ChatCore.publish({
             channel : message.to || 'global'
         ,   message : message.data

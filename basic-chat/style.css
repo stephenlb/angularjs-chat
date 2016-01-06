@@ -51,12 +51,10 @@ div.chat-messages {
     background: linear-gradient(
         to bottom,
         rgb(122,214,184) 0%,
-        rgb(122,214,184) 1%,
-        rgb(122,214,184) 1%,
-        rgb(255,255,255) 1%,
-        rgb(255,255,255) 1%,
-        rgb(255,255,255) 100%
+        rgb(122,214,184) 100%
     );
+    background-size: 100% 10px;
+    background-repeat: no-repeat;
 }
 div.sent-message-false {
     float: left;
