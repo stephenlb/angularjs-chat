@@ -47,7 +47,7 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.send = function(message) {
         ChatCore.publish({
-            channel : message.to || ChatCore.user().id
+            channel : message.to || 'global'
         ,   message : message.data
         ,   meta    : ChatCore.user()
         });
@@ -59,13 +59,17 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     Messages.receive = function(fn) {
          function receiver(response) {
              response.data.m.forEach(function(msg){
-                console.log(msg);
-                fn({ data : msg.d , id : msg.p.t, user : msg.u });
+                fn({
+                    data : msg.d
+                ,   id   : msg.p.t
+                ,   user : msg.u
+                ,   self : msg.u.id == ChatCore.user().id
+                });
              });
          }
 
          Messages.subscription = ChatCore.subscribe({
-            channels : ChatCore.user().id,
+            channels : [ 'global', ChatCore.user().id ].join(','),
             message  : receiver
          });
     };
@@ -86,6 +90,7 @@ angular.module('chat').service( 'AddressBook', function() {
 
 } );
 
+
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // AngularJS Chat Core Service
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -98,7 +103,7 @@ angular.module('chat').service( 'ChatCore', [ '$http', 'config', function(
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     var pubkey = config.pubnub['publish-key']
     ,   subkey = config.pubnub['subscribe-key']
-    ,   user   = { id : 'BasicChat', name : 'Nameless' };
+    ,   user   = { id : uuid(), name : 'Nameless' };
 
     var ChatCore = this;
 
@@ -199,3 +204,15 @@ angular.module('chat').service( 'ChatCore', [ '$http', 'config', function(
         };
     };
 } ] );
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// UUID
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+function uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
+    function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+}
+

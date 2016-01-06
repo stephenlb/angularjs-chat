@@ -31,7 +31,7 @@ div.chat-header div.angularjs-chat-logo {
     position: relative;
     top: 1.3em;
     left: -1em;
-    animation: chat-header-intro 1.0s ease-out 0s;
+    animation: chat-header-intro 2.0s ease-out 0s;
 }
 div.chat-header {
     text-align: center;
@@ -40,7 +40,7 @@ div.chat-header {
     color: rgba(32,40,70,0.8);
     padding-top: 10px;
     padding-bottom: 36px;
-    animation: chat-header-intro 1.5s ease-out 0s;
+    animation: chat-header-intro 2.2s ease-out 0s;
 }
 div.chat-messages {
     text-align: right;
@@ -74,9 +74,10 @@ span.username {
 }
 
 @keyframes chat-header-intro {
-    0%   { transform: translate(-100px,0px); opacity: 0 }
-    42%  { transform: translate(-80px,0px);  opacity: 0.8 }
-    60%  { transform: translate(3px,0px);  opacity: 1 }
+    0%   { transform: translate(-100px,0px) scale(1.0,1.0); opacity: 0 }
+    42%  { transform: translate(-80px,0px) scale(1.0,1.0);  opacity: 0.8 }
+    60%  { transform: translate(3px,0px) scale(0.96,1.04);  opacity: 1 }
+    65%  { transform: translate(2px,0px) scale(1.0,1.0);  opacity: 1 }
     80%  { transform: translate(-2px,0px);    opacity: 1 }
     90%  { transform: translate(1px,0px);  opacity: 1 }
     100% { transform: translate(0px,0px);    opacity: 1 }
