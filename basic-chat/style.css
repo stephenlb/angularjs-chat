@@ -16,6 +16,8 @@ button, input[type="submit"] {
     cursor: pointer;
 }
 
+.clear { clear: both }
+
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Chat Messages
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -43,7 +45,6 @@ div.chat-header {
     animation: chat-header-intro 2.2s ease-out 0s;
 }
 div.chat-messages {
-    text-align: right;
     width: 100vw;
     min-height: 100vh;
     padding-bottom: 100px;
@@ -57,7 +58,22 @@ div.chat-messages {
         rgb(255,255,255) 100%
     );
 }
-div.sent-message {
+div.sent-message-false {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 2px;
+    display: inline-block;
+    color: rgba(32,40,70,0.9);
+    padding: 12px;
+    border: 1px solid rgba(32,40,70,0.4);
+    font-size: 0.8em;
+    font-weight: 400;
+    background: rgba(255,255,255,0.9);
+    animation: received-message 0.9s ease-out 0s;
+}
+div.sent-message-true {
+    float: right;
     margin-top: 10px;
     margin-right: 10px;
     border-radius: 2px;
@@ -74,13 +90,13 @@ span.username {
 }
 
 @keyframes chat-header-intro {
-    0%   { transform: translate(-100px,0px) scale(1.0,1.0); opacity: 0 }
-    42%  { transform: translate(-80px,0px) scale(1.0,1.0);  opacity: 0.8 }
-    60%  { transform: translate(3px,0px) scale(0.96,1.04);  opacity: 1 }
-    65%  { transform: translate(2px,0px) scale(1.0,1.0);  opacity: 1 }
-    80%  { transform: translate(-2px,0px);    opacity: 1 }
-    90%  { transform: translate(1px,0px);  opacity: 1 }
-    100% { transform: translate(0px,0px);    opacity: 1 }
+    0%   { transform: translate(-100px,0px);                    opacity: 0 }
+    42%  { transform: translate(-80px,0px);                     opacity: 0.8 }
+    60%  { transform: translate(3px,0px)     scale(0.96,1.04);  opacity: 1 }
+    65%  { transform: translate(2px,0px);                       opacity: 1 }
+    80%  { transform: translate(-2px,0px);                      opacity: 1 }
+    90%  { transform: translate(1px,0px);                       opacity: 1 }
+    100% { transform: translate(0px,0px);                       opacity: 1 }
 }
 @keyframes sent-message {
     0%   { color: rgba(32,40,70,0.9);    transform: translate(100px,50px); opacity: 0 }
@@ -89,6 +105,20 @@ span.username {
     80%  { color: rgba(32,40,70,0.5);    transform: translate(2px,3px);    opacity: 1 }
     90%  { color: rgba(32,40,70,0.7);    transform: translate(-1px,-2px);  opacity: 1 }
     100% { color: rgba(32,40,70,0.9);    transform: translate(0px,0px);    opacity: 1 }
+}
+@keyframes received-message {
+    0%   { color: rgba(32,40,70,0.9);    transform: translate(-100px,0px); opacity: 0 }
+    42%  { color: rgba(32,40,70,0.9);    transform: translate(-80px,0px);  opacity: 0.8 }
+    60%  { color: rgba(122,214,184,0.9); transform: translate(3px,0px);  opacity: 1 }
+    80%  { color: rgba(32,40,70,0.6);    transform: translate(-2px,0px);    opacity: 1 }
+    90%  { color: rgba(32,40,70,0.8);    transform: translate(1px,0px);  opacity: 1 }
+    100% { color: rgba(32,40,70,0.9);    transform: translate(0px,0px);    opacity: 1 }
+}
+@keyframes send-indicator {
+    0%   { transform: scale(0.1);  opacity: 1 }
+    30%  { transform: scale(1.0);  opacity: 1 }
+    70%  { transform: scale(4.0);  opacity: 0.5 }
+    100% { transform: scale(10.0);  opacity: 0 }
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -112,8 +142,16 @@ form.chat-input input[type="submit"] {
     background: rgba(144,134,251,1.0);
     color: rgba(255,255,255,1.0);
     padding: 10px;
-    min-width: 42px;
-    min-height: 42px;
-    max-width: 42px;
-    max-height: 42px;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+}
+form.chat-input input[type="submit"].sent-indicator {
+    opacity: 0;
+    background: rgba(144,134,251,0.97);
+    width: 42px;
+    height: 42px;
+}
+form.chat-input input[type="submit"].sending {
+    animation: send-indicator 0.9s ease-out 0s;
 }

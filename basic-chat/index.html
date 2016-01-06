@@ -31,10 +31,11 @@
                 AngularJS Chat
             </div>
             <div ng-repeat="message in chat.messages">
-                <div class="sent-message">
+                <div class="sent-message-{{ message.self }}">
                     <span class="username">{{ message.user.name }}:</span>
                     {{ message.data }}
                 </div>
+                <div class="clear"></div>
             </div>
         </div>
 
@@ -44,6 +45,7 @@
         <form ng-submit="chat.send()" class="chat-input">
             <input type="text" ng-model="chat.textbox" autofocus>
             <input type="submit" value="↪">
+            <input class="sent-indicator {{ sending }}" type="submit" value=" ">
         </form>
 
     </div>
