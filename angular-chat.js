@@ -47,7 +47,7 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.send = function(message) {
         ChatCore.publish({
-            channel : message.to
+            channel : message.to || ChatCore.user().id
         ,   message : message.data
         ,   meta    : ChatCore.user()
         });
@@ -98,7 +98,7 @@ angular.module('chat').service( 'ChatCore', [ '$http', 'config', function(
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     var pubkey = config.pubnub['publish-key']
     ,   subkey = config.pubnub['subscribe-key']
-    ,   user   = {};
+    ,   user   = { id : 'BasicChat', name : 'Nameless' };
 
     var ChatCore = this;
 

@@ -1,0 +1,73 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+App Base
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+html, body, strong, button, small, input, p, div, h1, h2, h3, h4 {
+    outline: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 1.4em;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Chat Messages
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.chat-messages {
+    width: 100vw;
+    min-height: 88vh;
+    background: linear-gradient(
+        to bottom,
+        rgb(55,183,184)  0%,
+        rgb(55,183,184)  2%,
+        rgb(255,255,255) 2%,
+        rgb(255,255,255) 100%
+    );
+}
+div.message {
+    border-radius: 3px;
+    display: inline-block;
+    color: rgba(32,40,70,0.9);
+    padding: 14px;
+    font-size: 0.8em;
+    font-weight: 400;
+    background: rgba(233,234,243,1.0);
+    animation: send-message 1s ease-in-out 0s;
+}
+span.username {
+    font-weight: 600;
+}
+
+@keyframes send-message {
+    0%   { transform: translate(0px,90vh) }
+    100% { transform: translate(0px,0px) }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+User Input
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+form.chat-input input[type="text"] {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    color: rgba(32,40,70,0.9);
+    padding: 20px;
+    background: rgba(233,234,243,1.0);
+}
+
+form.chat-input input[type="submit"] {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 100px;
+    background: rgba(144,134,251,1.0);
+    color: rgba(255,255,255,1.0);
+    padding: 10px;
+    min-width: 42px;
+    min-height: 42px;
+    max-width: 42px;
+    max-height: 42px;
+}
