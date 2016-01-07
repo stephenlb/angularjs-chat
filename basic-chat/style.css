@@ -36,6 +36,7 @@ div.chat-messages {
     order: 1;
     flex: 1;
     overflow: scroll;
+    overflow-x: hidden;
 }
 form.chat-input {
     position: relative;
