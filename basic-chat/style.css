@@ -18,6 +18,38 @@ button, input[type="submit"] {
 
 .clear { clear: both }
 
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Layout
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.chat-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+div.chat-messages {
+    order: 1;
+    flex: 1;
+}
+form.chat-input {
+    position: relative;
+    order: 2;
+    height: 62px;
+}
+div.chat-messages {
+    background: linear-gradient(
+        to bottom,
+        rgb(122,214,184) 0%,
+        rgb(122,214,184) 100%
+    );
+    background-size: 100% 10px;
+    background-repeat: no-repeat;
+}
+
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Chat Messages
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -43,18 +75,6 @@ div.chat-header {
     padding-top: 10px;
     padding-bottom: 36px;
     animation: chat-header-intro 2.2s ease-out 0s;
-}
-div.chat-messages {
-    width: 100vw;
-    min-height: 100vh;
-    padding-bottom: 100px;
-    background: linear-gradient(
-        to bottom,
-        rgb(122,214,184) 0%,
-        rgb(122,214,184) 100%
-    );
-    background-size: 100% 10px;
-    background-repeat: no-repeat;
 }
 div.sent-message-false {
     float: left;
@@ -123,9 +143,9 @@ span.username {
 User Input
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 form.chat-input input[type="text"] {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    /*position: absolute;
+    bottom: 10px;
+    right: 10px;*/
     width: 100vw;
     color: rgba(32,40,70,0.9);
     padding: 20px;
@@ -133,13 +153,12 @@ form.chat-input input[type="text"] {
 }
 
 form.chat-input input[type="submit"] {
-    position: fixed;
+    position: absolute;
     bottom: 10px;
     right: 10px;
     border-radius: 100px;
     background: rgba(144,134,251,1.0);
     color: rgba(255,255,255,1.0);
-    padding: 10px;
     width: 42px;
     height: 42px;
     overflow: hidden;
