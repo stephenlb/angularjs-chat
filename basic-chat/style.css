@@ -34,11 +34,13 @@ div.chat-container {
 div.chat-messages {
     order: 1;
     flex: 1;
+    overflow: scroll;
 }
 form.chat-input {
     position: relative;
     order: 2;
     height: 62px;
+    background: rgba(233,234,243,1.0);
 }
 div.chat-messages {
     background: linear-gradient(
@@ -146,10 +148,10 @@ form.chat-input input[type="text"] {
     /*position: absolute;
     bottom: 10px;
     right: 10px;*/
-    width: 100vw;
+    width: 80%;
     color: rgba(32,40,70,0.9);
     padding: 20px;
-    background: rgba(233,234,243,1.0);
+    background: transparent;
 }
 
 form.chat-input input[type="submit"] {
