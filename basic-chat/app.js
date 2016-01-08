@@ -26,8 +26,12 @@ basicChat.controller( 'BasicController', [ 'Messages', function( Messages ) {
     // Get Received Messages and Add it to Messages Array.
     // This will automatically update the view.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    var chatmessages = document.querySelector(".chat-messages");
     Messages.receive(function(msg){
         chat.messages.push(msg);
+        setTimeout( function() {
+            chatmessages.scrollTop = chatmessages.scrollHeight;
+        }, 10 );
     });
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

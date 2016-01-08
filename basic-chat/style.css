@@ -10,6 +10,7 @@ html, body, strong, button, small, input, p, div, h1, h2, h3, h4 {
     line-height: 1.4em;
     font-weight: 400;
     font-size: 16px;
+    overflow: hidden;
 }
 
 button, input[type="submit"] {
@@ -17,7 +18,6 @@ button, input[type="submit"] {
 }
 
 .clear { clear: both }
-
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Layout
@@ -37,6 +37,7 @@ div.chat-messages {
     flex: 1;
     overflow: scroll;
     overflow-x: hidden;
+    padding-bottom: 40px;
 }
 form.chat-input {
     position: relative;
@@ -147,9 +148,6 @@ span.username {
 User Input
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 form.chat-input input[type="text"] {
-    /*position: absolute;
-    bottom: 10px;
-    right: 10px;*/
     width: 80%;
     color: rgba(32,40,70,0.9);
     padding: 20px;
