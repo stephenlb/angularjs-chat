@@ -125,7 +125,7 @@ input::-webkit-input-placeholder {
     text-align: center;
     width: 12em;
 }
-.header input {
+.header input[type="submit"] {
     border-radius: 6px;
 }
 .header input[type="submit"] {
