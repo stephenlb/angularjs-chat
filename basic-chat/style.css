@@ -167,6 +167,13 @@ form.chat-input input[type="submit"] {
     height: 42px;
     overflow: hidden;
 }
+
+form.chat-input input[type="submit"].send-icon {
+    background: rgba(144,134,251,1.0) url(send-icon.png);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: 7px 8px;
+}
 form.chat-input input[type="submit"].sent-indicator {
     opacity: 0;
     background: rgba(144,134,251,0.97);

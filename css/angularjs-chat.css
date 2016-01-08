@@ -158,31 +158,39 @@ input::-webkit-input-placeholder {
 
 .header .bubble-one   {
     top: 15vh; left: 10vw; width: 30px; height: 30px; opacity: 0.1;
+    transform-origin: 70% 400%;
     animation: bubble-move 3s ease-in-out 0s infinite alternate; }
 .header .bubble-two   {
     top: 44vh; left: 6vw; width: 100px; height: 100px; opacity: 0.1;
+    transform-origin: 60% 400%;
     animation: bubble-move 4s ease-in-out 0s infinite alternate; }
 .header .bubble-three {
     top: 75vh; left: 22vw; width: 20px; height: 20px; opacity: 0.2;
+    transform-origin: 30% 120%;
     animation: bubble-move 2s ease-in-out 0s infinite alternate; }
 .header .bubble-four  {
     top: 14vh; left: 28vw; width: 15px; height: 15px; opacity: 0.1;
+    transform-origin: 20% 400%;
     animation: bubble-move 2s ease-in-out 0s infinite alternate; }
 .header .bubble-five  {
     top: 30vh; left: 66vw; width: 14px; height: 14px; opacity: 0.2;
+    transform-origin: 90% 100%;
     animation: bubble-move 5s ease-in-out 0s infinite alternate; }
 .header .bubble-six   {
     top: 8vh; left: 75vw; width: 23px; height: 23px; opacity: 0.2;
+    transform-origin: 80% 200%;
     animation: bubble-move 2s ease-in-out 0s infinite alternate; }
 .header .bubble-seven   {
     top: 33vh; left: 84vw; width: 120px; height: 120px; opacity: 0.2;
+    transform-origin: 100% 90%;
     animation: bubble-move 6s ease-in-out 0s infinite alternate; }
 .header .bubble-eight   {
     top: 72vh; left: 85vw; width: 360px; height: 360px; opacity: 0.2;   
-    animation: bubble-move 4s ease-in-out 0s infinite alternate; }
+    transform-origin: -100% 100%;
+    animation: bubble-move 7s ease-in-out 0s infinite alternate; }
 
 @keyframes bubble-move {
-    0%   { opacity: 0.4; transform: scale(1.0) rotate(-5deg) translate(-1px,-2px); }
-    70%  { opacity: 0.1; transform: scale(1.04) rotate(6deg) translate(2px,1px); }
-    100% { opacity: 0.2; transform: scale(0.94) rotate(4deg) translate(-3px,-1px); }
+    0%   { opacity: 0.6; transform: scale(1.0) rotate(-8deg) translate(-1px,-2px); }
+    70%  { opacity: 0.3; transform: scale(1.04) rotate(10deg) translate(2px,1px); }
+    100% { opacity: 0.4; transform: scale(0.94) rotate(-18deg) translate(-3px,-1px); }
 }
