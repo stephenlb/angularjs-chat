@@ -1,0 +1,134 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Header */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.header {
+    overflow: hidden;
+    position: relative;
+    min-height: 90vh;
+    padding-bottom: 10vh;
+    text-align: center;
+    color: #F8F8F8;
+    background: linear-gradient(
+        to left,
+        rgba(122,214,184,0.0) 0%,
+        rgba(122,214,184,0.7) 100%
+    ), linear-gradient(
+        to bottom,
+        rgb(60,240,80) 0%,
+        rgb(122,214,184) 100%
+    );
+}
+
+.header .angularjs-chat-logo {
+    margin-top: 14vh;
+    width: 7em;
+    height: 7.2em;
+}
+.header h1 {
+    margin-top: 0.6em;
+    font-weight: 200;
+    font-size: 1.6em;
+}
+.header p.angularjs-chat-page-title {
+    margin: 0;
+    margin-top: 1.5em;
+    font-weight: 100;
+    font-size: 2.4em;
+}
+.header p.angularjs-chat-page-description {
+    margin: 0;
+    margin-top: 0.5em;
+    font-weight: 800;
+    font-size: 1.4em;
+    color: rgba(255,255,255,0.8);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Signup */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+input::-webkit-input-placeholder {
+    color: rgba(200,255,255,0.5) !important;
+}
+.header .signup {
+    margin-top: 4em;
+}
+.header input {
+    background: transparent;
+    color: #F8F8F8;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.8);
+    line-height: 2em;
+    font-size: 1.4em;
+    text-align: center;
+    width: 12em;
+}
+.header input[type="submit"] {
+    border-radius: 6px;
+}
+.header input[type="submit"] {
+    margin-top: 1.4em;
+    border: 0;
+    line-height: 2em;
+    font-size: 1.4em;
+    letter-spacing: 0.04em;
+    width: 10em;
+
+    font-weight: 100;
+    background: #F8F8F8;
+    color: rgb(107,195,146);
+}
+.header input[type="submit"]:active {
+    background: #DD7766;
+    color: #F8F8F8;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Bubbles */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.angularjs-chat-bubble-white {
+    position: absolute;
+    display: inline-block;
+    background: transparent url(../media/angularjs-chat-bubble-white.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.header .bubble-one   {
+    top: 15vh; left: 10vw; width: 30px; height: 30px; opacity: 0.1;
+    transform-origin: 70% 400%;
+    animation: bubble-move 3s ease-in-out 0s infinite alternate; }
+.header .bubble-two   {
+    top: 44vh; left: 6vw; width: 100px; height: 100px; opacity: 0.1;
+    transform-origin: 60% 400%;
+    animation: bubble-move 4s ease-in-out 0s infinite alternate; }
+.header .bubble-three {
+    top: 75vh; left: 22vw; width: 20px; height: 20px; opacity: 0.2;
+    transform-origin: 30% 120%;
+    animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.header .bubble-four  {
+    top: 14vh; left: 28vw; width: 15px; height: 15px; opacity: 0.1;
+    transform-origin: 20% 400%;
+    animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.header .bubble-five  {
+    top: 30vh; left: 66vw; width: 14px; height: 14px; opacity: 0.2;
+    transform-origin: 90% 100%;
+    animation: bubble-move 5s ease-in-out 0s infinite alternate; }
+.header .bubble-six   {
+    top: 8vh; left: 75vw; width: 23px; height: 23px; opacity: 0.2;
+    transform-origin: 80% 200%;
+    animation: bubble-move 2s ease-in-out 0s infinite alternate; }
+.header .bubble-seven   {
+    top: 33vh; left: 84vw; width: 120px; height: 120px; opacity: 0.2;
+    transform-origin: 100% 90%;
+    animation: bubble-move 6s ease-in-out 0s infinite alternate; }
+.header .bubble-eight   {
+    top: 72vh; left: 85vw; width: 360px; height: 360px; opacity: 0.2;   
+    transform-origin: -100% 100%;
+    animation: bubble-move 7s ease-in-out 0s infinite alternate; }
+
+@keyframes bubble-move {
+    0%   { opacity: 0.6; transform: scale(1.0) rotate(-8deg) translate(-1px,-2px); }
+    70%  { opacity: 0.3; transform: scale(1.04) rotate(10deg) translate(2px,1px); }
+    100% { opacity: 0.4; transform: scale(0.94) rotate(-18deg) translate(-3px,-1px); }
+}
+

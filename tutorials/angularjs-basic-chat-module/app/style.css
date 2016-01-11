@@ -60,7 +60,7 @@ Chat Messages
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 div.angularjs-chat-logo {
     display: inline-block;
-    background: transparent url(../media/angularjs-chat.png);
+    background: transparent url(/media/angularjs-chat.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }
