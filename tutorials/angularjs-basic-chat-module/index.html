@@ -7,17 +7,17 @@ description: AngularJS TODO
 <link rel="stylesheet" href="styles.css">
 
 <div class="header">
-    <div class="header-video">
-        <video poster="" autoplay="" loop="true">
-            <source src="/videos/angularjs-basic-chat-module.mp4" type="video/mp4">
-            <source src="/videos/angularjs-basic-chat-module.webm" type="video/webm">
-            <source src="/videos/angularjs-basic-chat-module.ogv" type="video/ogg">
-        </video>
-    </div>
+    <video class="header-video" poster="" autoplay="" loop="true">
+        <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-basic-chat-module.mp4" type="video/mp4">
+        <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-basic-chat-module.webm" type="video/webm">
+        <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-basic-chat-module.ogv" type="video/ogg">
+    </video>
 
     <div class="header-overlay">
+        <!-- NAVIGATION -->
         {% include top-navigation.html %}
 
+        <!-- VIDEO PREVIEW -->
         <div class="container">
             <h1>Quickstart AngularJS Chat Tutorial</h1>
                 <!-- Easily add Messaging Experiences to your
@@ -25,19 +25,44 @@ description: AngularJS TODO
             <div class="live-stream-preview">
                 <div class="live-stream-preview-video">
                     <video poster="" autoplay="" loop="true">
-                        <source src="/videos/angularjs-chat-live-stream.mp4" type="video/mp4">
-                        <source src="/videos/angularjs-chat-live-stream.webm" type="video/webm">
-                        <source src="/videos/angularjs-chat-live-stream.ogv" type="video/ogg">
+                        <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-chat-live-stream.mp4" type="video/mp4">
+                        <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-chat-live-stream.webm" type="video/webm">
+                        <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-chat-live-stream.ogv" type="video/ogg">
                     </video>
                 </div>
                 <div class="live-stream-preview-divide">
                 </div>
                 <div class="live-stream-preview-text">
                     <strong>Live Stream Walkthrough</strong>
-                    January 18th 2016 @ 2:00PM PST
+                    <div class="live-stream-preview-date">
+                        January 18th 2016 @ 2:00PM PST
+                    </div>
+
+                    <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
+                        data-layout="full" data-count="default"
+                        data-theme="dark"></div>
+                    <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
+                        data-show-count="false" data-size="large">Follow @stephenlb</a>
                 </div>
             </div>
         </div>
 
+        <!-- SUBSCRIBE -->
+        <div class="container subscribe-container">
+            <strong>Get notified when we go live!</strong>
+            <form
+            action="https://pubnub.us12.list-manage.com/subscribe/post?u=fbd1f30822a348898a0640f45&amp;id=b494a4e65a"
+            method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <input type="email" value="" name="EMAIL" placeholder="your@email.com">
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_fbd1f30822a348898a0640f45_b494a4e65a" tabindex="-1" value="">
+                </div>
+                <input type="submit" value="Remind Me" name="subscribe" class="action">
+            </form>
+        </div>
+
     </div>
 </div>
+
+<script async defer src="https://apis.google.com/js/platform.js"></script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>

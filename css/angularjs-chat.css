@@ -73,6 +73,22 @@ html, body, p, div {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Top Navigation */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@media (max-width: 750px) {
+    .top-navigation {
+        flex-direction: column;
+    }
+    div.top-navigation a.angularjs-chat-logo-link {
+        text-align: center;
+    }
+    div.top-navigation div.top-navigation-links {
+        text-align: center;
+    }
+}
+div.top-navigation-links a.start {
+    border: 1px solid #F8F8F8;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
 .top-navigation {
     display: flex;
     text-align: left;
@@ -96,11 +112,6 @@ div.top-navigation div.angular-js-white-text {
     font-weight: 100;
     margin-top: 10px;
 }
-@media (max-width: 450px) {
-    div.top-navigation div.angular-js-white-text {
-        display: none;
-    }
-}
 div.top-navigation a.angularjs-chat-logo-link {
     display: inline-block;
 }
@@ -115,13 +126,6 @@ div.top-navigation-links a {
     display: inline-block;
     margin-top: 10px;
     margin-left: 30px;
-}
-@media (min-width: 450px) {
-    div.top-navigation-links a.start {
-        border: 1px solid #F8F8F8;
-        padding: 10px 20px;
-        border-radius: 6px;
-    }
 }
 div.top-navigation-links a.start:hover {
     background: #F8F8F8;
