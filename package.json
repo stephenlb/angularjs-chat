@@ -1,0 +1,27 @@
+{
+  "name": "angular-chat",
+  "version": "1.0.0",
+  "description": "AngularJS Chat - Enable chat messaging experiences in your iOS, Android and Web apps.",
+  "main": "angular-chat.js",
+  "scripts": {
+    "test": "angular-chat-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephenlb/angularjs-chat.git"
+  },
+  "keywords": [
+    "angularjs",
+    "chat",
+    "ios",
+    "android",
+    "messaging",
+    "angular"
+  ],
+  "author": "Stephen Blum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stephenlb/angularjs-chat/issues"
+  },
+  "homepage": "http://angularjs.chat"
+}
