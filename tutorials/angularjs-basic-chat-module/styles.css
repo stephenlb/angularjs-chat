@@ -2,10 +2,10 @@
 /* Header */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 .header {
+    overflow: hidden;
     position: relative;
     width: 100vw;
     min-height: 100vh;
-    overflow: hidden;
 }
 .header-video {
     overflow: hidden;
@@ -17,6 +17,11 @@
     overflow: hidden;
     min-height: 100vh;
     min-width: 100vw;
+}
+@media (max-width: 450px) {
+    .header-video, .header-video video {
+        display: none;
+    }
 }
 .header-overlay {
     overflow: hidden;
@@ -36,5 +41,52 @@
         rgba(60,255,80,1.0) 0%,
         rgba(122,255,184,0.4) 100%
     );
+}
+div.header-overlay h1 {
+    margin: 30px 0;
+}
+div.header-overlay h2 {
+    font-size: 1.4em;
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Live Stream Preview */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.live-stream-preview {
+    display: flex;
+}
+div.live-stream-preview-video {
+    text-align: right;
+    flex: 4
+}
+div.live-stream-preview-divide {
+    flex: 1
+}
+div.live-stream-preview-video video {
+    width: 240px;
+    height: 100px;
+    border-radius: 3px;
+}
+div.live-stream-preview-text {
+    text-align: left;
+    flex: 4
+}
+div.live-stream-preview-text {
+    font-size: 1.1em;
+}
+div.live-stream-preview-text strong {
+    display: block;
+}
+
+@media (max-width: 580px) {
+    div.live-stream-preview {
+        flex-direction: column;
+    }
+    div.live-stream-preview-video,
+    div.live-stream-preview-text {
+        text-align: center;
+    }
 }
 
