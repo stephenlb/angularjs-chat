@@ -38,8 +38,8 @@ input[type="button"],
 button, a { cursor: pointer; }
 strong { font-weight: 500; }
 p, h1, h2, h3, h4 {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 h1, h2, h3, h4 {
     font-weight: 200;

@@ -142,6 +142,11 @@ div.subscribe-container input[type="submit"]:active {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* App Preview */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@media (max-width: 820px) {
+    .app-preview {
+        flex-direction: column;
+    }
+}
 .app-preview {
     margin: 10vh 0;
     min-height: 80vh;
@@ -152,11 +157,11 @@ div.subscribe-container input[type="submit"]:active {
     order: 2;
 }
 .app-preview-video {
-    flex: 1;
     order: 1;
     position: relative;
     height: 634px;
-    width: 302px;
+    width: 360px;
+    margin: 0 auto;
 }
 /* 1080 × 1920 */
 .app-preview-video video {
@@ -176,4 +181,7 @@ div.subscribe-container input[type="submit"]:active {
     background: transparent url(/media/iphone-wireframe.png);
     background-size: 100%;
     background-repeat: no-repeat;
+}
+.app-preview-description figure {
+    overflow: scroll;
 }
