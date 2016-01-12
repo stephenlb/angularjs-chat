@@ -142,3 +142,38 @@ div.subscribe-container input[type="submit"]:active {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* App Preview */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.app-preview {
+    margin: 10vh 0;
+    min-height: 80vh;
+    display: flex;
+}
+.app-preview-description {
+    flex: 1;
+    order: 2;
+}
+.app-preview-video {
+    flex: 1;
+    order: 1;
+    position: relative;
+    height: 634px;
+    width: 302px;
+}
+/* 1080 × 1920 */
+.app-preview-video video {
+    position: absolute;
+    top: 91px;
+    left: 24px;
+    height: 457px;
+    width: 257px;
+}
+/* 756 × 1586 */
+.app-preview-video-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 634px;
+    width: 302px;
+    background: transparent url(/media/iphone-wireframe.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
