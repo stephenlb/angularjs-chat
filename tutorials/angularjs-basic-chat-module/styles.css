@@ -158,9 +158,10 @@ div.subscribe-container input[type="submit"]:active {
 }
 .app-preview-video {
     order: 1;
+    flex: 1;
     position: relative;
     height: 634px;
-    width: 360px;
+    width: 302px;
     margin: 0 auto;
 }
 /* 1080 × 1920 */
