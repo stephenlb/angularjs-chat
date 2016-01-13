@@ -74,13 +74,41 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
         <h3>bower install</h3>
         {% highlight bash %}bower install angular-chat{% endhighlight %}
 
-        <h3>includes</h3>
+        <h3>quick start</h3>
 {% highlight html %}
+<!-- includes -->
 <script src="angular.js"></script>
 <script src="angular-chat.js"></script>
 <script src="angular-chat-config.js"></script>
-{% endhighlight %}
+
+<!-- controller -->
+<script>
+var chat = angular.module( 'BasicChat', ['chat'] );
+chat.controller( 'chat', [ 'Messages', function( Messages ) {
+    this.messages = [];
+    Messages.receive(function(message){
+        this.messages.push(message);
+    });
+    this.send = function() {
+        Messages.send({ data : chat.textbox });
+    };
+} );
+</script>
+
+<!-- view -->
+<div ng-app="BasicChat">
+    <div ng-controller="chat">
+        <div ng-repeat="message in chat.messages">
+            {% raw %}{{ message.user.name }}:{% endraw %}
+            {% raw %}{{ message.data }}{% endraw %}
+        </div>
+        <form ng-submit="chat.send()">
+            <input ng-model="chat.textbox">
+        </form>
     </div>
+</div>
+{% endhighlight %}
+</div>
 
     <div class="app-preview-video">
         <video poster="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.png" autoplay="" loop="true">
@@ -108,21 +136,58 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 
         Or you can use NPM/Bower packages to acquire the dependencies you 
         need to follow along.
+    </p><p><code>npm install angular-chat</code>
+    </p><p><code>bower install angular-chat</code>
     </p></p>
         So why is chat important? Well for one thing,
         nothing kills customer experience more than when they can't
         communicate with a company when trying to purchase a product.
-        A modern new way to exceed the expectations of customer experience it's check vacation. Chat communication. We are customers are easily able to communicate with you, defined immediately what they need with little effort on their side making their experience seamless. That is why humans use check medication regularly communicate because it makes things easy.
+        A modern way to exceed the expectations of your customer's experience
+        is actually simple.
+        Chat communication.
+        When your customers are easily able to communicate with you,
+        your sales and business metrics shift.
+        Immediately obtaining information allows a customer to move forward
+        with purchasing decisions with little effort.
+        The customer's experience is seamless.
+        We humans use chat to communicate.
+        Chat is what we are good at.
+        And that makes things easy.
+    <p></p>
+        We will be live streaming and live coding.
+        The example AngularJS Chat app will be built live with you watching.
+        We will answer your questions live.
+        You can get notified when we go live by subscribing here.
+    <p></p>
+        <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
+            data-layout="full" data-count="default"
+            data-theme="dark"></div>
+        <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
+            data-show-count="false" data-size="large">Follow @stephenlb</a>
+    <p></p>
+        By subscribing I will be able to send you a notification when
+        the <strong>live stream</strong> starts.
+        We will talk about frequently asked questions.
+        Also best practices and cats.
+        You will be able to ask your question live.
+    <p></p>
 
-    I will be live streaming an overview of this walk through on YouTube. You can get notified by subscribing here.
+        MEOW MEOW MEOW
+        MEOW MEOW MEOW
+        MEOW MEOW MEOW
+        MEOW MEOW MEOW
 
-    SUBSCRIBE SUBSCRIBE SUSCRIBE
-
-    By subscribing I will be able to send you a notification when the <strong>live stream</strong> starts. We will talk about frequently asked questions, Best practices and cats. You will be able to ask me any question live, then you and I will do coding together.
-
-    MEOW MEOW MEOW
-
-    Building chat communication is difficult there're a lot of challenges you need to overcome.  Building applications with AngularJS is extremely rewarding. Not only does it make maintenance simpler, adding new features to an angular gas application is a breeze. With the upcoming AngularJS 2 framework, The level of abstraction used to simplify application development Will make your life easy at the developer. The purpose of this website it's to build seamless AngularJS modules and extensions for chat communication. Now you're application can communicate with your users and between users. With both angular gas one and AngularJS to modules enabling messaging experiences in your app for mobile IOS android and web is streamlined. That is the promise of this module.  
+    <p></p>
+        Building chat communication is difficult.
+        There are a lot of challenges you need to overcome.
+        Building chat applications with AngularJS is extremely rewarding.
+        It make maintenance of your chat apps simple.
+        That is because when you need to add new features to your
+        Angular application, it is a breeze.
+        With the upcoming AngularJS 2 framework the level of
+        abstraction used to simplify application development
+        will make your life easy as the developer.
+        The purpose of this tutorial is to build seamless AngularJS modules and extensions for chat communication. Now you're application can communicate with your users and between users. With both AngularJS one and AngularJS to modules enabling messaging experiences in your app for mobile IOS android and web is streamlined. That is the promise of this module.  
 
     You want to call the JavaScript repository I'm GITHUB here is the link 
 
