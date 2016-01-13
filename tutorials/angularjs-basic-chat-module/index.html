@@ -67,14 +67,14 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 <!-- APP PREIVEW AREA -->
 <div class="container app-preview">
 
-    <div class="app-preview-description">
+    <div class="app-preview-quick-code">
         <h3>npm install</h3>
         {% highlight bash %}npm install angular-chat{% endhighlight %}
 
         <h3>bower install</h3>
         {% highlight bash %}bower install angular-chat{% endhighlight %}
 
-        <h3>quick start</h3>
+        <h3>quick start code</h3>
 {% highlight html %}
 <!-- includes -->
 <script src="angular.js"></script>
@@ -85,10 +85,15 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 <script>
 var chat = angular.module( 'BasicChat', ['chat'] );
 chat.controller( 'chat', [ 'Messages', function( Messages ) {
+    // Message Inbox
     this.messages = [];
+
+    // Receive Messages
     Messages.receive(function(message){
         this.messages.push(message);
     });
+
+    // Send Messages
     this.send = function() {
         Messages.send({ data : chat.textbox });
     };
@@ -108,15 +113,18 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     </div>
 </div>
 {% endhighlight %}
-</div>
 
-    <div class="app-preview-video">
-        <video poster="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.png" autoplay="" loop="true">
-            <source src="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.mp4">
-            <source src="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.webm">
-            <source src="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.ogv">
-        </video>
-        <div class="app-preview-video-overlay"></div>
+    </div><!-- END: <div class="app-preview-quick-code"> -->
+
+    <div class="app-preview-video-area">
+        <div class="app-preview-video">
+            <video poster="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.png" autoplay="" loop="true">
+                <source src="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.mp4">
+                <source src="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.webm">
+                <source src="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.ogv">
+            </video>
+            <div class="app-preview-video-overlay"></div>
+        </div>
     </div>
 
 </div>
