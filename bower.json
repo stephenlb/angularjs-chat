@@ -14,6 +14,10 @@
     "messaging",
     "angular"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephenlb/angularjs-chat#master"
+  },
   "homepage": "http://angularjs.chat",
   "moduleType": [
     "amd",
@@ -29,5 +33,5 @@
     "test",
     "tests"
   ],
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

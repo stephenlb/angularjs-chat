@@ -64,24 +64,34 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
     </div>
 </div>
 
+<!-- INSTALL PACKAGE AREA -->
+<div class="container install-packages">
+    <div class="install-npm">
+        <h3>npm install</h3>
+        {% highlight bash %}npm install angular-chat{% endhighlight %}
+    </div>
+    <div class="install-bower">
+        <h3>bower install</h3>
+        {% highlight bash %}bower install angular-chat{% endhighlight %}
+    </div>
+</div>
+
 <!-- APP PREIVEW AREA -->
 <div class="container app-preview">
 
     <div class="app-preview-quick-code">
-        <h3>npm install</h3>
-        {% highlight bash %}npm install angular-chat{% endhighlight %}
-
-        <h3>bower install</h3>
-        {% highlight bash %}bower install angular-chat{% endhighlight %}
-
         <h3>quick start code</h3>
 {% highlight html %}
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- includes -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script src="angular.js"></script>
 <script src="angular-chat.js"></script>
 <script src="angular-chat-config.js"></script>
 
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- controller -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script>
 var chat = angular.module( 'BasicChat', ['chat'] );
 chat.controller( 'chat', [ 'Messages', function( Messages ) {
@@ -100,7 +110,9 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 } );
 </script>
 
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- view -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <div ng-app="BasicChat">
     <div ng-controller="chat">
         <div ng-repeat="message in chat.messages">
