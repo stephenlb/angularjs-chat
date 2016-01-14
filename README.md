@@ -19,18 +19,53 @@ npm install angular-chat
 bower install angular-chat
 ```
 
-## Running the Website
+## Basic Chat Demo
 
-You may want to run the website or some of the tutorial apps.
-You can run the website locally by executing Jekyll server.
+```html
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- includes -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script src="angular.js"></script>
+<script src="angular-chat.js"></script>
+<script src="angular-chat-config.js"></script>
 
-```shell
-jekyll serve
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- controller -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script>
+var chat = angular.module( 'BasicChat', ['chat'] );
+chat.controller( 'chat', [ 'Messages', function( Messages ) {
+    // Message Inbox
+    this.messages = [];
+
+    // Receive Messages
+    Messages.receive(function(message){
+        this.messages.push(message);
+    });
+
+    // Send Messages
+    this.send = function() {
+        Messages.send({ data : chat.textbox });
+    };
+} );
+</script>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- view -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<div ng-app="BasicChat">
+    <div ng-controller="chat">
+        <div ng-repeat="message in chat.messages">
+            {{ message.user.name }}:
+            {{ message.data }}
+        </div>
+        <form ng-submit="chat.send()">
+            <input ng-model="chat.textbox">
+        </form>
+    </div>
+</div>
 ```
 
-This will launch the Jekyll Server so you can access files locally.
-Typically the server will launch an entry point on
-[http://0.0.0.0:4000/](http://0.0.0.0:4000/).
 
 ## AngularJS Chat Resources
 
