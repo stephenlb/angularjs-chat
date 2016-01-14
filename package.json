@@ -6,8 +6,8 @@
   "scripts": {
     "test": "angular-chat-test.js"
   },
-  dependencies: {
-    angular: '>= 1.4.8'
+  "dependencies": {
+    "angular": ">= 1.4.8"
   },
   "repository": {
     "type": "git",
