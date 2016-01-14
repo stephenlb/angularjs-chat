@@ -1,10 +1,13 @@
 {
   "name": "angular-chat",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "AngularJS Chat - Enable chat messaging experiences in your iOS, Android and Web apps.",
   "main": "angular-chat.js",
   "scripts": {
     "test": "angular-chat-test.js"
+  },
+  dependencies: {
+    angular: '>= 1.4.8'
   },
   "repository": {
     "type": "git",
