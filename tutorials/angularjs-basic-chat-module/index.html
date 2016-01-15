@@ -1,6 +1,6 @@
 ---
 layout:      basic
-title:       Quickstart AngualrJS Basic Chat Module Tutorial
+title:       AngualrJS Chat Tutorial
 description: Tutorial on how you can add Chat Messaging to your AngularJS App
 ---
 
@@ -19,7 +19,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 
         <!-- VIDEO PREVIEW -->
         <div class="container">
-            <h1>Quickstart AngularJS Chat Module Tutorial</h1>
+            <h1>{{ page.title }}</h1>
                 <!-- Easily add Messaging Experiences to your
                 iOS, Android and Web apps -->
             <div class="live-stream-preview">
@@ -65,7 +65,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 </div>
 
 <!-- INSTALL PACKAGE AREA -->
-<div class="container install-packages">
+<div class="install-packages">
     <div class="install-npm">
         <h3>npm install</h3>
         {% highlight bash %}npm install angular-chat{% endhighlight %}
@@ -80,14 +80,14 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 <div class="container app-preview">
 
     <div class="app-preview-quick-code">
-        <h3>quick start code</h3>
+        <h3><code> &lt;/&gt;</code> quick start code</h3>
 {% highlight html %}
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- includes -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script src="angular.js"></script>
-<script src="angular-chat.js"></script>
-<script src="angular-chat-config.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-chat/angular-chat.js"></script>
+<script src="bower_components/angular-chat/angular-chat-config.js"></script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- controller -->

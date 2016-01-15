@@ -142,13 +142,29 @@ div.subscribe-container input[type="submit"]:active {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Install Packages */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-@media (max-width: 500px) {
+@media (max-width: 670px) {
     .install-packages {
         flex-direction: column;
+        max-width: 360px;
     }
 }
 .install-packages {
     display: flex;
+    margin: 80px auto;
+    width: 670px;
+}
+
+.install-npm h3 {
+    padding-left: 130px;
+    background: transparent url(/media/npm.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.install-bower h3 {
+    padding-left: 60px;
+    background: transparent url(/media/bower.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -167,6 +183,7 @@ div.subscribe-container input[type="submit"]:active {
 .app-preview-video-area {
     order: 1;
     flex: 1;
+    margin-bottom: 40px;
 }
 .app-preview-quick-code {
     flex: 2;
@@ -174,6 +191,18 @@ div.subscribe-container input[type="submit"]:active {
 }
 .app-preview-quick-code figure {
     overflow: scroll;
+}
+.app-preview-quick-code h3 {
+    margin-top: 0;
+}
+.app-preview-quick-code h3 code {
+    font-weight: 800;
+    color: rgba(144,134,251,1.0);
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    display: inline-block;
+    padding: 0 20px;
+    text-align: center;
+    border-radius: 5px;
 }
 .app-preview-video {
     position: relative;
