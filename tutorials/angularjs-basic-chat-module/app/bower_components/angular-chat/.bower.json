@@ -1,0 +1,49 @@
+{
+  "name": "angular-chat",
+  "description": "AngularJS Chat - Enable chat messaging experiences in your iOS, Android and Web apps.",
+  "main": "angular-chat.js",
+  "authors": [
+    "Stephen Blum"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angularjs",
+    "chat",
+    "ios",
+    "android",
+    "messaging",
+    "angular"
+  ],
+  "dependencies": {
+    "angular": ">= 1.4.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stephenlb/angularjs-chat#master"
+  },
+  "homepage": "http://angularjs.chat",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "63b7a078e7",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "63b7a078e7ee7efa81ff36fc8fd448e12e35cafa"
+  },
+  "_source": "git://github.com/stephenlb/angularjs-chat.git",
+  "_target": "*",
+  "_originalSource": "angular-chat",
+  "_direct": true
+}
