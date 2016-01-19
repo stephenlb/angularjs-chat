@@ -65,7 +65,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 </div>
 
 <!-- INSTALL PACKAGE AREA -->
-<div class="install-packages">
+<div class="container install-packages">
     <div class="install-npm">
         <h3>npm install</h3>
         {% highlight bash %}npm install angular-chat{% endhighlight %}
@@ -73,6 +73,10 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
     <div class="install-bower">
         <h3>bower install</h3>
         {% highlight bash %}bower install angular-chat{% endhighlight %}
+    </div>
+    <div class="install-github">
+        <h3>github install</h3>
+        {% highlight bash %}git clone https://github.com/stephenlb/angularjs-chat.git{% endhighlight %}
     </div>
 </div>
 
@@ -142,8 +146,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 </div>
 
 <!-- START: MAIN TUTORIAL CONTENT -->
-<div class="container tutorial-contnet">
-
+<div class="container tutorial-content">
     <p>
         Quickly. I need to say that this tutorial is for you
         if you are a <strong>software developer</strong>.
@@ -156,9 +159,10 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 
         Or you can use NPM/Bower packages to acquire the dependencies you 
         need to follow along.
-    </p><p><code>npm install angular-chat</code>
-    </p><p><code>bower install angular-chat</code>
-    </p></p>
+        
+        <code>bower install angular-chat</code> and also
+        <code>npm install angular-chat</code>.
+    </p><p>
         So why is chat important? Well for one thing,
         nothing kills customer experience more than when they can't
         communicate with a company when trying to purchase a product.
@@ -173,31 +177,29 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         We humans use chat to communicate.
         Chat is what we are good at.
         And that makes things easy.
-    <p></p>
+    </p><p>
         We will be live streaming and live coding.
         The example AngularJS Chat app will be built live with you watching.
         We will answer your questions live.
         You can get notified when we go live by subscribing here.
-    <p></p>
-        <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
-            data-layout="full" data-count="default"
-            data-theme="dark"></div>
-        <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-            data-show-count="false" data-size="large">Follow @stephenlb</a>
-    <p></p>
+    </p><p>
+        <iframe src="https://vine.co/v/___ib9B7p6ddeq/embed/simple"
+        class="vine" width="600" height="600" frameborder="0"></iframe>
+
         By subscribing I will be able to send you a notification when
         the <strong>live stream</strong> starts.
         We will talk about frequently asked questions.
         Also best practices and cats.
         You will be able to ask your question live.
-    <p></p>
 
-        MEOW MEOW MEOW
-        MEOW MEOW MEOW
-        MEOW MEOW MEOW
-        MEOW MEOW MEOW
+        <div class="social-links">
+            <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
+                data-layout="full" data-count="default"
+                data-theme="dark"></div>
+            <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
+                data-show-count="false" data-size="large">Follow @stephenlb</a><br>
+        </div>
 
-    <p></p>
         Building chat communication is difficult.
         There are a lot of challenges you need to overcome.
         Building chat applications with AngularJS is extremely rewarding.
@@ -207,15 +209,37 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         With the upcoming AngularJS 2 framework the level of
         abstraction used to simplify application development
         will make your life easy as the developer.
-        The purpose of this tutorial is to build seamless AngularJS modules and extensions for chat communication. Now you're application can communicate with your users and between users. With both AngularJS one and AngularJS to modules enabling messaging experiences in your app for mobile IOS android and web is streamlined. That is the promise of this module.  
+    </p><p>
+        The purpose of this tutorial is to help you build AngularJS
+        modules and extensions for chat communication.
+        And soon you're application can communicate with your
+        users and among your users too.
+        With both AngularJS 1.5 and AngularJS 2 modules enabling
+        messaging experiences in your app on mobile iOS/Android and web.
+        That is the promise of this walk-through.
+    </p><p>
 
-    You want to call the JavaScript repository I'm GITHUB here is the link 
+        We will start the code section of this walkthrough.
+        And you will need the: 
+        <a href="https://github.com/stephenlb/angularjs-chat">
+            AngularJS Chat GitHub Repository</a>.
 
-    LINK LINK LINK
+        You can also 
+        <code>bower install angular-chat</code> or
+        <code>npm install angular-chat</code>.
+        We are using bower in the example.
 
-    Let’s jump straight to it. Here's an example on how to send and receive a message within your AngularJS app. First we will start with accessing the model methods available. Then we'll show you a simple controller written and AngularJS.
+    </p><p>
+        Let’s jump straight to it.
+        Here's an example on how to <strong>send</strong> and
+        <strong>receive</strong> a message within your AngularJS app.
+        First we will start with accessing the model's methods.
+        Then we'll show you a simple controller example.
+    </p><p>
 
-    CODE CODE CODE
+        CODE CODE CODE
+
+    </p><p>
 
     Wait was it really that easy? No. There're a couple things that you need to do in preparation to make this work in your application. But it's important to know the entry points of sending and receiving messages for chat communication.  Now that you can send receive JSON on messages let's take a look at how you can add this to a AngularJS controller.
 
@@ -303,4 +327,5 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 <!-- END: MAIN TUTORIAL CONTENT -->
 
 <script async defer src="https://apis.google.com/js/platform.js"></script>
+<script async defer src="https://platform.vine.co/static/scripts/embed.js"></script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
