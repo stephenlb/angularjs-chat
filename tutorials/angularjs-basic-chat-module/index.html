@@ -237,7 +237,40 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         Then we'll show you a simple controller example.
     </p><p>
 
-        CODE CODE CODE
+        {% highlight javascript %}
+
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Minimal Chat Controller
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+var chat = angular.module( 'BasicChat', ['chat'] );
+chat.controller( 'chat', [ 'Messages', function( Messages ) {
+    // - - - - - - - - - - - - - - - - - -
+    // Message Inbox
+    // This array will hold the messages
+    // ordered by receipt.
+    // - - - - - - - - - - - - - - - - - -
+    this.messages = [];
+
+    // - - - - - - - - - - - - - - - - - -
+    // Receive Messages
+    // Push to Message Inbox.
+    // - - - - - - - - - - - - - - - - - -
+    Messages.receive(function(message){
+        this.messages.push(message);
+    });
+
+    // - - - - - - - - - - - - - - - - - -
+    // Send Message
+    // This is a controller method used
+    // when a user action occurs.
+    // Also we expect a model reference
+    // ng-model="chat.textbox".
+    // - - - - - - - - - - - - - - - - - -
+    this.send = function() {
+        Messages.send({ data : chat.textbox });
+    };
+} );
+        {% endhighlight %}
 
     </p><p>
 

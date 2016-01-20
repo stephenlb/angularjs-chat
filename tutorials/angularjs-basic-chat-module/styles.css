@@ -4,6 +4,9 @@
 .tutorial-content a {
     color: #61AD15;
 }
+.tutorial-content figure {
+    overflow: scroll;
+}
 .tutorial-content h3 {
     margin: 0px auto;
 }
