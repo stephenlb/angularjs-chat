@@ -245,8 +245,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         Then we'll show you a simple controller example.
     </p><p>
 
-        {% highlight javascript %}
-
+{% highlight javascript %}
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Minimal Chat Controller
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -278,11 +277,18 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         Messages.send({ data : chat.textbox });
     };
 } );
-        {% endhighlight %}
+{% endhighlight %}
 
     </p><p>
-
-    Wait was it really that easy? No. There're a couple things that you need to do in preparation to make this work in your application. But it's important to know the entry points of sending and receiving messages for chat communication.  Now that you can send receive JSON on messages let's take a look at how you can add this to a AngularJS controller.
+        Wait was it really that easy? Boy howdy.
+        There are a couple more things that you need
+        to do in preparation to add chat in your application.
+        Good to know the entry points of sending and receiving 
+        chat messages.
+        Now that you can send receive JSON on messages.
+        Oh right forgot to mention.
+        The messages are automatically encoded in JSON.
+        Lets take a look at how you can add this to a AngularJS controller.
 
     CODE COD ECODE
 
