@@ -38,18 +38,19 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                         January 18th 2016 @ 2:00PM PST
                     </div>
 
+                    <div class="social-follow-buttons">
                     <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
                         data-layout="full" data-count="default"
                         data-theme="dark"></div>
                     <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-                        data-show-count="false" data-size="large">Follow @stephenlb</a>
+                        data-show-count="false" data-size="large"></a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- SUBSCRIBE -->
         <div class="container subscribe-container">
-            <strong>Get notified when we go live!</strong>
             <form
             action="https://pubnub.us12.list-manage.com/subscribe/post?u=fbd1f30822a348898a0640f45&amp;id=b494a4e65a"
             method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
@@ -57,8 +58,9 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
                     <input type="text" name="b_fbd1f30822a348898a0640f45_b494a4e65a" tabindex="-1" value="">
                 </div>
-                <input type="submit" value="Remind Me" name="subscribe" class="action">
+                <input type="submit" value="Signup" name="subscribe" class="action">
             </form>
+            <strong>Signup for the live stream!</strong>
         </div>
 
     </div>
@@ -148,11 +150,12 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 <!-- START: MAIN TUTORIAL CONTENT -->
 <div class="container tutorial-content">
     <p>
-        Quickly. I need to say that this tutorial is for you
+        This tutorial is for you
         if you are a <strong>software developer</strong>.
         Specifically an Angular JS software developer.
-        This walk-through is dedicated to being open source and free.
-        To get started you can start with the
+        This walk-through is open source and free,
+        <a href="https://en.wikipedia.org/wiki/MIT_License">MIT</a> style.
+        You can also get started with the
 
         <a href="https://github.com/stephenlb/angularjs-chat"
             >AngularJS Chat GiHub repository</a>.
@@ -160,7 +163,8 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         Or you can use NPM/Bower packages to acquire the dependencies you 
         need to follow along.
         
-        <code>bower install angular-chat</code> and also
+        <code>bower install angular-chat</code> is the preferred.
+        You can also use
         <code>npm install angular-chat</code>.
     </p><p>
         So why is chat important? Well for one thing,
@@ -182,24 +186,28 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         The example AngularJS Chat app will be built live with you watching.
         We will answer your questions live.
         You can get notified when we go live by subscribing here.
-    </p><p>
-        <iframe src="https://vine.co/v/___ib9B7p6ddeq/embed/simple"
-        class="vine" width="600" height="600" frameborder="0"></iframe>
-
+    </p>
+    <iframe src="https://vine.co/v/ib9B7p6ddeq/embed/simple"
+    class="vine" width="500" height="500" frameborder="0"></iframe>
+    <p>
         By subscribing I will be able to send you a notification when
         the <strong>live stream</strong> starts.
         We will talk about frequently asked questions.
-        Also best practices and cats.
+        Also best practices and cats maybe.
         You will be able to ask your question live.
+    </p>
 
-        <div class="social-links">
-            <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
-                data-layout="full" data-count="default"
-                data-theme="dark"></div>
-            <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-                data-show-count="false" data-size="large">Follow @stephenlb</a><br>
-        </div>
+    <div class="social-links">
+    <div class="social-follow-buttons">
+    <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
+        data-layout="full" data-count="default"
+        data-theme="light"></div>
+    <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
+        data-show-count="false" data-size="large"></a><br>
+    </div>
+    </div>
 
+    <p>
         Building chat communication is difficult.
         There are a lot of challenges you need to overcome.
         Building chat applications with AngularJS is extremely rewarding.

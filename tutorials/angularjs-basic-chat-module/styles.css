@@ -1,14 +1,27 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Tutorial Content */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.tutorial-content {
+    max-width: 960px;
+}
+.tutorial-content p,
+.tutorial-content div {
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    line-height: 1.58;
+}
 .tutorial-content a {
     color: #61AD15;
 }
-.tutorial-content figure {
+.tutorial-content .highlight {
     overflow: scroll;
 }
 .tutorial-content h3 {
     margin: 0px auto;
+}
+.social-follow-buttons {
+    height: 48px;
+    animation: fade-in 2s ease-in 0s;
 }
 .tutorial-content .social-links {
     margin: 60px auto;
@@ -18,10 +31,10 @@
     display: inline-block;
     float: left;
     padding: 10px 50px 40px 0;
-    max-width: 600px;
-    max-height: 600px;
-    min-width: 600px;
-    min-height: 600px;
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 500px;
+    min-height: 500px;
 }
 @media (max-width: 1000px) {
     .tutorial-content iframe.vine {
@@ -35,6 +48,12 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Header */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@keyframes fade-in {
+    0%   { opacity: 0.0 }
+    40%  { opacity: 0.0 }
+    100% { opacity: 1.0 }
+}
+
 .header {
     overflow: hidden;
     position: relative;
@@ -97,6 +116,14 @@ div.header-overlay h2 {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Live Stream Preview */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.app-preview {
+    padding-top: 80px;
+    padding-bottom: 50px;
+    background: rgba(160,140,140,0.1);
+}
+div.app-preview .highlight {
+    background: transparent;
+}
 div.live-stream-preview {
     display: flex;
     flex-direction: column;
@@ -135,7 +162,7 @@ input::-webkit-input-placeholder {
     color: rgba(200,255,255,0.5) !important;
 }
 div.subscribe-container {
-    padding: 30px 0px;
+    padding: 60px 0px 160px 0px;
 }
 div.subscribe-container strong {
     font-weight: 500;
@@ -184,10 +211,9 @@ div.subscribe-container input[type="submit"]:active {
 .install-packages {
     display: flex;
     margin: 80px auto;
-    text-align: center;
     max-width: 100vw;
 }
-.install-packages figure {
+.install-packages .highlight {
     overflow: scroll;
 }
 .install-npm,
@@ -239,7 +265,7 @@ div.subscribe-container input[type="submit"]:active {
     flex: 2;
     order: 2;
 }
-.app-preview-quick-code figure {
+.app-preview-quick-code .highlight {
     overflow: scroll;
 }
 .app-preview-quick-code h3 {
