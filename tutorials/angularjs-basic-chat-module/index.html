@@ -87,6 +87,18 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 
     <div class="app-preview-quick-code">
         <h3><code> &lt;/&gt;</code> quick start code</h3>
+
+        <p>
+            On your phone, try
+            <a target="_githubapp1" href="/tutorials/angularjs-basic-chat-module/app/">
+                AngularJS Chat Demo App</a>.
+            The demo app is more details.
+            On the live stream review we will cover more of these details.
+            It's better to start simple.
+            The following code will get you started.
+            We will exclude the fancy CSS3 animations for now.
+        </p>
+
 {% highlight html %}
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- includes -->
@@ -142,6 +154,11 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
                 <source src="http://cdn.pubnub.com/angularjs-chat/videos/basic-angularjs-chat-capture-demo.ogv">
             </video>
             <div class="app-preview-video-overlay"></div>
+        </div>
+        <div class="app-preview-video-link">
+            <a target="_githubapp1" href="/tutorials/angularjs-basic-chat-module/app/">
+                <strong>Try the App</strong></a><br>
+            <a target="_githubapp2" href="https://github.com/stephenlb/angularjs-chat/tree/gh-pages/tutorials/angularjs-basic-chat-module/app">Get Source Code on GitHub</a>
         </div>
     </div>
 
@@ -271,7 +288,11 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         <strong>receive</strong> a message within your AngularJS app.
         First we will start with accessing the AngularJS Chat Model methods.
         This code is a simple controller.
-    </p><p>
+    </p>
+    
+    <h3 class="angular-chat-logo">Controller for AngularJS Chat</h3>
+
+    <p>
 
 {% highlight javascript %}
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -327,7 +348,11 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         When we apply this to an HTML view,
         messages will be displayed to the user.
         Here is the code for displaying Messages to the user.
-    </p><p>
+    </p>
+    
+    <h3 class="angular-chat-logo">HTML View for AngularJS Chat</h3>
+
+    <p>
 
 {% highlight html %}
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
@@ -377,54 +402,116 @@ Messages.user({ name : "Samus Aran" });
         This means if a user updates their name or info that it will
         not be propagated to the older chat messages.
     </p><p>
+        In the HTML view, you can access the user data like this:
+    </p><p>
+
+{% highlight html %}
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- User Data in HTML View -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+{% raw %}Your name is {{ message.user.name }}{% endraw %}
+{% raw %}The thing is {{ message.user.other_thing }}{% endraw %}
+{% raw %}Bar {{ message.user.foo }}{% endraw %}
+{% endhighlight %}
+
+    </p><p>
         With all these parts combined you have a basic chat application!
         However it is not actually complete and there's more that needs
         to be done in order to ensure excellent user experience.
         Pretty UI is what I'm referring to.
         Beautiful user interface is helpful indeed.
         Our demo application includes some advanced CSS3 snazziness.
-        CSS3 animations and flex box are used in our basic chat application.
+        CSS3 animations and flex box are used in our
+        <a target="_githubapp3" href="/tutorials/angularjs-basic-chat-module/app">
+        basic AngularJS chat app</a>.
         It is 2016 and we are now in the future.
         Browsers on modern operating systems include the ability
         to understand how to display flex box and render CSS3 animations.
         This makes our life easypeasy.
         Whoopee!
-
     </p><p>
-
         I like making pixel perfect user interfaces and experiences.
         Web browsers vendors with CSS3, HTML5 and
         JavaScript have not always provided
         a consistent user experience.
-        It's better now and you don't realize how awesome
-        this makes your application development experience.
+        But it's better now!
+        You don't realize how awesome
+        this makes your application development speed.
         I will work with you and show you what modern 2016 technology
         can yield in terms of awesomeness.
+        But only a preview for you.
+    </p>
+
+    <h3 class="flex-box-css3">Flex Box with AngularJS</h3>
+
+{% highlight html %}
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- Flex Box Example -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<style>
+    div.parent-container { display: flex; }
+    div.child-span       { flex: 1;       }
+</style>
+<div class="parent-container">
+    <div class="child-span"> 1 </div>
+    <div class="child-span"> 2 </div>
+    <div class="child-span"> 3 </div>
+</div>
+{% endhighlight %}
+
+    <p>
         One of the modern technologies is <strong>flex box</strong>.
         If you have not used flex box before, you should!
         Before there was flex box you hatch to combine your HTML CSS
         and JavaScript to manipulate HTML elements to your design desires.
         Now with flex box, the browser render engine will take care of
         this for you when you use a few CSS3 directives.
-        Here are those CSS3 directives.
+    </p><p>
+        I thought flex box would end up being more complicated.
+        But it is simple and works phenomenally for multiple
+        screen sizes and media queries.
+        Flex box fulfills my desire to developer to maintain proper
+        abstraction between the <strong>view layer</strong>
+        the <strong>styling layer</strong> the controller and the model.
+    </p>
 
+{% highlight css %}
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Mobile View CSS3 - using Media Queries */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@media (max-width: 500px) {
+    div.parent-container { flex-direction: column; }
+}
+{% endhighlight %}
 
-    CODE CODE CODE
+    <p>
+        Flex box for the win.
+        You can change the order of display for elements.
+        And you don't have to change the HTML!
+        Simplicity achieved.
+        The alternative is a variety of CSS3 display type conditions.
+        Flex box is offers improved simplicity when
+        you are programming for web apps.
+    </p><p>
+        We showed you a few critical snippets of the basic chat application.
+        You will want more beyond the basic chat experience for your users.
+        That is why a more advanced application
+        has been built for you to copy.
+        Now you can
+        <a target="_githubapp4" href="https://github.com/stephenlb/angularjs-chat/tree/gh-pages/tutorials/angularjs-basic-chat-module/app">get the source Code on GitHub</a>.
+        The GitHub repo has all the JavaScript CSS ready.
+        It is only a starting point.
+        There's more to come.
+        The plan is to use the AngularJS 1.5 Chat Module as a starter for 2016.
+        We'll be moving to Angular 2 going forward.
+    </p>
 
+    <h3>Who uses Chat?</h3>
 
-    I really thought flex box would end up being more complicated than this. But it really is simple and works phenomenal for multiple screen sizes and media queries. Flex box fulfills my desire to developer to maintain proper abstraction between the view layer the styling layer the controller and the model. Flax box for the win.
+    <p>
+        There're so many companies. So many apps. They all have chat. They're dedicated to check. Some are only chat. Some used check to augment and improve user experience in the application. Some augment bailon uses to communicate with broadcasters. Chat is how we communicate as humans. Building chat applications is difficult or it wasn't before you read this walk through.
 
-    CODE CODE CODE
-
-    So I only showed you a few snippets of important aspects of building a basic chat application. You'll wants amora bust basic chat experience for users. So I built a full application that's ready for you to copy. Here is the link to the get hub repository that has all the JavaScript CSS. Don't worry we will start here. There's a lot more to come. This is the first in 2016. Angie needed to get started with a basic chat application written in an get a chance. Also and get into module Will become available. But first let's start with the production grade and get a JS 1.5.
-
-    LINK LINK LINK GITHUB GITHUB HITHUB
-
-    Who uses Chat?
-
-    There're so many companies. So many apps. They all have chat. They're dedicated to check. Some are only chat. Some used check to augment and improve user experience in the application. Some augment bailon uses to communicate with broadcasters. Chat is how we communicate as humans. Building chat applications is difficult or it wasn't before you read this walk through.
-
-    Periscope and meerkat
+    Periscope and Meerkat
 
     IMG IMG IMG
 

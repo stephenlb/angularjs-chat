@@ -40,11 +40,25 @@
 .tutorial-content div.samus-aran .highlight {
     background: transparent;
 }
+.tutorial-content h3.angular-chat-logo {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(/media/angularjs-chat.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h3.flex-box-css3 {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/flex-box-css3.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
 .tutorial-content .highlight {
     overflow: scroll;
 }
 .tutorial-content h3 {
-    margin: 0px auto;
+    margin: 60px auto 40px auto;
 }
 .social-follow-buttons {
     height: 48px;
@@ -297,6 +311,14 @@ div.subscribe-container input[type="submit"]:active {
 }
 .app-preview-quick-code h3 {
     margin-top: 0;
+}
+.app-preview-quick-code a,
+.app-preview-video-link a {
+    color: #61AD15;
+}
+.app-preview-video-link {
+    text-align: center;
+    margin-top: 50px;
 }
 .app-preview-quick-code h3 code {
     font-weight: 800;
