@@ -149,6 +149,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 
 <!-- START: MAIN TUTORIAL CONTENT -->
 <div class="container tutorial-content">
+    <h2>AngularJS Chat Tutorial</h2>
     <p>
         This tutorial is for you
         if you are a <strong>software developer</strong>.
@@ -190,7 +191,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     <iframe src="https://vine.co/v/ib9B7p6ddeq/embed/simple"
     class="vine" width="500" height="500" frameborder="0"></iframe>
     <p>
-        By subscribing I will be able to send you a notification when
+        By subscribing you will able to receive a notification when
         the <strong>live stream</strong> starts.
         We will talk about frequently asked questions.
         Also best practices and cats maybe.
@@ -285,26 +286,52 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         to do in preparation to add chat in your application.
         Good to know the entry points of sending and receiving 
         chat messages.
-        Now that you can send receive JSON on messages.
+
+        Now you can send receive JSON messages.
         Oh right forgot to mention.
         The messages are automatically encoded in JSON.
-        Lets take a look at how you can add this to a AngularJS controller.
+    </p><p>
+        A simple controller for messaging applications only needs one
+        model reference: <code>this.messages</code> array.
+        The messages array can hold all of the messages.
+        And you can have them displayed on the application user interface.
+        Anytime a new message arrives,
+        it will be pushed into the messages array.
+        When we apply this to an HTML view,
+        messages will be displayed to the user.
+        Here is the code for displaying Messages to the user.
+    </p><p>
 
-    CODE COD ECODE
+{% highlight html %}
+<div ng-controller="chat">
+    <div ng-repeat="message in chat.messages">
+        {% raw %}{{ message.user.name }}:{% endraw %}
+        {% raw %}{{ message.data }}{% endraw %}
+    </div>
+    <form ng-submit="chat.send()">
+        <input ng-model="chat.textbox">
+    </form>
+</div>
+{% endhighlight %}
 
-    A simple controller for messaging applications only needs one model reference. That is a messages array that holds all of the messages to be displayed on the application message user interface. Anytime a new message arrives, it will be pushed into the messages are ready. When we apply this to an HTML view, Messages will be displayed to The user. Here is the code for displaying Messages to the user.
+    </p><p>
+        This simple AngularJS view has two parts.
+        The first part is a messages display area.
+        The second part is user input for sending messages.
+        When a user submits their text,
+        the controller will deliver this message for you using the
+        <code>Messages.send()</code> method.
+        Pretty neat, yah?
+        You will also want to set user information along
+        with that message payload.
+        This is important because you need to identify who sends the message.
+        You can do that by invoking the Message user method.
+    </p><p>
 
     CODE CODE CODE
 
-    This simple view has two parts to it. The first part is a messages display area. The second part is user input for sending messages. When a user submits their text, the controller Will deliver this message for you. Pretty neat Ha? Now you will also want to set user information along with that message payload. This is important because you need to identify who sends the message. You can do that by invoking the messages user method.
-
-    PUBNUB 
-
-    you need pub nub account.  signup get keys and paste api keys here.
-
-    CODE CODE CODE
-
-    With all these parts combined you have a basic chat application. However it is not complete there's more that needs to be done in order to ensure excellent user experience. Hey beautiful user interface is helpful indeed. Our demo application includes some advanced CSS three. CSS three animations in CSS three flex box are used in our basic chat application. Because it is 2016, We are in the future, and all browsers on modern operating systems include the ability to understand how to use flex box and CSS three animations. This removes the need for CSS3 compilers like LESS and SASS.  Whoopee.
+    </p><p>
+        With all these parts combined you have a basic chat application. However it is not complete there's more that needs to be done in order to ensure excellent user experience. Hey beautiful user interface is helpful indeed. Our demo application includes some advanced CSS three. CSS three animations in CSS three flex box are used in our basic chat application. Because it is 2016, We are in the future, and all browsers on modern operating systems include the ability to understand how to use flex box and CSS three animations. This removes the need for CSS3 compilers like LESS and SASS.  Whoopee.
 
     CODE CODE CODE
 
@@ -315,6 +342,14 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 
 
     I really thought flex box would end up being more complicated than this. But it really is simple and works phenomenal for multiple screen sizes and media queries. Flex box fulfills my desire to developer to maintain proper abstraction between the view layer the styling layer the controller and the model. Flax box for the win.
+
+    PUBNUB 
+    PUBNUB 
+    PUBNUB 
+
+    you need pub nub account.  signup get keys and paste api keys here.
+
+    CODE CODE CODE
 
     So I only showed you a few snippets of important aspects of building a basic chat application. You'll wants amora bust basic chat experience for users. So I built a full application that's ready for you to copy. Here is the link to the get hub repository that has all the JavaScript CSS. Don't worry we will start here. There's a lot more to come. This is the first in 2016. Angie needed to get started with a basic chat application written in an get a chance. Also and get into module Will become available. But first let's start with the production grade and get a JS 1.5.
 

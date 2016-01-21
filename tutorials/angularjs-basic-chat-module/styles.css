@@ -10,6 +10,11 @@
     letter-spacing: 0.01em;
     line-height: 1.58;
 }
+.tutorial-content h2 {
+    text-align: center;
+    margin: 80px 0;
+    font-size: 2.6em;
+}
 .tutorial-content a {
     color: #61AD15;
 }
