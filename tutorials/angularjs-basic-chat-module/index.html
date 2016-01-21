@@ -356,7 +356,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         with that message payload.
         This is important because you need to identify who sends the message.
         You can do that by invoking the <code>Messages.user()</code> method.
-    </p><p>
+    </p><div class="samus-aran">
 
 {% highlight html %}
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -365,14 +365,30 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 Messages.user({ name : "Samus Aran" });
 {% endhighlight %}
 
-    </p><p>
+    </div><p>
         You can put anything inside the object.
         This information will become accessible with each message sent.
         You can display this information in the HTML view.
-        Internally this information is called
+        Internally we call this information
         <strong>chat message meta data</strong>.
+        It will remain associated with each message sent.
+        As of this tutorial, older messages will retain the
+        original meta data information.
+        This means if a user updates their name or info that it will
+        not be propagated to the older chat messages.
     </p><p>
-        With all these parts combined you have a basic chat application. However it is not complete there's more that needs to be done in order to ensure excellent user experience. Hey beautiful user interface is helpful indeed. Our demo application includes some advanced CSS three. CSS three animations in CSS three flex box are used in our basic chat application. Because it is 2016, We are in the future, and all browsers on modern operating systems include the ability to understand how to use flex box and CSS three animations. This removes the need for CSS3 compilers like LESS and SASS.  Whoopee.
+        With all these parts combined you have a basic chat application!
+        However it is not actually complete and there's more that needs
+        to be done in order to ensure excellent user experience.
+        Pretty UI is what I'm referring to.
+        Beautiful user interface is helpful indeed.
+        Our demo application includes some advanced CSS3 snazziness.
+        CSS3 animations and flex box are used in our basic chat application.
+        Because it is 2016, we are now in the future.
+        And all browsers on modern operating systems include the ability
+        to understand how to display flex box and render CSS3 animations.
+        This makes our life easypeasy.
+        Whoopee!
 
     CODE CODE CODE
 

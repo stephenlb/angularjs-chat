@@ -29,6 +29,17 @@
 .tutorial-content p.pubnub-api-keys-link code {
     font-weight: 700;
 }
+.tutorial-content div.samus-aran {
+    font-size: 17px;
+    border-radius: 6px;
+    background: transparent url(media/samus.png);
+    background-size: auto 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+.tutorial-content div.samus-aran .highlight {
+    background: transparent;
+}
 .tutorial-content .highlight {
     overflow: scroll;
 }
