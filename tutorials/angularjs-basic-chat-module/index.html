@@ -237,13 +237,40 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         <code>bower install angular-chat</code> or
         <code>npm install angular-chat</code>.
         We are using bower in the example.
+        Make sure to include your JavaScript dependency files.
 
+{% highlight html %}
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- includes -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-chat/angular-chat.js"></script>
+<script>
+    // AngularJS Chat Configuration
+    angular.module('chat').constant( 'config', {
+        "pubnub": {
+            "publish-key"   : "YOUR_PUBLISH_API_KEY",
+            "subscribe-key" : "YOUR_SUBSCRIBE_API_KEY"
+        }
+    } );
+</script>
+{% endhighlight %}
+
+    </p><p class="pubnub-api-keys-link">
+        <a href="https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016">Get PubNub API Keys</a><br>
+        You need <strong>PubNub API Keys</strong>.
+        This allows the chat communication on a data stream network.
+        You can fill in the
+        <code>YOUR_PUBLISH_API_KEY</code> and
+        <code>YOUR_SUBSCRIBE_API_KEY</code> placeholder
+        strings  with your API keys that you get on the PubNub website.
     </p><p>
-        Let’s jump straight to it.
+        Now that you have the prerequisites and your PubNub API keys
+        we are ready for the next part.
         Here's an example on how to <strong>send</strong> and
         <strong>receive</strong> a message within your AngularJS app.
-        First we will start with accessing the model's methods.
-        Then we'll show you a simple controller example.
+        First we will start with accessing the AngularJS Chat Model methods.
+        This code is a simple controller.
     </p><p>
 
 {% highlight javascript %}
@@ -303,6 +330,9 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     </p><p>
 
 {% highlight html %}
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- Chat View in HTML -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <div ng-controller="chat">
     <div ng-repeat="message in chat.messages">
         {% raw %}{{ message.user.name }}:{% endraw %}
@@ -325,11 +355,22 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         You will also want to set user information along
         with that message payload.
         This is important because you need to identify who sends the message.
-        You can do that by invoking the Message user method.
+        You can do that by invoking the <code>Messages.user()</code> method.
     </p><p>
 
-    CODE CODE CODE
+{% highlight html %}
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Set User Data
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Messages.user({ name : "Samus Aran" });
+{% endhighlight %}
 
+    </p><p>
+        You can put anything inside the object.
+        This information will become accessible with each message sent.
+        You can display this information in the HTML view.
+        Internally this information is called
+        <strong>chat message meta data</strong>.
     </p><p>
         With all these parts combined you have a basic chat application. However it is not complete there's more that needs to be done in order to ensure excellent user experience. Hey beautiful user interface is helpful indeed. Our demo application includes some advanced CSS three. CSS three animations in CSS three flex box are used in our basic chat application. Because it is 2016, We are in the future, and all browsers on modern operating systems include the ability to understand how to use flex box and CSS three animations. This removes the need for CSS3 compilers like LESS and SASS.  Whoopee.
 

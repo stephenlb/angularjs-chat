@@ -18,6 +18,17 @@
 .tutorial-content a {
     color: #61AD15;
 }
+.tutorial-content p.pubnub-api-keys-link {
+    background: rgba(160,140,140,0.1);
+    padding: 40px;
+    border-radius: 16px;
+}
+.tutorial-content p.pubnub-api-keys-link a {
+    font-size: 2em;
+}
+.tutorial-content p.pubnub-api-keys-link code {
+    font-weight: 700;
+}
 .tutorial-content .highlight {
     overflow: scroll;
 }
