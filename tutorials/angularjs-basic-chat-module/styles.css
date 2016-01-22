@@ -18,6 +18,9 @@
 .tutorial-content a {
     color: #61AD15;
 }
+.tutorial-content a.twitter-follow-button {
+    color: #fff;
+}
 .tutorial-content .angular-js-chat-logo {
     background: transparent url(/media/angularjs-chat.png);
     background-size: auto 100%;
@@ -118,7 +121,6 @@
 }
 .social-follow-buttons {
     height: 48px;
-    animation: fade-in 2s ease-in 0s;
 }
 .tutorial-content .social-links {
     margin: 60px auto;
@@ -157,12 +159,6 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Header */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-@keyframes fade-in {
-    0%   { opacity: 0.0 }
-    40%  { opacity: 0.0 }
-    100% { opacity: 1.0 }
-}
-
 .header {
     overflow: hidden;
     position: relative;
@@ -379,6 +375,10 @@ div.subscribe-container input[type="submit"]:active {
 }
 .app-preview-quick-code h3 {
     margin-top: 0;
+}
+.app-preview-quick-code p {
+    font-size: 20px;
+    margin: 0 40px;
 }
 .app-preview-quick-code a,
 .app-preview-video-link a {

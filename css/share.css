@@ -1,11 +1,13 @@
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Share Buttons */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-.post-share {
+div.post-share {
     text-align: center;
 }
-.post-share-header {
-    
+div.post-share div.post-share-header {
+    font-weight: 100;
+    font-size: 2em;
+    margin: 50px 0 40px 0;
 }
 .post-share-menu-item a,
 .post-share-menu-item a svg use,
@@ -21,8 +23,8 @@ svg:not(:root) {
 .post-share-menu-item a svg use,
 .post-share-menu-item,
 .svg-icon {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
 }
 .svg-icon {
     transform-origin: 50% 50% 0px;
@@ -30,7 +32,7 @@ svg:not(:root) {
 }
 .post-share-menu-item {
     padding: 0px;
-    width: 80px;
+    width: 120px;
 }
 .svg-icon {
     padding: 20px;
@@ -45,8 +47,23 @@ svg:not(:root) {
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Follow Buttons */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-.twitter-follow-button {
-    fill: #55acee;
+a.twitter-follow-button {
+    display: inline-block;
     color: #fff;
     background: #55acee;
+    padding: 4px 20px;
+    line-height: 30px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+a.twitter-follow-button:hover {
+    text-decoration: none;
+}
+.svg-twitter-follow {
+    position: relative;
+    top: 3px;
+    left: -3px;
+    width: 18px;
+    height: 18px;
+    fill: #fff;
 }

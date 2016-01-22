@@ -39,11 +39,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                     </div>
 
                     <div class="social-follow-buttons">
-                    <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
-                        data-layout="full" data-count="default"
-                        data-theme="dark"></div>
-                    <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-                        data-show-count="false" data-size="large">Follow StephenLB</a>
+                        {% include follow.html %}
                     </div>
                 </div>
             </div>
@@ -91,13 +87,7 @@ WELCOME REDDIT
 </div>
 
 
-<div>
-SHARE THIS
-SHARE THIS
-SHARE THIS
-SHARE THIS
-SHARE THIS
-</div>
+    {% include share.html %}
 
 
 <!-- APP PREIVEW AREA -->
@@ -807,7 +797,6 @@ Messages.user({ name : "Samus Aran" });
         live stream starts on YouTube.
     </p>
 
-    {% include follow.html %}
     {% include share.html %}
 
     <div class="disqus-thread">
