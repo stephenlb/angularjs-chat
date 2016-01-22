@@ -133,6 +133,18 @@
     min-width: 500px;
     min-height: 500px;
 }
+.tutorial-content video.imgur {
+    width: 100%;
+}
+.tutorial-content h4.header-icon,
+.tutorial-content h3.header-icon {
+    text-align: center;
+    padding-left: 0px;
+    padding-top: 120px;
+    background-size: 100px;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
 @media (max-width: 1000px) {
     .tutorial-content iframe.vine {
         max-width: 300px;
