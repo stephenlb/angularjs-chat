@@ -1,0 +1,52 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Share Buttons */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.post-share {
+    text-align: center;
+}
+.post-share-header {
+    
+}
+.post-share-menu-item a,
+.post-share-menu-item a svg use,
+.post-share-menu-item {
+    display: inline-block;
+    text-align: left;
+    margin: 0;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+.post-share-menu-item a,
+.post-share-menu-item a svg use,
+.post-share-menu-item,
+.svg-icon {
+    width: 40px;
+    height: 40px;
+}
+.svg-icon {
+    transform-origin: 50% 50% 0px;
+    transition: all .15s linear;
+}
+.post-share-menu-item {
+    padding: 0px;
+    width: 80px;
+}
+.svg-icon {
+    padding: 20px;
+}
+.svg-icon-google { fill: #dd4b39 }
+.svg-icon-google:hover { fill: #fff; background: #dd4b39 }
+.svg-icon-facebook { fill: #3b5998 }
+.svg-icon-facebook:hover { fill: #fff; background: #3b5998 }
+.svg-icon-twitter { fill: #55acee }
+.svg-icon-twitter:hover { fill: #fff; background: #55acee }
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Follow Buttons */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.twitter-follow-button {
+    fill: #55acee;
+    color: #fff;
+    background: #55acee;
+}

@@ -227,8 +227,10 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         We will answer your questions live.
         You can get notified when we go live by subscribing here.
     </p>
+
     <iframe src="https://vine.co/v/ib9B7p6ddeq/embed/simple"
     class="vine" width="500" height="500" frameborder="0"></iframe>
+
     <p>
         By subscribing you will able to receive a notification when
         the <strong>live stream</strong> starts.
@@ -238,13 +240,9 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     </p>
 
     <div class="social-links">
-    <div class="social-follow-buttons">
-    <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
-        data-layout="full" data-count="default"
-        data-theme="light"></div>
-    <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-        data-show-count="false" data-size="large">Follow StephenLB</a><br>
-    </div>
+        <div class="social-follow-buttons">
+            {% include follow.html %}
+        </div>
     </div>
 
     <p>
@@ -279,9 +277,9 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         Make sure to include your JavaScript dependency files.
 
 {% highlight html %}
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- includes -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-chat/angular-chat.js"></script>
 <script>
@@ -319,9 +317,9 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     <p>
 
 {% highlight javascript %}
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Minimal Chat Controller
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 var chat = angular.module( 'BasicChat', ['chat'] );
 chat.controller( 'chat', [ 'Messages', function( Messages ) {
     // - - - - - - - - - - - - - - - - - -
@@ -381,9 +379,9 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     <p>
 
 {% highlight html %}
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- Chat View in HTML -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <div ng-controller="chat">
     <div ng-repeat="message in chat.messages">
         {% raw %}{{ message.user.name }}:{% endraw %}
@@ -410,9 +408,9 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     </p><div class="samus-aran">
 
 {% highlight html %}
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // Set User Data
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Messages.user({ name : "Samus Aran" });
 {% endhighlight %}
 
@@ -432,9 +430,9 @@ Messages.user({ name : "Samus Aran" });
     </p><p>
 
 {% highlight html %}
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- User Data in HTML View -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 {% raw %}Your name is {{ message.user.name }}{% endraw %}
 {% raw %}The thing is {{ message.user.other_thing }}{% endraw %}
 {% raw %}Bar {{ message.user.foo }}{% endraw %}
@@ -471,9 +469,9 @@ Messages.user({ name : "Samus Aran" });
     <h3 class="flex-box-css3 header-icon">Flex Box with AngularJS</h3>
 
 {% highlight html %}
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- Flex Box Example -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <style>
     div.parent-container { display: flex; }
     div.child-span       { flex: 1;       }
@@ -502,9 +500,9 @@ Messages.user({ name : "Samus Aran" });
     </p>
 
 {% highlight css %}
-/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Mobile View CSS3 - using Media Queries */
-/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 @media (max-width: 500px) {
     div.parent-container { flex-direction: column; }
 }
@@ -713,7 +711,7 @@ Messages.user({ name : "Samus Aran" });
         string of randomized characters.
     </p><p>
         Example Session ID:
-        <!-- <code>ZVRjEIUFRxSw1FV WhRBVtRFZ9jbW89</code> -->
+        <code>ZVRjEIUFRxSw1FV WhRBVtRFZ9jbW89</code>
     </p><p>
         This session ID will be included in every REST service call.
         Each service call is then <strong>authorized</strong>
@@ -762,7 +760,7 @@ Messages.user({ name : "Samus Aran" });
         Speed of Light with AngularJS Chat
     </h3>
 
-    <video poster="//i.imgur.com/QH1Fmjmh.jpg" preload="auto"
+    <video poster="//i.imgur.com/QH1Fmjmh.jpg" preload="auto" loop="-1"
     autoplay="autoplay" muted="muted" webkit-playsinline="" class="imgur">
         <source src="//i.imgur.com/QH1Fmjm.webm" type="video/webm">
         <source src="//i.imgur.com/QH1Fmjm.mp4" type="video/mp4">
@@ -809,34 +807,29 @@ Messages.user({ name : "Samus Aran" });
         live stream starts on YouTube.
     </p>
 
-    <div class="social-links">
-    <div class="social-follow-buttons">
-    <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
-        data-layout="full" data-count="default"
-        data-theme="light"></div>
-    <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-        data-show-count="false" data-size="large">Follow StephenLB</a><br>
-    </div>
+    {% include follow.html %}
+    {% include share.html %}
+
+    <div class="disqus-thread">
+        <div id="disqus_thread"></div>
     </div>
 
 </div>
 <!-- END: MAIN TUTORIAL CONTENT -->
 
 <div>
-SHARE THIS
-SHARE THIS
-SHARE THIS
-SHARE THIS
-SHARE THIS
-</div>
 
-<div>
-COMMENTS
-COMMENTS
-COMMENTS
-COMMENTS
-</div>
 
-<script async defer src="https://apis.google.com/js/platform.js"></script>
 <script async defer src="https://platform.vine.co/static/scripts/embed.js"></script>
+<!--
+<script async defer src="https://apis.google.com/js/platform.js"></script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+-->
+<script>(function() {
+var d = document, s = d.createElement('script');
+s.async = true;
+s.setAttribute('async','async');
+s.src = '//angularjschat.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();</script>
