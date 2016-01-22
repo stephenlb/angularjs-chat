@@ -18,6 +18,13 @@
 .tutorial-content a {
     color: #61AD15;
 }
+.tutorial-content .angular-js-chat-logo {
+    background: transparent url(/media/angularjs-chat.png);
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 180px;
+}
 .tutorial-content p.pubnub-api-keys-link {
     background: rgba(160,140,140,0.1);
     padding: 40px;
@@ -51,6 +58,55 @@
     text-align: left;
     padding-left: 60px;
     background: transparent url(media/flex-box-css3.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.install-bower h3 {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(/media/bower.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.periscope {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/periscope.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.twitchtv {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/twitchtv.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.slack {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/slack.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.intercom {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/intercom.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.whatsapp {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/whatsapp.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.instacart {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/instacart.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
 }

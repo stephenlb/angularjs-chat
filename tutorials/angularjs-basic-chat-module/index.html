@@ -43,7 +43,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                         data-layout="full" data-count="default"
                         data-theme="dark"></div>
                     <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-                        data-show-count="false" data-size="large"></a>
+                        data-show-count="false" data-size="large">Follow StephenLB</a>
                     </div>
                 </div>
             </div>
@@ -81,6 +81,24 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
         {% highlight bash %}git clone https://github.com/stephenlb/angularjs-chat.git{% endhighlight %}
     </div>
 </div>
+
+
+
+<div>
+WELCOME PRODUCT HUNT
+WELCOME HACKER NEWS
+WELCOME REDDIT
+</div>
+
+
+<div>
+SHARE THIS
+SHARE THIS
+SHARE THIS
+SHARE THIS
+SHARE THIS
+</div>
+
 
 <!-- APP PREIVEW AREA -->
 <div class="container app-preview">
@@ -166,7 +184,11 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 
 <!-- START: MAIN TUTORIAL CONTENT -->
 <div class="container tutorial-content">
+
+    <div class="angular-js-chat-logo"></div>
+
     <h2>AngularJS Chat Tutorial</h2>
+
     <p>
         This tutorial is for you
         if you are a <strong>software developer</strong>.
@@ -221,7 +243,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         data-layout="full" data-count="default"
         data-theme="light"></div>
     <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
-        data-show-count="false" data-size="large"></a><br>
+        data-show-count="false" data-size="large">Follow StephenLB</a><br>
     </div>
     </div>
 
@@ -274,7 +296,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 {% endhighlight %}
 
     </p><p class="pubnub-api-keys-link">
-        <a href="https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016">Get PubNub API Keys</a><br>
+        <a target="signup1" href="https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016">Get PubNub API Keys</a><br>
         You need <strong>PubNub API Keys</strong>.
         This allows the chat communication on a data stream network.
         You can fill in the
@@ -521,8 +543,7 @@ Messages.user({ name : "Samus Aran" });
         Now it is less difficult now that you have read this walkthrough.
     </p><p>
 
-    <h4>Periscope and Meerkat</h4>
-    IMG IMG IMG
+    <h4 class="periscope">Periscope and Meerkat</h4>
 
     </p><p>
         Periscope and Meerkat grant you the ability of teleportation.
@@ -546,8 +567,7 @@ Messages.user({ name : "Samus Aran" });
         However these apps could have been built with AngularJS in mind.
     </p>
 
-    <h4>TwitchTV and YouTube LIVE!</h4>
-    IMG IMG IMG
+    <h4 class="twitchtv">TwitchTV and YouTube LIVE!</h4>
 
     <p>
         I have been watching Twitch TV.
@@ -569,8 +589,7 @@ Messages.user({ name : "Samus Aran" });
         is easy with <code>angular-chat</code> module.
     </p>
 
-    <h4>Slack, Flowdock and BaseCamp</h4>
-    IMG IMG IMG
+    <h4 class="slack">Slack, Flowdock and BaseCamp</h4>
 
     <p>
         Working with my team at PubNub we communicate through team chat.
@@ -588,8 +607,10 @@ Messages.user({ name : "Samus Aran" });
         I would definitely build a Slack chat clone using AngularJS.
     </p>
 
-    <h4>Intercom, Olark, UserVoice and Help Desk Support</h4>
-    IMG IMG IMG
+    <h4 class="intercom">
+        Intercom, Olark, UserVoice
+        and Help Desk Support
+    </h4>
 
     <p>
         There are a lot of situations when customer support is dissatisfying.
@@ -610,8 +631,7 @@ Messages.user({ name : "Samus Aran" });
         <strong>one-to-one chat</strong>.
     </p>
 
-    <h4>WhatsApp and Snapchat</h4>
-    IMG IMG IMG
+    <h4 class="whatsapp">WhatsApp and Snapchat</h4>
 
     <p>
         We are in the process of replace SMS with OTT (over-the-top) messaging.
@@ -632,8 +652,7 @@ Messages.user({ name : "Samus Aran" });
         use the one-to-one chat model.
     </p>
     
-    <h4>Instacart and Eat24</h4>
-    IMG IMG IMG
+    <h4 class="instacart">Instacart and Eat24</h4>
 
     <p>
         There are more chat applications yet.
@@ -647,7 +666,7 @@ Messages.user({ name : "Samus Aran" });
         when using chat mechanisms to support staff and customers.
     </p>
     
-    <h3 class="angular-chat-logo">Features in AngularJS Basic Chat</h3>
+    <h3 class="angular-chat-logo">Security in AngularJS Basic Chat</h3>
 
     <p>
         Life is easy.
@@ -669,7 +688,7 @@ Messages.user({ name : "Samus Aran" });
         You need to able to confirm their identity.
         The best way to do that is through message signatures.
 
-        You can also call these <a href="http://stackoverflow.com/questions/30739973/pubnub-how-to-identify-the-sender/30741622#30741622"><strong>digital signatures</strong></a>.
+        You can also call these <a target="stackoverflow" href="http://stackoverflow.com/questions/30739973/pubnub-how-to-identify-the-sender/30741622#30741622"><strong>digital signatures</strong></a>.
 
         This is done by generating and maintaining a secret on the client.
         Then you share a public key maintained by an
@@ -698,7 +717,11 @@ Messages.user({ name : "Samus Aran" });
         the user permissions associated will be checked.
         If permission records allow,
         a successful payload is sent/received.
-    </p><p>
+    </p>
+    
+    <h3 class="angular-chat-logo">Message Recovery for AngularJS Chat</h3>
+
+    <p>
         Even though it is the future now,
         where we have hover boards and flying cars,
         Internet connectivity is often spotty.
@@ -713,20 +736,91 @@ Messages.user({ name : "Samus Aran" });
         In high scale networking this type of recovery
         is "oh dear molly that's" tricky.
         By default the best option is included for you in the
-        ngularJS chat module.
+        AngularJS chat module.
     </p><p>
-        Long-term message storage requires is significantly different technical solution than short-term message redelivery. We've also use pub knob to help us solve for this. They have an infrastructure built with fault tolerance in mind. What they do is have 20+ data centers that maintain copies of your chat messages encrypted on a secure network. Angular JS chat Will make a REST call to the closest of the 20 data centers and receive historical message chat history.
+        Long-term message storage requires a different technical solution
+        than short-term message redelivery.
+        The AngularJS module also uses PubNub to help solve for this need.
+        They have an infrastructure built with fault tolerance in mind.
+        Essentially many copies over different geographical regions.
+        PubNub maintains 20+ data centers that hold copies of your chat
+        messages, encrypted on a secure data stream network.
+        AngularJS chat will invoke a REST call to the closest
+        of the 20 data centers and receive historical message chat history.
+        By default this is disabled.
+    </p>
+    
+    <h3 class="angular-chat-logo">Speed of Light with AngularJS Chat</h3>
 
-    You may have noticed in the test application demo that message delivery is lightning fast. This is because we are using a network that is called PubNub. This network leverages many points of presence around the planet to deliver relay insecure message transfer in less than a quarter of a second. When we talk about the Doherty threshold we are referencing appoint at less than 400 ms where human perception of real-time begins. Being able to achieve instantaneous delivery of messages is a special capability that this network provides no matter where you are on earth.
+    <iframe class="imgur-embed" width="100%" height="530"
+    frameborder="0" src="http://i.imgur.com/QH1Fmjm.gifv#embed"></iframe>
 
-    conclude
+    <p>
+        <a target="doherty-threshold"
+        href="http://haltandcatchfire.wikia.com/wiki/Doherty_Threshold">
+        Doherty Threshold</a>
+    </p>
+    <p>
+        You may have noticed in the test chat application that
+        message delivery is light speed.
+        This is because we are using a data stream network called PubNub.
+        The network leverages many POPs (points of presence)
+        around the planet to transmit secure messages
+        in less than a quarter of a second.
+    </p><p class="pubnub-api-keys-link">
+        <a target="signup2" href="https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016">Get PubNub API Keys</a><br>
+        You need <strong>PubNub API Keys</strong>.
+        This gives you the Doherty Threshold speed
+        chat communication on a data stream network.
+    </p><p>
+        When we talk about the <strong>Doherty Threshold</strong>
+        we are referencing appoint less than 400ms
+        where human perception of real-time begins.
+        Being able to accomplish instantaneous delivery of chat messages
+        is a cool capability that data stream networks provide.
+    </p>
 
-    I'm really excited to build the next phases of AngularJS chat. So much more to come. To be building and replicating many well-known chat applications. Some of them were mentioned in this walk-through. Subscribe and follow below to receive the next walk-through. Also if you're reading this before the live stream subscribing follow to receive a notification when you go live on YouTube.
+    <h4>Wrap-up and Next Phases of AngularJS Chat</h4>
 
-    SUBSCRIBE SUBSCRIBE SUBSCRIBE SUBSCRIBE 
+    <p>
+        I'm looking forward to building the next phases of AngularJS chat.
+        More to come.
+        The plan is to begin building and replicating
+        well-known chat applications.
+        Some of them were mentioned in this walk-through.
+        Subscribe and follow below to receive the next walk-through.
+        Also if you're reading before the live stream, you should
+        subscribe and follow to receive a notification when the
+        live stream starts on YouTube.
+    </p>
+
+    <div class="social-links">
+    <div class="social-follow-buttons">
+    <div class="g-ytsubscribe" data-channelid="UC8wHV61oXuNCyKuDFOi_cwQ"
+        data-layout="full" data-count="default"
+        data-theme="light"></div>
+    <a href="https://twitter.com/stephenlb" class="twitter-follow-button"
+        data-show-count="false" data-size="large">Follow StephenLB</a><br>
+    </div>
+    </div>
 
 </div>
 <!-- END: MAIN TUTORIAL CONTENT -->
+
+<div>
+SHARE THIS
+SHARE THIS
+SHARE THIS
+SHARE THIS
+SHARE THIS
+</div>
+
+<div>
+COMMENTS
+COMMENTS
+COMMENTS
+COMMENTS
+</div>
 
 <script async defer src="https://apis.google.com/js/platform.js"></script>
 <script async defer src="https://platform.vine.co/static/scripts/embed.js"></script>
