@@ -157,6 +157,41 @@
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Welcome From */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.welcome {
+    text-align: center;
+    background: rgb(246,246,239);
+    padding: 50px 0 60px 0;
+    letter-spacing: 1px;
+}
+.welcome-header {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 80px 0 20px 0;
+    font-weight: 100;
+}
+.welcome-hacker-news,
+.welcome-product-hunt,
+.welcome-reddit {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    margin: 50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.welcome-hacker-news {
+    background-image: url(/media/hacker-news.png);
+}
+.welcome-product-hunt {
+    background-image: url(/media/product-hunt.png);
+}
+.welcome-reddit {
+    background-image: url(/media/reddit.png);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 /* Header */
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 .header {
