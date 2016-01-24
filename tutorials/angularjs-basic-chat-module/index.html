@@ -145,7 +145,7 @@ function( Messages, $scope ) {
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <div ng-app="BasicChat">
     <div ng-controller="chat">
-        <div ng-repeat="message in chat.messages">
+        <div ng-repeat="message in messages">
             {% raw %}{{ message.user.name }}:{% endraw %}
             {% raw %}{{ message.data }}{% endraw %}
         </div>
@@ -378,7 +378,7 @@ function( Messages, $scope ) {
 <!-- Chat View in HTML -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <div ng-controller="chat">
-    <div ng-repeat="message in chat.messages">
+    <div ng-repeat="message in messages">
         {% raw %}{{ message.user.name }}:{% endraw %}
         {% raw %}{{ message.data }}{% endraw %}
     </div>
