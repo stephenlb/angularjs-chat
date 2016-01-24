@@ -25,29 +25,27 @@ bower install angular-chat
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- includes -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script src="angular.js"></script>
-<script src="angular-chat.js"></script>
-<script src="angular-chat-config.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-chat/angular-chat.js"></script>
+<script src="bower_components/angular-chat/angular-chat-config.js"></script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- controller -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script>
+<script type="text/javascript">
 var chat = angular.module( 'BasicChat', ['chat'] );
-chat.controller( 'chat', [ 'Messages', function( Messages ) {
+chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     // Message Inbox
-    this.messages = [];
-
+    $scope.messages = [];
     // Receive Messages
     Messages.receive(function(message){
-        this.messages.push(message);
+        $scope.messages.push(message);
     });
-
     // Send Messages
-    this.send = function() {
-        Messages.send({ data : chat.textbox });
+    $scope.send = function() {
+        Messages.send({ data : $scope.textbox });
     };
-} );
+} ]);
 </script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
@@ -55,12 +53,12 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <div ng-app="BasicChat">
     <div ng-controller="chat">
-        <div ng-repeat="message in chat.messages">
+        <div ng-repeat="message in messages">
             {{ message.user.name }}:
             {{ message.data }}
         </div>
-        <form ng-submit="chat.send()">
-            <input ng-model="chat.textbox">
+        <form ng-submit="send()">
+            <input ng-model="textbox">
         </form>
     </div>
 </div>
