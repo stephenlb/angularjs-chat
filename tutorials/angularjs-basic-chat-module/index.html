@@ -35,7 +35,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                 <div class="live-stream-preview-text">
                     <strong>Live Stream Walkthrough</strong>
                     <div class="live-stream-preview-date">
-                        January 18th 2016 @ 2:00PM PST
+                        February 1st 2016 @ 2:00PM PST
                     </div>
 
                     <div class="social-follow-buttons">
@@ -93,7 +93,11 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 <div class="container app-preview">
 
     <div class="app-preview-quick-code">
-        <h3><code> &lt;/&gt;</code>quick start code</h3>
+        <h3>
+            <code> &lt;/&gt;</code>
+            <strong>tl;dr</strong>
+            quick start code
+        </h3>
 
         <p>
             On your phone, try
@@ -119,20 +123,21 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script>
 var chat = angular.module( 'BasicChat', ['chat'] );
-chat.controller( 'chat', [ 'Messages', function( Messages ) {
+chat.controller( 'chat', [ 'Messages', '$scope',
+function( Messages, $scope ) {
     // Message Inbox
-    this.messages = [];
+    $scope.messages = [];
 
     // Receive Messages
     Messages.receive(function(message){
-        this.messages.push(message);
+        $scope.messages.push(message);
     });
 
     // Send Messages
-    this.send = function() {
-        Messages.send({ data : chat.textbox });
+    $scope.send = function() {
+        Messages.send({ data : $scope.textbox });
     };
-} );
+} ] );
 </script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
@@ -144,8 +149,8 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
             {% raw %}{{ message.user.name }}:{% endraw %}
             {% raw %}{{ message.data }}{% endraw %}
         </div>
-        <form ng-submit="chat.send()">
-            <input ng-model="chat.textbox">
+        <form ng-submit="send()">
+            <input ng-model="textbox">
         </form>
     </div>
 </div>
@@ -310,20 +315,21 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
 // Minimal Chat Controller
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 var chat = angular.module( 'BasicChat', ['chat'] );
-chat.controller( 'chat', [ 'Messages', function( Messages ) {
+chat.controller( 'chat', [ 'Messages', '$scope',
+function( Messages, $scope ) {
     // - - - - - - - - - - - - - - - - - -
     // Message Inbox
     // This array will hold the messages
     // ordered by receipt.
     // - - - - - - - - - - - - - - - - - -
-    this.messages = [];
+    $scope.messages = [];
 
     // - - - - - - - - - - - - - - - - - -
     // Receive Messages
     // Push to Message Inbox.
     // - - - - - - - - - - - - - - - - - -
     Messages.receive(function(message){
-        this.messages.push(message);
+        $scope.messages.push(message);
     });
 
     // - - - - - - - - - - - - - - - - - -
@@ -331,10 +337,10 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
     // This is a controller method used
     // when a user action occurs.
     // Also we expect a model reference
-    // ng-model="chat.textbox".
+    // ng-model="textbox".
     // - - - - - - - - - - - - - - - - - -
-    this.send = function() {
-        Messages.send({ data : chat.textbox });
+    $scope.send = function() {
+        Messages.send({ data : $scope.textbox });
     };
 } );
 {% endhighlight %}
@@ -351,7 +357,7 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         The messages are automatically encoded in JSON.
     </p><p>
         A simple controller for messaging applications only needs one
-        model reference: <code>this.messages</code> array.
+        model reference: <code>$scope.messages</code> array.
         The messages array can hold all of the messages.
         And you can have them displayed on the application user interface.
         Anytime a new message arrives,
@@ -376,8 +382,8 @@ chat.controller( 'chat', [ 'Messages', function( Messages ) {
         {% raw %}{{ message.user.name }}:{% endraw %}
         {% raw %}{{ message.data }}{% endraw %}
     </div>
-    <form ng-submit="chat.send()">
-        <input ng-model="chat.textbox">
+    <form ng-submit="send()">
+        <input ng-model="textbox">
     </form>
 </div>
 {% endhighlight %}
