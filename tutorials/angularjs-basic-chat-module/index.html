@@ -116,7 +116,21 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-chat/angular-chat.js"></script>
-<script src="bower_components/angular-chat/angular-chat-config.js"></script>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- configuration -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script>
+angular.module('chat').constant( 'config', {
+    //
+    // Get your PubNub API Keys in link below phone demo.
+    //
+    "pubnub": {
+        "publish-key"   : "YOUR-PUBLISH-KEY",
+        "subscribe-key" : "YOUR-SUBSCRIBE-KEY"
+    }
+} );
+</script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- controller -->
@@ -169,8 +183,9 @@ function( Messages, $scope ) {
         </div>
         <div class="app-preview-video-link">
             <a target="_githubapp1" href="/tutorials/angularjs-basic-chat-module/app/">
-                <strong>Try the App</strong></a><br>
-            <a target="_githubapp2" href="https://github.com/stephenlb/angularjs-chat/tree/gh-pages/tutorials/angularjs-basic-chat-module/app">Get Source Code on GitHub</a>
+            <strong>Try the App</strong></a><br><br>
+            <a target="signup3" href="https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016">Get PubNub API Keys</a><br>
+            <a target="_githubapp2" href="https://github.com/stephenlb/angularjs-chat/tree/gh-pages/tutorials/angularjs-basic-chat-module/app">Get Source Code on GitHub</a><br>
         </div>
     </div>
 
