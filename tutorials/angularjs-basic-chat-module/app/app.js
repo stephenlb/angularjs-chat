@@ -5,8 +5,8 @@
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 angular.module('chat').constant( 'config', {
     "pubnub": {
-        "publish-key"   : "demo",
-        "subscribe-key" : "demo"
+        "publish-key"   : "pub-c-aefb421c-b30a-4afc-bae4-b866c5ea3d69",
+        "subscribe-key" : "sub-c-76f89e66-c3a9-11e5-b5a8-0693d8625082"
     }
 } );
 
