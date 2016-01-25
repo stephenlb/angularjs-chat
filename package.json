@@ -1,6 +1,6 @@
 {
   "name": "angular-chat",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "AngularJS Chat - Enable chat messaging experiences in your iOS, Android and Web apps.",
   "main": "angular-chat.js",
   "scripts": {

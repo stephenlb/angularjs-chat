@@ -40,6 +40,7 @@ API keys that you get on the PubNub website.
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- configuration -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script>
 angular.module('chat').constant( 'config', {
     //
     // Get your PubNub API Keys in the link above.
@@ -49,11 +50,12 @@ angular.module('chat').constant( 'config', {
         "subscribe-key" : "YOUR-SUBSCRIBE-KEY"
     }
 } );
+</script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- controller -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script type="text/javascript">
+<script>
 var chat = angular.module( 'BasicChat', ['chat'] );
 chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     // Message Inbox
