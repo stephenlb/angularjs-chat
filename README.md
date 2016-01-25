@@ -19,6 +19,15 @@ npm install angular-chat
 bower install angular-chat
 ```
 
+## PubNub API Keys
+
+> [Get PubNub API Keys](https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016)
+You need **PubNub API Keys**.
+This allows the chat communication on a data stream network.
+You can fill in the `YOUR-PUBLISH-KEY`
+and `YOUR-SUBSCRIBE-KEY` placeholder strings with your
+API keys that you get on the PubNub website.
+
 ## Basic Chat Demo
 
 ```html
@@ -27,7 +36,19 @@ bower install angular-chat
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-chat/angular-chat.js"></script>
-<script src="bower_components/angular-chat/angular-chat-config.js"></script>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- configuration -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+angular.module('chat').constant( 'config', {
+    //
+    // Get your PubNub API Keys in the link above.
+    //
+    "pubnub": {
+        "publish-key"   : "YOUR-PUBLISH-KEY",
+        "subscribe-key" : "YOUR-SUBSCRIBE-KEY"
+    }
+} );
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- controller -->

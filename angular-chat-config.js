@@ -5,10 +5,10 @@
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 angular.module('chat').constant( 'config', {
     //
-    // Get your API Keys -> https://admin.pubnub.com/#/register
+    // Get your API Keys -> https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016
     //
     "pubnub": {
-        "publish-key"   : "demo",
-        "subscribe-key" : "demo"
+        "publish-key"   : "__YOUR_PUBLISH_KEY__",
+        "subscribe-key" : "__YOUR_SUBSCRIBE_KEY__"
     }
 } );
