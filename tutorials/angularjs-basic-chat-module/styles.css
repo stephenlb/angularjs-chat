@@ -16,6 +16,7 @@ div.highlight pre code {
     max-width: 800px;
 }
 .tutorial-content p,
+.tutorial-content li,
 .tutorial-content div {
     font-size: 20px;
     letter-spacing: 0.01em;
