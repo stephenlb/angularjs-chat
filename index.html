@@ -1,12 +1,17 @@
 ---
 layout:      basic
-title:       AngularJS Chat Tutorial
+title:       AngularJS Chat Tutorials
 description: AngularJS Chat enables messaging
              experiences in your iOS, Android and Web apps.
 ---
 
 <link rel="stylesheet" href="/css/angularjs-chat-home.css">
 <div class="header">
+
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    <!-- Top Nav -->
+    <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+    {% include top-navigation.html %}
 
     <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
     <!-- Chat Bubbles Yo -->
@@ -21,28 +26,30 @@ description: AngularJS Chat enables messaging
     <div class="angularjs-chat-bubble-white bubble-eight"></div>
 
     <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-    <!-- AngularJS Chat Coming Soon -->
+    <!-- AngularJS Chat -->
     <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
     <div class="container">
         <div class="angularjs-chat-logo"></div>
-        <h1>AngularJS Chat</h1>
+        <h1>{{ page.title }}</h1>
         <p class="angularjs-chat-page-title">
             Enable <strong>messaging</strong> experiences for
             <strong>iOS</strong>, <strong>Android</strong> and <strong>Web</strong> apps
         </p>
+        <!--
         <p class="angularjs-chat-page-description">
-            Tomorrow 9:00am PST
-            <!--
             AngularJS and the best
             frameworks Ionic, PubNub, PhoneGap
-            -->
         </p>
+        -->
 
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <!-- AngularJS Chat Signup for Notifications -->
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
         <div class="signup">
             <div class="signup-details">
+                Signup for
+                <strong>AngularJS tutorials</strong>
+                and more!
             </div>
 
             <form
