@@ -202,7 +202,7 @@ function( Messages, $scope ) {
         This tutorial is for you
         if you are a <strong>software developer</strong>.
         Specifically an Angular JS software developer.
-        This walk-through is open source and free,
+        This walk-through is open source and free;
         <a href="https://en.wikipedia.org/wiki/MIT_License">MIT</a> style.
         You can also get started with the
 
@@ -219,20 +219,21 @@ function( Messages, $scope ) {
         So why is chat important? Well for one thing,
         nothing kills customer experience more than when they can't
         communicate with a company when trying to purchase a product.
-        A modern way to exceed the expectations of your customer's experience
-        is actually simple.
+        A modern way to exceed expectations of your customer's experience
+        is really simple.
         Chat communication.
-        When your customers are easily able to communicate with you,
-        your sales and business metrics shift.
+        When your customers are seamlessly able to communicate with you,
+        your sales and business metrics shift positively.
         Immediately obtaining information allows a customer to move forward
         with purchasing decisions with little effort.
-        The customer's experience is seamless.
-        We humans use chat to communicate.
+        The customer's experience is streamlined.
+        We humans use "chat" to communicate.
         Chat is what we are good at.
         And that makes things easy.
     </p><p>
-        We will be live streaming and live coding.
-        The example AngularJS Chat app will be built live with you watching.
+        Guess what?
+        We will be live streaming and live coding!
+        The example AngularJS Chat app will be built live; with you watching.
         We will answer your questions live.
         You can get notified when we go live by subscribing here.
     </p>
@@ -241,11 +242,11 @@ function( Messages, $scope ) {
     class="vine" width="500" height="500" frameborder="0"></iframe>
 
     <p>
-        By subscribing you will able to receive a notification when
-        the <strong>live stream</strong> starts.
-        We will talk about frequently asked questions.
+        By subscribing you will able to receive updates when
+        a <strong>live stream</strong> starts.
+        We will talk about your frequently asked questions.
         Also best practices and cats maybe.
-        You will be able to ask your question live.
+        You will be able to ask your questions live.
     </p>
 
     <div class="social-links">
@@ -258,22 +259,21 @@ function( Messages, $scope ) {
         Building chat communication is difficult.
         There are a lot of challenges you need to overcome.
         Building chat applications with AngularJS is extremely rewarding.
-        It make maintenance of your chat apps simple.
+        AngularJS allows for maintenance of your chat apps.
         That is because when you need to add new features to your
-        Angular application, it is a breeze.
+        Angular application; it's a breeze.
         With the upcoming AngularJS 2 framework the level of
-        abstraction used to simplify application development
+        abstraction used to simplify your application development
         will make your life easy as the developer.
     </p><p>
         The purpose of this tutorial is to help you build AngularJS
         modules and extensions for chat communication.
         And soon you're application can communicate with your
         users and among your users too.
-        With both AngularJS 1.5 and AngularJS 2 modules enabling
+        Using both AngularJS 1.X and AngularJS 2 modules enabling
         messaging experiences in your app on mobile iOS/Android and web.
         That is the promise of this walk-through.
     </p><p>
-
         We will start the code section of this walkthrough.
         And you will need the: 
         <a href="https://github.com/stephenlb/angularjs-chat">
@@ -305,13 +305,13 @@ function( Messages, $scope ) {
     </p><p class="pubnub-api-keys-link">
         <a target="signup1" href="https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016">Get PubNub API Keys</a><br>
         You need <strong>PubNub API Keys</strong>.
-        This allows the chat communication on a data stream network.
+        This allows the chat communication over a data stream network.
         You can fill in the
         <code>YOUR_PUBLISH API_KEY</code> and
         <code>YOUR_SUBSCRIBE API_KEY</code> placeholder
-        strings  with your API keys that you get on the PubNub website.
+        strings with your API keys that you get on the PubNub website.
     </p><p>
-        Now that you have the prerequisites and your PubNub API keys
+        Now that you have the prerequisites including your PubNub API keys,
         we are ready for the next part.
         Here's an example on how to <strong>send</strong> and
         <strong>receive</strong> a message within your AngularJS app.
@@ -361,15 +361,17 @@ function( Messages, $scope ) {
 {% endhighlight %}
 
     </p><p>
-        Wait was it really that easy? Boy howdy.
+        Wait was it really that easy?
+        Boy howdy.
         There are a couple more things that you need
         to do in preparation to add chat in your application.
-        Good to know the entry points of sending and receiving 
+        It is good to know about the entry
+        points of sending and receiving 
         chat messages.
 
         Now you can send receive JSON messages.
         Oh right forgot to mention.
-        The messages are automatically encoded in JSON.
+        The messages are automatically encoded in JSON for you!
     </p><p>
         A simple controller for messaging applications only needs one
         model reference: <code>$scope.messages</code> array.
@@ -405,8 +407,8 @@ function( Messages, $scope ) {
 
     </p><p>
         This simple AngularJS view has two parts.
-        The first part is a messages display area.
-        The second part is user input for sending messages.
+        The first part is a <strong>messages</strong> display area.
+        The second part is user input for <strong>sending messages</strong>.
         When a user submits their text,
         the controller will deliver this message for you using the
         <code>Messages.send()</code> method.
@@ -434,7 +436,7 @@ Messages.user({ name : "Samus Aran" });
         As of this tutorial, older messages will retain the
         original meta data information.
         This means if a user updates their name or info that it will
-        not be propagated to the older chat messages.
+        not be propagated to the older chat messages in the data model.
     </p><p>
         In the HTML view, you can access the user data like this:
     </p><p>
@@ -450,15 +452,17 @@ Messages.user({ name : "Samus Aran" });
 
     </p><p>
         With all these parts combined you have a basic chat application!
-        However it is not actually complete and there's more that needs
-        to be done in order to ensure excellent user experience.
-        Pretty UI is what I'm referring to.
-        Beautiful user interface is helpful indeed.
-        Our demo application includes some advanced CSS3 snazziness.
+        However it is not actually complete.
+        There is more to be done in order to ensure excellent user experience.
+        Super pretty UI is what I'm referring to.
+        Beautiful user interfaces are helpful indeed.
+        Our demo application includes some CSS3 snazziness.
         CSS3 animations and flex box are used in our
         <a target="_githubapp3" href="/tutorials/angularjs-basic-chat-module/app">
         basic AngularJS chat app</a>.
-        It is 2016 and we are now in the future.
+        Guess what.
+        It is 2016.
+        We are now in the future.
         Browsers on modern operating systems include the ability
         to understand how to display flex box and render CSS3 animations.
         This makes our life easypeasy.
@@ -473,7 +477,7 @@ Messages.user({ name : "Samus Aran" });
         this makes your application development speed.
         I will work with you and show you what modern 2016 technology
         can yield in terms of awesomeness.
-        But only a preview for you.
+        We will start with only a preview for you.
     </p>
 
     <h3 class="flex-box-css3 header-icon">Flex Box with AngularJS</h3>
@@ -496,8 +500,8 @@ Messages.user({ name : "Samus Aran" });
     <p>
         One of the modern technologies is <strong>flex box</strong>.
         If you have not used flex box before, you should!
-        Before there was flex box you hatch to combine your HTML CSS
-        and JavaScript to manipulate HTML elements to your design desires.
+        Before there was flex box you had to combine your HTML CSS
+        and JavaScript to manipulate HTML elements to your layout desires.
         Now with flex box, the browser render engine will take care of
         this for you when you use a few CSS3 directives.
     </p><p>
@@ -521,23 +525,24 @@ Messages.user({ name : "Samus Aran" });
     <p>
         Flex box for the win.
         You can change the order of display for elements.
-        And you don't have to change the HTML!
+        And you don't have to modify the HTML!
         Simplicity achieved.
         The alternative is a variety of CSS3 display type conditions.
-        Flex box is offers improved simplicity when
-        you are programming for web apps.
+        Flex box offers improved simplicity when
+        you are programming for web and mobile apps.
     </p><p>
-        We showed you a few critical snippets of the basic chat application.
+        We showed you a few key snippets of the basic chat application.
         You will want more beyond the basic chat experience for your users.
         That is why a more advanced application
         has been built for you to copy.
         Now you can
         <a target="_githubapp4" href="https://github.com/stephenlb/angularjs-chat/tree/gh-pages/tutorials/angularjs-basic-chat-module/app">get the source Code on GitHub</a>.
-        The GitHub repo has all the JavaScript CSS ready.
-        It is only a starting point.
+        The GitHub repo has all the JavaScript and CSS ready.
+        It is only a starting point though.
         There's more to come.
         The plan is to use the AngularJS 1.5 Chat Module as a starter for 2016.
-        We'll be moving to Angular 2 going forward.
+        We'll be moving to Angular 2 maybe. 
+        This depends on popular demand.
     </p>
 
     <h3 class="angular-chat-logo header-icon">Who uses Chat?</h3>
@@ -829,9 +834,12 @@ Messages.user({ name : "Samus Aran" });
         <strong>Share your comments below.</strong>
     </p><p>
         <ol>
-            <li>Launch your Chat App in Apple/Google App Stores</li>
+            <li>How to launch your Chat App on Apple/Google App Stores</li>
             <li>Twitch TV Chat in AngularJS</li>
-            <li>More Features for Basic App: 1-to-1 Chat, Global Broadcast Notifications, etc.</li>
+            <li>An Angular 2 Chat Module</li>
+            <li>More Features for Basic App: 1-to-1 Chat,
+            Global Broadcast Notifications,
+            etc.</li>
         </ol>
     </p><p>
         Share your comments below.
