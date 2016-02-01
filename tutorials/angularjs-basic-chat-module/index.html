@@ -23,6 +23,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                 <!-- Easily add Messaging Experiences to your
                 iOS, Android and Web apps -->
             <div class="live-stream-preview">
+                <!--
                 <div class="live-stream-preview-video">
                     <video poster="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-chat-live-stream.jpg" autoplay="" loop="true">
                         <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-chat-live-stream.mp4">
@@ -30,13 +31,20 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                         <source src="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-chat-live-stream.ogv">
                     </video>
                 </div>
+                -->
+                <div class="live-stream-preview-video">
+                    <div class="live-stream-preview-date">
+                        Starting at @ 2:00PM PST
+                    </div>
+                    <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/Q8_oH6bMUL4"
+                    frameborder="0"
+                    allowfullscreen></iframe>
+                </div>
                 <div class="live-stream-preview-divide">
                 </div>
                 <div class="live-stream-preview-text">
-                    <strong>Live Stream Walkthrough</strong>
-                    <div class="live-stream-preview-date">
-                        February 1st 2016 @ 2:00PM PST
-                    </div>
+                    <!-- <strong>Live Stream Walkthrough</strong> -->
 
                     <div class="social-follow-buttons">
                         {% include follow.html %}
@@ -869,7 +877,12 @@ Messages.user({ name : "Samus Aran" });
 <script async defer src="https://apis.google.com/js/platform.js"></script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 -->
-<script>(function() {
+<script>
+var disqus_config = function () {
+this.page.url = "http://angularjs.chat{{ page.url }}";
+this.page.identifier = "{{ page.url }}";
+};
+(function() {
 var d = document, s = d.createElement('script');
 s.async = true;
 s.setAttribute('async','async');
