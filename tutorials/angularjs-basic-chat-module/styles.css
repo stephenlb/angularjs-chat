@@ -165,6 +165,7 @@ div.highlight pre code {
         max-height: 300px;
         min-width: 300px;
         min-height: 300px;
+        padding-right: 0;
     }
 }
 
@@ -235,8 +236,8 @@ video.header-video  {
 
 @media (max-width: 600px) {
     div.live-stream-preview-video iframe {
-        width: 320px;
-        height: 178px;
+        width: 310px;
+        height: 168px;
     }
 }
 .header-overlay {
