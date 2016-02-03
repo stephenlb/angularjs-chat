@@ -232,6 +232,13 @@ video.header-video  {
         display: none;
     }
 }
+
+@media (max-width: 600px) {
+    div.live-stream-preview-video iframe {
+        width: 320px;
+        height: 178px;
+    }
+}
 .header-overlay {
     min-height: 100vh;
     min-width: 100%;
