@@ -66,6 +66,9 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     Messages.receive = function(fn) {
          function receiver(response) {
              response.data.m.forEach(function(msg){
+                // Ignore messages without User Data
+                // TODO
+                if (!(msg.d && msg.u && msg.u.id)) return;
                 fn({
                     data : msg.d
                 ,   id   : msg.p.t
