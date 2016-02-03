@@ -165,7 +165,13 @@ div.highlight pre code {
         max-height: 300px;
         min-width: 300px;
         min-height: 300px;
+    }
+}
+@media (max-width: 600px) {
+    .tutorial-content iframe.vine {
         padding-right: 0;
+        display: block;
+        float: none;
     }
 }
 
