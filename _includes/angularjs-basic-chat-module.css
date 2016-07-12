@@ -1,0 +1,486 @@
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* GitHub Compatibility */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.highlight {
+    margin: 17px 40px;
+}
+div.highlight pre,
+div.highlight pre code {
+    font-size: 17px;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Tutorial Content */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.tutorial-content {
+    max-width: 800px;
+}
+.tutorial-content p,
+.tutorial-content li,
+.tutorial-content div {
+    font-size: 20px;
+    letter-spacing: 0.01em;
+    line-height: 1.58;
+}
+.tutorial-content h2 {
+    text-align: center;
+    margin: 80px 0;
+    font-size: 2.6em;
+}
+.tutorial-content a {
+    color: #61AD15;
+}
+.tutorial-content a.twitter-follow-button {
+    color: #fff;
+}
+.tutorial-content .angular-js-chat-logo {
+    background: transparent url(/media/angularjs-chat.png);
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 180px;
+}
+.tutorial-content p.pubnub-api-keys-link {
+    background: rgba(160,140,140,0.1);
+    padding: 40px;
+    border-radius: 16px;
+}
+.tutorial-content p.pubnub-api-keys-link a {
+    font-size: 2em;
+}
+.tutorial-content p.pubnub-api-keys-link code {
+    font-weight: 700;
+}
+.tutorial-content div.samus-aran {
+    font-size: 17px;
+    border-radius: 6px;
+    background: transparent url(media/samus.png);
+    background-size: auto 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+.tutorial-content div.samus-aran .highlight {
+    background: transparent;
+}
+.tutorial-content h3.angular-chat-logo {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(/media/angularjs-chat.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h3.flex-box-css3 {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/flex-box-css3.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.install-bower h3 {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(/media/bower.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.periscope {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/periscope.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.twitchtv {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/twitchtv.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.slack {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/slack.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.intercom {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/intercom.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.whatsapp {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/whatsapp.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content h4.instacart {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(media/instacart.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.tutorial-content .highlight {
+    overflow: scroll;
+}
+.tutorial-content h3 {
+    margin: 60px auto 40px auto;
+}
+.social-follow-buttons {
+    height: 48px;
+}
+.tutorial-content .social-links {
+    margin: 60px auto;
+    text-align: center;
+}
+.tutorial-content iframe.vine {
+    display: inline-block;
+    float: left;
+    padding: 10px 50px 40px 0;
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 500px;
+    min-height: 500px;
+}
+.tutorial-content video.imgur {
+    width: 100%;
+}
+.tutorial-content h4.header-icon,
+.tutorial-content h3.header-icon {
+    text-align: center;
+    padding-left: 0px;
+    padding-top: 120px;
+    background-size: 100px;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+@media (max-width: 1000px) {
+    .tutorial-content iframe.vine {
+        max-width: 300px;
+        max-height: 300px;
+        min-width: 300px;
+        min-height: 300px;
+    }
+}
+@media (max-width: 600px) {
+    .tutorial-content iframe.vine {
+        padding-right: 0;
+        display: block;
+        float: none;
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Welcome From */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.welcome {
+    text-align: center;
+    background: rgb(246,246,239);
+    padding: 50px 0 60px 0;
+    letter-spacing: 1px;
+}
+.welcome-header {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 80px 0 20px 0;
+    font-weight: 100;
+}
+.welcome-hacker-news,
+.welcome-product-hunt,
+.welcome-reddit {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    margin: 50px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.welcome-hacker-news {
+    background-image: url(/media/hacker-news.png);
+}
+.welcome-product-hunt {
+    background-image: url(/media/product-hunt.png);
+}
+.welcome-reddit {
+    background-image: url(/media/reddit.png);
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Header */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+.header {
+    overflow: hidden;
+    position: relative;
+    min-height: 100vh;
+    z-index: 0;
+}
+video.header-video  {
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+}
+@media (max-width: 450px) {
+    .header-video, .header-video video {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    div.live-stream-preview-video iframe {
+        width: 310px;
+        height: 168px;
+    }
+}
+.header-overlay {
+    min-height: 100vh;
+    min-width: 100%;
+    text-align: center;
+    color: #F8F8F8;
+    background: linear-gradient(
+        to left,
+        rgba(122,214,184,0.4) 0%,
+        rgba(122,214,184,0.9) 100%
+    ), linear-gradient(
+        to bottom,
+        rgba(60,255,80,1.0) 0%,
+        rgba(122,255,184,0.4) 100%
+    );
+}
+div.header-overlay h1 {
+    margin: 30px 0 70px 0;
+    font-size: 3.0em;
+}
+div.header-overlay h2 {
+    font-size: 1.4em;
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+@media (max-width: 600px) {
+    div.header-overlay h1 {
+        font-size: 2.0em;
+    }
+    div.header-overlay h2 {
+        font-size: 1.2em;
+    }
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Live Stream Preview */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+div.app-preview {
+    padding-top: 80px;
+    padding-bottom: 50px;
+    background: rgba(160,140,140,0.1);
+}
+div.app-preview .highlight {
+    background: transparent;
+}
+div.live-stream-preview {
+    display: flex;
+    flex-direction: column;
+}
+div.live-stream-preview-video {
+    text-align: center;
+    flex: 4;
+}
+div.live-stream-preview-divide {
+    flex: 1;
+}
+div.live-stream-preview-video video {
+    width: 288px;
+    height: 120px;
+    border-radius: 5px;
+    margin-top: 12px;
+}
+div.live-stream-preview-text {
+    text-align: center;
+    flex: 4;
+    font-size: 1.1em;
+    margin: 20px 0;
+}
+div.live-stream-preview-date {
+    margin-bottom: 20px;
+}
+div.live-stream-preview-text strong {
+    display: block;
+    margin: 10px 0;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Subscribe */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+input::-webkit-input-placeholder {
+    color: rgba(200,255,255,0.5) !important;
+}
+div.subscribe-container {
+    padding: 60px 0px 160px 0px;
+}
+div.subscribe-container strong {
+    font-weight: 500;
+    font-size: 1.0em;
+    line-height: 3em;
+}
+div.subscribe-container input[type="email"] {
+    text-align: center;
+    color: #F8F8F8;
+    background: transparent;
+    border-bottom: 1px solid #F8F8F8;
+    padding: 0.2em 0em;
+    font-size: 1.4em;
+    margin: 0 0.4em 0.5em 0.4em;
+}
+div.subscribe-container input[type="submit"] {
+    font-size: 1.4em;
+    background: #F8F8F8;
+    font-weight: 100;
+    letter-spacing: 0.04em;
+    color: rgb(107,195,146);
+    padding: 0.2em 0.6em;
+    border-radius: 6px;
+    margin: 0 0.4em 0.5em 0.4em;
+    border: 1px solid #F8F8F8;
+}
+div.subscribe-container input[type="submit"]:hover {
+    background: rgb(107,240,146);
+    color: #F8F8F8;
+    border: 1px solid #F8F8F8;
+}
+div.subscribe-container input[type="submit"]:active {
+    background: transparent;
+    color: #F8F8F8;
+    border: 1px solid #F8F8F8;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* Install Packages */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@media (max-width: 960px) {
+    .install-packages {
+        flex-direction: column;
+    }
+}
+.install-packages {
+    overflow: scroll;
+    display: flex;
+    margin: 80px auto;
+    max-width: 100vw;
+}
+.install-packages .highlight {
+    overflow: scroll;
+}
+.install-npm,
+.install-bower,
+.install-github {
+    flex: 1;
+}
+.install-npm h3 {
+    text-align: left;
+    padding-left: 130px;
+    background: transparent url(/media/npm.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.install-bower h3 {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(/media/bower.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.install-github h3 {
+    text-align: left;
+    padding-left: 60px;
+    background: transparent url(/media/github.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+/* App Preview */
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+@media (max-width: 1100px) {
+    .app-preview {
+        flex-direction: column;
+    }
+}
+.app-preview {
+    margin: 10vh 0;
+    min-height: 80vh;
+    display: flex;
+}
+.app-preview-video-area {
+    order: 1;
+    flex: 1;
+    margin-bottom: 40px;
+}
+.app-preview-quick-code {
+    flex: 2;
+    order: 2;
+}
+.app-preview-quick-code .highlight {
+    overflow: scroll;
+}
+.app-preview-quick-code h3 {
+    margin-top: 0;
+}
+.app-preview-quick-code p {
+    font-size: 20px;
+    margin: 0 40px;
+}
+.app-preview-quick-code a,
+.app-preview-video-link a {
+    color: #61AD15;
+}
+.app-preview-video-link {
+    text-align: center;
+    margin-top: 50px;
+}
+.app-preview-quick-code h3 code {
+    font-weight: 800;
+    color: rgba(144,134,251,1.0);
+    text-shadow: 0px 0px 1px rgba(0,0,0,0.2);
+    display: inline-block;
+    padding: 0 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+.app-preview-video {
+    position: relative;
+    height: 634px;
+    width: 302px;
+    margin: 0 auto;
+}
+/* 1080 × 1920 */
+.app-preview-video video {
+    position: absolute;
+    top: 91px;
+    left: 24px;
+    height: 457px;
+    width: 257px;
+}
+/* 756 × 1586 */
+.app-preview-video-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 634px;
+    width: 302px;
+    background: transparent url(/media/iphone-wireframe.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
