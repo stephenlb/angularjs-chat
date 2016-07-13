@@ -1,5 +1,10 @@
 compress_html:
-  comments: all
-  clippings: all
-  startings: all
-  endings: all
+    comments: all
+    clippings: all
+    startings: all
+    endings: all
+
+webrick:
+    headers:
+        Cache-Control: max-age=864000
+        derbs: yup
