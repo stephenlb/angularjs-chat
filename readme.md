@@ -86,7 +86,42 @@ chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     </div>
 </div>
 ```
+### Set User ID
+```javascript
+Messages.user({ id: MY_USER_ID, name : sillyname() });
+```
+### Send to User
+```javascript
+Messages.send({ to: target_user_id, data : message_body });
+```
 
+If you want random user id's that are transient...  you can publish the LIST of users to the "global" channel and receive each user who has come online.
+
+
+# AngularJS Support Desk Chat Agent Example
+
+### Vistor
+```javascript
+// this is a user comes online
+// send a notice to the support agent.
+Messages.send({ to: "support-agent", data : { visitor : true } });
+```
+
+### Support Agent
+```javascript
+
+// support agent code
+$scope.visitors = [];
+
+// they have a "support-agent" ID.
+Messages.user({ id: "support-agent", name : "Support Agent" });
+
+// support agent seeing a new visitor
+Messages.receive(function(msg){
+    if (msg.data.visitor) $scope.visitors.push(msg.user.id);
+    console.log(msg);
+});
+```
 
 ## AngularJS Chat Resources
 
