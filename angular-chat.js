@@ -1,17 +1,3 @@
-// -- TODO --
-//
-// - https://developer.layer.com/docs/ios/integration
-// - AddressBook   = Presence/State + ChannelGroups
-// - Notifications = History + PubSub
-// - Messages      = History + PubSub
-// - Groups        = History + PubSub
-// - TypeingIndicator = ???
-//
-// - Signals       = PubSub
-// - History       = History
-//
-// -- TODO --
-
 'use strict';
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -24,26 +10,6 @@ angular.module( 'chat', [] );
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 if (typeof(exports) !== 'undefined') exports.chat = angular.module('chat');
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// >$ telnet nyancat.dakko.us
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// 
-//         ▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄      
-//        █░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░█     
-//        █░▒▒▒▒▒▒▒▒▒▒▄▓▓▄▒▒▒▒░░▄▓▓▄ 
-//  ▄▄▄   █░▒▒▒▒▒▒▒▒▒▒█▓▓▓▓▄▄▄▄▄▓▓▓▓ 
-// █▓▓█▄▄█░▒▒▒▒▒▒▒▒▒▒▄▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄ 
-//  ▀▄▄▓▓█░▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▀ ▓▓▓▓▀ ▓▓▓▓ 
-//      ▀▀█░▒▒▒▒▒▒▒▒▒▀▓▒▒▓▀▓▓▓▀▓▓▀▓▒▒█
-//       ▄█░░▒▒▒▒▒▒▒▒▒▀▓▓▓▄▄▄▄▄▄▄▄▓▓▀ 
-//     ▄▀▓▀█▄▄▄▄▄▄▄▄▄▄▄▄██████▀█▀▀   
-//     █▄▄▀ █▄▄▀       █▄▄▀ ▀▄▄█     
-// 
-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// Messages it's important to remember that you can
-//          be deprived of your sanity listening to U2.
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     var Messages = this;
 
@@ -51,6 +17,7 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // Send Messages
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.send = function(message) {
+
         if (!message.data) return;
 
         ChatCore.publish({
@@ -58,6 +25,7 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
             message: message.data,   
             meta: ChatCore.user()
         });
+
     };
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -65,29 +33,9 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.receive = function(fn) {
 
-         function receiver(response) {
-
-            console.log(response)
-
-            fn(response)
-
-             // response.data.m.forEach(function(msg){
-             //    // Ignore messages without User Data
-             //    // TODO
-             //    if (!(msg.d && msg.u && msg.u.id)) return;
-             //    fn({
-             //        data : msg.d
-             //    ,   id   : msg.p.t
-             //    ,   user : msg.u
-             //    ,   self : msg.u.id == ChatCore.user().id
-             //    });
-             // });
-
-         }
-
          Messages.subscription = ChatCore.subscribe({
             channels: [ 'global', ChatCore.user().id ].join(','),
-            message: receiver
+            message: fn
          });
     };
 
@@ -98,29 +46,19 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
         return ChatCore.user(data);
     };
 
-} ] );
-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// AddressBook
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').service( 'AddressBook', function() {
-
-});
-
+}]);
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // AngularJS Chat Core Service
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').service( 'ChatCore', ['$rootScope', '$http', 'config', function(
-    $rootScope,
-    $http,
-    config
-) {
+angular.module('chat').service('ChatCore', ['$rootScope', '$http', 'config', function($rootScope, $http, config) {
+
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // API Keys
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     var pubkey = config.pubnub['publish-key']; 
     var subkey = config.pubnub['subscribe-key'];
+    
     var user   = { id : uuid(), name : 'Nameless' };
 
     var ChatCore = this;
@@ -171,65 +109,9 @@ angular.module('chat').service( 'ChatCore', ['$rootScope', '$http', 'config', fu
             $rootScope.$apply();
         });
 
-        // var channels  = setup.channels     || 'a'
-        // ,   groups    = setup.groups       || ''
-        // ,   message   = setup.message      || function(){}
-        // ,   timeout   = setup.timeout      || 290000
-        // ,   timetoken = setup.timetoken    || '0'
-        // ,   windowing = setup.windowing    || 10
-        // ,   userid    = ChatCore.user().id || 'nil'
-        // ,   userstate = ChatCore.user()    || {}
-        // ,   stop      = false
-        // ,   origin    = 'ps'+(Math.random()+'').split('.')[1]+'.pubnub.com';
-
-        // // Request Object
-        // var request = {
-        //     method  : 'GET'
-        // ,   url     : ''
-        // ,   params  : { uuid : userid, state : userstate }
-        // ,   timeout : timeout
-        // ,   success : next
-        // ,   fail    : function(){ timetoken = '0'; next() }
-        // };
-
-        // // Channel Groups
-        // if (groups) request.params['channel-group'] = groups;
-
-        // // Subscribe Loop
-        // function next(response) { 
-        //     if (stop) return;
-        //     if (response) {
-        //         timetoken = timetoken == '0' ? 1000 : response.data.t.t;
-        //         message(response);
-        //     }
-
-        //     request.url = [
-        //         'https://',       origin
-        //     ,   '/v2/subscribe/', subkey
-        //     ,   '/',              channels
-        //     ,   '/0/',            timetoken
-        //     ].join('');
-
-        //     setTimeout( function() {
-        //         $http(request).then( request.success, request.fail );
-        //     }, windowing );
-        // }
-
-        // // Cancel Subscription
-        // function unsubscribe() {
-        //     stop = true;
-        // }
-
-        // // Start Subscribe Loop
-        // next();
-
-        // // Allow Cancelling Subscriptions
-        // return {
-        //     unsubscribe : unsubscribe
-        // };
-
     };
-} ] );
+
+}]);
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // UUID
