@@ -58,19 +58,14 @@ angular.module('chat').service('ChatCore',
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // API Keys
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    var pubkey = config.pubnub['publish-key']; 
-    var subkey = config.pubnub['subscribe-key'];
+    // var pubkey = config.pubnub['publish-key']; 
+    // var subkey = config.pubnub['subscribe-key'];
 
     var user   = { id : uuid(), name : 'Nameless' };
 
     var ChatCore = this;
 
-    var realtime = rltm('pubnub', {
-        publishKey: 'demo',
-        subscribeKey: 'demo',
-        uuid: user.uuid,
-        state: user
-    });
+    var realtime = rltm(config.rltm[0], config.rltm[1]);
 
     var room;
 

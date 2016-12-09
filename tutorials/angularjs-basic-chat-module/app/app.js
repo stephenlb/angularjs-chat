@@ -4,11 +4,19 @@
 // AngularJS Chat Configuration
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 angular.module('chat').constant( 'config', {
-    "pubnub": {
-        "publish-key"   : "pub-c-aefb421c-b30a-4afc-bae4-b866c5ea3d69",
-        "subscribe-key" : "sub-c-76f89e66-c3a9-11e5-b5a8-0693d8625082"
-    }
-} );
+    rltm: ['pubnub', {
+        publishKey: 'demo',
+        subscribeKey: 'demo',
+        uuid: new Date().getTime()
+    }]
+});
+
+// angular.module('chat').constant('config', {
+//     rltm: ['socketio', {
+//         endpoint: 'http://localhost:9000',
+//         uuid: new Date().getTime()
+//     }]
+// });
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Chat App Module
