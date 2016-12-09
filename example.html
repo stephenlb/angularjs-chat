@@ -45,7 +45,7 @@ chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
         });
 
         $scope.textbox = '';
-        
+
     };
 
 }]);
@@ -57,8 +57,8 @@ chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
 <div ng-app="BasicChat">
     <div ng-controller="chat">
         <div ng-repeat="message in messages">
-            {{ message.user.name }}:
-            {{ message.data }}
+            <strong>{{ message.user.name }}:</strong>
+            <span>{{ message.data }}</span>
         </div>
         <form ng-submit="send()">
             <input ng-model="textbox">
