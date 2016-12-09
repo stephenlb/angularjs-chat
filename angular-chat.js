@@ -33,10 +33,10 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.receive = function(fn) {
 
-         Messages.subscription = ChatCore.subscribe({
+        Messages.subscription = ChatCore.subscribe({
             channels: [ 'global', ChatCore.user().id ].join(','),
             message: fn
-         });
+        });
     };
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,14 +51,16 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // AngularJS Chat Core Service
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').service('ChatCore', ['$rootScope', '$http', 'config', function($rootScope, $http, config) {
+angular.module('chat').service('ChatCore', 
+    ['$rootScope', '$http', 'config', 
+    function($rootScope, $http, config) {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // API Keys
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     var pubkey = config.pubnub['publish-key']; 
     var subkey = config.pubnub['subscribe-key'];
-    
+
     var user   = { id : uuid(), name : 'Nameless' };
 
     var ChatCore = this;

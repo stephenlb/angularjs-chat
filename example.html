@@ -33,19 +33,19 @@ chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     // Receive Messages
     Messages.receive(function(message) {
 
-        console.log('received')
-        console.log(message)
-
         $scope.messages.push(message);
-
-        console.log($scope.messages)
-        // $scope.$apply()
 
     });
 
     // Send Messages
     $scope.send = function() {
-        Messages.send({ data : $scope.textbox });
+        
+        Messages.send({ 
+            data: $scope.textbox 
+        });
+
+        $scope.textbox = '';
+        
     };
 
 }]);
