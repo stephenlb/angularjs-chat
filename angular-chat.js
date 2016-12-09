@@ -111,7 +111,8 @@ angular.module('chat').service( 'AddressBook', function() {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // AngularJS Chat Core Service
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').service( 'ChatCore', ['$http', 'config', function(
+angular.module('chat').service( 'ChatCore', ['$rootScope', '$http', 'config', function(
+    $rootScope,
     $http,
     config
 ) {
@@ -167,6 +168,7 @@ angular.module('chat').service( 'ChatCore', ['$http', 'config', function(
 
         room.on('message', function(uuid, data) {
             setup.message(data);  
+            $rootScope.$apply();
         });
 
         // var channels  = setup.channels     || 'a'
