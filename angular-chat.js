@@ -54,9 +54,9 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
         if (!message.data) return;
 
         ChatCore.publish({
-            channel : message.to || 'global'
-        ,   message : message.data
-        ,   meta    : ChatCore.user()
+            channel: message.to || 'global',   
+            message: message.data,   
+            meta: ChatCore.user()
         });
     };
 
@@ -64,23 +64,30 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // Receive Messages
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.receive = function(fn) {
+
          function receiver(response) {
-             response.data.m.forEach(function(msg){
-                // Ignore messages without User Data
-                // TODO
-                if (!(msg.d && msg.u && msg.u.id)) return;
-                fn({
-                    data : msg.d
-                ,   id   : msg.p.t
-                ,   user : msg.u
-                ,   self : msg.u.id == ChatCore.user().id
-                });
-             });
+
+            console.log(response)
+
+            fn(response)
+
+             // response.data.m.forEach(function(msg){
+             //    // Ignore messages without User Data
+             //    // TODO
+             //    if (!(msg.d && msg.u && msg.u.id)) return;
+             //    fn({
+             //        data : msg.d
+             //    ,   id   : msg.p.t
+             //    ,   user : msg.u
+             //    ,   self : msg.u.id == ChatCore.user().id
+             //    });
+             // });
+
          }
 
          Messages.subscription = ChatCore.subscribe({
-            channels : [ 'global', ChatCore.user().id ].join(','),
-            message  : receiver
+            channels: [ 'global', ChatCore.user().id ].join(','),
+            message: receiver
          });
     };
 
@@ -88,7 +95,7 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
     // Set/Get User and Save the World from that Bruce Willis movie.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     Messages.user = function(data) {
-         return ChatCore.user(data);
+        return ChatCore.user(data);
     };
 
 } ] );
@@ -98,24 +105,33 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 angular.module('chat').service( 'AddressBook', function() {
 
-} );
+});
 
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // AngularJS Chat Core Service
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').service( 'ChatCore', [ '$http', 'config', function(
+angular.module('chat').service( 'ChatCore', ['$http', 'config', function(
     $http,
     config
 ) {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // API Keys
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    var pubkey = config.pubnub['publish-key']
-    ,   subkey = config.pubnub['subscribe-key']
-    ,   user   = { id : uuid(), name : 'Nameless' };
+    var pubkey = config.pubnub['publish-key']; 
+    var subkey = config.pubnub['subscribe-key'];
+    var user   = { id : uuid(), name : 'Nameless' };
 
     var ChatCore = this;
+
+    var realtime = rltm('pubnub', {
+        publishKey: 'demo',
+        subscribeKey: 'demo',
+        uuid: user.uuid,
+        state: user
+    });
+
+    var room;
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Set User Data and we have to go Back to The Future.
@@ -129,89 +145,111 @@ angular.module('chat').service( 'ChatCore', [ '$http', 'config', function(
     // Publish via PubNub
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     ChatCore.publish = function(setup) {
+
         var meta   = setup.meta         || ChatCore.user()
         ,   userid = ChatCore.user().id || 'nil';
 
-        var request = {
-            method  : 'GET'
-        ,   params  : { meta : meta, uuid : userid }
-        ,   timeout : setup.timeout || 5000
-        ,   success : function(){}
-        ,   fail    : function(){}
-        };
+        
+        console.log(room)
 
-// 
-        request.url = [
-            'https://pubsub.pubnub.com'
-        ,   '/publish/', pubkey
-        ,   '/',         subkey
-        ,   '/0/',       setup.channel
-        ,   '/0/',       encodeURIComponent(JSON.stringify(setup.message))
-        ].join('');
+        room.publish({
+            data: setup.message,
+            user: user
+        });
 
-        $http(request).then( request.success, request.fail );
+        return false;
+
+//         var request = {
+//             method  : 'GET'
+//         ,   params  : { meta : meta, uuid : userid }
+//         ,   timeout : setup.timeout || 5000
+//         ,   success : function(){}
+//         ,   fail    : function(){}
+//         };
+
+// // 
+//         request.url = [
+//             'https://pubsub.pubnub.com'
+//         ,   '/publish/', pubkey
+//         ,   '/',         subkey
+//         ,   '/0/',       setup.channel
+//         ,   '/0/',       encodeURIComponent(JSON.stringify(setup.message))
+//         ].join('');
+
+//         $http(request).then( request.success, request.fail );
     };
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Subscribe via PubNub
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     ChatCore.subscribe = function(setup) {
-        var channels  = setup.channels     || 'a'
-        ,   groups    = setup.groups       || ''
-        ,   message   = setup.message      || function(){}
-        ,   timeout   = setup.timeout      || 290000
-        ,   timetoken = setup.timetoken    || '0'
-        ,   windowing = setup.windowing    || 10
-        ,   userid    = ChatCore.user().id || 'nil'
-        ,   userstate = ChatCore.user()    || {}
-        ,   stop      = false
-        ,   origin    = 'ps'+(Math.random()+'').split('.')[1]+'.pubnub.com';
 
-        // Request Object
-        var request = {
-            method  : 'GET'
-        ,   url     : ''
-        ,   params  : { uuid : userid, state : userstate }
-        ,   timeout : timeout
-        ,   success : next
-        ,   fail    : function(){ timetoken = '0'; next() }
-        };
+        room = realtime.join(setup.channels[0]);
 
-        // Channel Groups
-        if (groups) request.params['channel-group'] = groups;
+        room.on('message', function(uuid, data) {
+            console.log('apply') 
+            $scope.apply(function(){
+                setup.message(data);  
+            });
+        });
 
-        // Subscribe Loop
-        function next(response) { 
-            if (stop) return;
-            if (response) {
-                timetoken = timetoken == '0' ? 1000 : response.data.t.t;
-                message(response);
-            }
+        // var channels  = setup.channels     || 'a'
+        // ,   groups    = setup.groups       || ''
+        // ,   message   = setup.message      || function(){}
+        // ,   timeout   = setup.timeout      || 290000
+        // ,   timetoken = setup.timetoken    || '0'
+        // ,   windowing = setup.windowing    || 10
+        // ,   userid    = ChatCore.user().id || 'nil'
+        // ,   userstate = ChatCore.user()    || {}
+        // ,   stop      = false
+        // ,   origin    = 'ps'+(Math.random()+'').split('.')[1]+'.pubnub.com';
 
-            request.url = [
-                'https://',       origin
-            ,   '/v2/subscribe/', subkey
-            ,   '/',              channels
-            ,   '/0/',            timetoken
-            ].join('');
+        // // Request Object
+        // var request = {
+        //     method  : 'GET'
+        // ,   url     : ''
+        // ,   params  : { uuid : userid, state : userstate }
+        // ,   timeout : timeout
+        // ,   success : next
+        // ,   fail    : function(){ timetoken = '0'; next() }
+        // };
 
-            setTimeout( function() {
-                $http(request).then( request.success, request.fail );
-            }, windowing );
-        }
+        // // Channel Groups
+        // if (groups) request.params['channel-group'] = groups;
 
-        // Cancel Subscription
-        function unsubscribe() {
-            stop = true;
-        }
+        // // Subscribe Loop
+        // function next(response) { 
+        //     if (stop) return;
+        //     if (response) {
+        //         timetoken = timetoken == '0' ? 1000 : response.data.t.t;
+        //         message(response);
+        //     }
 
-        // Start Subscribe Loop
-        next();
+        //     request.url = [
+        //         'https://',       origin
+        //     ,   '/v2/subscribe/', subkey
+        //     ,   '/',              channels
+        //     ,   '/0/',            timetoken
+        //     ].join('');
 
-        // Allow Cancelling Subscriptions
-        return {
-            unsubscribe : unsubscribe
-        };
+        //     setTimeout( function() {
+        //         $http(request).then( request.success, request.fail );
+        //     }, windowing );
+        // }
+
+        // // Cancel Subscription
+        // function unsubscribe() {
+        //     stop = true;
+        // }
+
+        // // Start Subscribe Loop
+        // next();
+
+        // // Allow Cancelling Subscriptions
+        // return {
+        //     unsubscribe : unsubscribe
+        // };
+
     };
 } ] );
 

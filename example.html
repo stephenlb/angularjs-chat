@@ -1,0 +1,62 @@
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- includes -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script src="../rltm/web/rltm.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="angular-chat.js"></script>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- configuration -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script>
+angular.module('chat').constant( 'config', {
+    //
+    // Get your PubNub API Keys in link below phone demo.
+    //
+    "pubnub": {
+        "publish-key"   : "demo",
+        "subscribe-key" : "demo"
+    }
+} );
+</script>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- controller -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<script>
+var chat = angular.module( 'BasicChat', ['chat'] );
+chat.controller( 'chat', [ 'Messages', '$scope',
+function( Messages, $scope ) {
+    // Message Inbox
+    $scope.messages = [];
+
+    // Receive Messages
+    Messages.receive(function(message) {
+
+        console.log('received')
+        console.log(message)
+
+        $scope.messages.push(message);
+    });
+
+    // Send Messages
+    $scope.send = function() {
+        Messages.send({ data : $scope.textbox });
+    };
+} ] );
+</script>
+
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<!-- view -->
+<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+<div ng-app="BasicChat">
+    <div ng-controller="chat">
+        <div ng-repeat="message in messages">
+            {{ message.user.name }}:
+            {{ message.data }}
+        </div>
+        <form ng-submit="send()">
+            <input ng-model="textbox">
+        </form>
+    </div>
+</div>
