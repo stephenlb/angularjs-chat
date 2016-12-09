@@ -187,10 +187,7 @@ angular.module('chat').service( 'ChatCore', ['$http', 'config', function(
         room = realtime.join(setup.channels[0]);
 
         room.on('message', function(uuid, data) {
-            console.log('apply') 
-            $scope.apply(function(){
                 setup.message(data);  
-            });
         });
 
         // var channels  = setup.channels     || 'a'
