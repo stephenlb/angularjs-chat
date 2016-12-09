@@ -25,8 +25,8 @@ angular.module('chat').constant( 'config', {
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script>
 var chat = angular.module( 'BasicChat', ['chat'] );
-chat.controller( 'chat', [ 'Messages', '$scope',
-function( Messages, $scope ) {
+chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
+
     // Message Inbox
     $scope.messages = [];
 
@@ -37,13 +37,18 @@ function( Messages, $scope ) {
         console.log(message)
 
         $scope.messages.push(message);
+
+        console.log($scope.messages)
+        $scope.$apply()
+
     });
 
     // Send Messages
     $scope.send = function() {
         Messages.send({ data : $scope.textbox });
     };
-} ] );
+
+}]);
 </script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->

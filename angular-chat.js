@@ -146,11 +146,8 @@ angular.module('chat').service( 'ChatCore', ['$http', 'config', function(
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     ChatCore.publish = function(setup) {
 
-        var meta   = setup.meta         || ChatCore.user()
-        ,   userid = ChatCore.user().id || 'nil';
-
-        
-        console.log(room)
+        var meta   = setup.meta || ChatCore.user();
+        var userid = ChatCore.user().id || 'nil';
 
         room.publish({
             data: setup.message,
@@ -159,24 +156,6 @@ angular.module('chat').service( 'ChatCore', ['$http', 'config', function(
 
         return false;
 
-//         var request = {
-//             method  : 'GET'
-//         ,   params  : { meta : meta, uuid : userid }
-//         ,   timeout : setup.timeout || 5000
-//         ,   success : function(){}
-//         ,   fail    : function(){}
-//         };
-
-// // 
-//         request.url = [
-//             'https://pubsub.pubnub.com'
-//         ,   '/publish/', pubkey
-//         ,   '/',         subkey
-//         ,   '/0/',       setup.channel
-//         ,   '/0/',       encodeURIComponent(JSON.stringify(setup.message))
-//         ].join('');
-
-//         $http(request).then( request.success, request.fail );
     };
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -187,7 +166,7 @@ angular.module('chat').service( 'ChatCore', ['$http', 'config', function(
         room = realtime.join(setup.channels[0]);
 
         room.on('message', function(uuid, data) {
-                setup.message(data);  
+            setup.message(data);  
         });
 
         // var channels  = setup.channels     || 'a'
