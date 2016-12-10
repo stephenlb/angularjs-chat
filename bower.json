@@ -17,7 +17,7 @@
   ],
   "dependencies": {
     "angular": ">= 1.4.8",
-    "rltm": "^1.0.2"
+    "rltm": "^1.0.3"
   },
   "repository": {
     "type": "git",
