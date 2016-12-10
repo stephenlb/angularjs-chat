@@ -1,7 +1,7 @@
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- includes -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script src="../rltm/web/rltm.js"></script>
+<script src="bower_components/rltm/web/rltm.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="angular-chat.js"></script>
 
@@ -10,12 +10,13 @@
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script>
 angular.module('chat').constant( 'config', {
-    //
     // Get your PubNub API Keys in link below phone demo.
-    //
-    "pubnub": {
-        "publish-key"   : "demo",
-        "subscribe-key" : "demo"
+    rltm: {
+        service: "pubnub",
+        config: {
+            "publishKey"   : "demo",
+            "subscribeKey" : "demo"
+        }
     }
 } );
 </script>

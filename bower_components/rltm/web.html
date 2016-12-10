@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rltm.js Tester</title>
+    </head>
+    <body>
+        <script src="./web/rltm.js"></script>
+        <script type="text/javascript">
+
+            const connections = {
+                pubnub: new Rltm('pubnub', {
+                    publishKey: 'demo',
+                    subscribeKey: 'demo',
+                    uuid: new Date().getTime()
+                }),
+                socketio: new Rltm('socketio', {
+                    // must run socketio-server.js 
+                    endpoint: 'http://localhost:9000',
+                    uuid: new Date().getTime()
+                })    
+            };
+
+            const connection = connections['pubnub'];
+
+            console.log(connection)
+
+            room = connection.join(new Date().getTime());
+
+            let i = 1;
+     
+            setInterval(function(){
+
+                room.publish({
+                    i: i,
+                    sentTime: new Date().getTime()
+                });
+
+                i++;
+
+            }, 1000);
+     
+            room.on('message', function(uuid, message){
+
+                let latency = new Date().getTime() - message.sentTime;
+
+                document.body.innerHTML = 
+                    document.body.innerHTML + message.i + ' Latency: ' 
+                    + latency + 'ms <br/>';
+
+            });
+
+        </script>
+    </body>
+</html>
