@@ -16,20 +16,16 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
         if (!message.data) return;
 
         ChatCore.publish({
-            channel: message.to || 'global',   
+            to: message.to || 'global',
             message: message.data,   
-            meta: ChatCore.user()
+            user: ChatCore.user()
         });
 
     };
 
     // Receive Messages
     self.receive = function(fn) {
-
-        self.subscription = ChatCore.subscribe({
-            channels: [ 'global', ChatCore.user().id ].join(','),
-            message: fn
-        });
+        self.subscription = ChatCore.subscribe(fn);
     };
 
     // Set/Get User
@@ -42,19 +38,27 @@ angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
 }]);
 
 // AngularJS Chat Core Service
-angular.module('chat').service('ChatCore', 
-    ['$rootScope', '$http', 'config', 
+angular.module('chat').service('ChatCore',
+    ['$rootScope', '$http', 'config',
     function($rootScope, $http, config) {
 
     var user = { 
-        id : uuid(),
-        name : 'Nameless'
+        id: uuid(),
+        name: 'Anonymous'
     };
 
     var self = this;
 
     self.rltm = rltm(config.rltm);
-    self.room;
+    
+    // the global room everyone is in
+    self.roomGlobal;
+
+    // my own private rooms
+    self.roomPrivate;
+
+    // everyone elses private rooms
+    self.rooms = {};
 
     // Set User Data
     self.user = function(data) {
@@ -70,25 +74,55 @@ angular.module('chat').service('ChatCore',
     // Publish over network
     self.publish = function(setup) {
 
-        var meta = setup.meta || self.user();
-        var userid = self.user().id || 'nil';
+        var user = setup.user || self.user();
 
-        return self.room.publish({
-            data: setup.message,
-            user: user
-        });
+        var data = setup.data;
+
+        if(setup.to) {
+
+            if(!self.rooms[setup.to]) {
+                self.rooms[setup.to] = self.rltm.join(setup.to);   
+            }
+
+            return self.rooms[setup.to].publish({
+                data: setup.message,
+                user: user
+            });
+
+        } else {
+
+            return self.roomGlobal.publish({
+                data: setup.message,
+                user: user
+            });
+
+        }
 
     };
 
     // Subscribe to new messages
-    self.subscribe = function(setup) {
+    self.subscribe = function(fn) {
 
-        self.room = self.rltm.join(setup.channels[0]);
+        console.log('i am ', self.user().id)
 
-        self.room.on('message', function(uuid, data) {
+        self.roomGlobal = self.rltm.join('global');
+        self.roomPrivate = self.rltm.join(self.user().id);
 
-            setup.message(data);  
+        self.roomGlobal.on('message', function(uuid, data) {
+
+            console.log('public messages', data)
+
+            fn(data, false);  
             $rootScope.$apply();
+        });
+
+        self.roomPrivate.on('message', function(uuid, data) {
+
+            console.log('private messages', data)
+
+            fn(data, true);  
+            $rootScope.$apply();
+
         });
 
         return self.room;

@@ -19,66 +19,78 @@ npm install angular-chat
 bower install angular-chat
 ```
 
-## PubNub API Keys
+## Include the files
 
-> [Get PubNub API Keys](https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016)
-You need **PubNub API Keys**.
-This allows the chat communication on a data stream network.
-You can fill in the `YOUR-PUBLISH-KEY`
-and `YOUR-SUBSCRIBE-KEY` placeholder strings with your
-API keys that you get on the PubNub website.
-
-## Basic Chat Demo
+Include the angular chat files in your template.
 
 ```html
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<!-- includes -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/rltm/web/rltm.js"></script>
 <script src="bower_components/angular-chat/angular-chat.js"></script>
+```
 
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<!-- configuration -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script>
-angular.module('chat').constant( 'config', {
-    //
-    // Get your PubNub API Keys in the link above.
-    //
-    "pubnub": {
-        "publish-key"   : "YOUR-PUBLISH-KEY",
-        "subscribe-key" : "YOUR-SUBSCRIBE-KEY"
+## Include the Angular module
+
+```js
+var chat = angular.module('BasicChat', ['chat']);
+```
+
+## Configure
+
+In order to use angularjs-chat, you must configure a connection to a realtime 
+service. This library includes rltm.js as a dependency which lets you switch 
+between realtime service providers easily. We recommend 
+[setting up with PubNub](https://github.com/pubnub/rltm.js#pubnub) to get 
+started quickly and scale to infinity.
+
+```js
+angular.module('chat').constant('config', {
+    rltm: {
+        service: "pubnub",
+        config: {
+            "publishKey": "demo",
+            "subscribeKey": "demo"
+        }
     }
-} );
-</script>
+});
+```
 
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<!-- controller -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<script>
-var chat = angular.module( 'BasicChat', ['chat'] );
+## Example Controller
+
+The chat module exposes an object called ```Messages``` which includes
+a ```send``` and ```receive``` method. 
+
+```
 chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     // Message Inbox
     $scope.messages = [];
     // Receive Messages
-    Messages.receive(function(message){
+    Messages.receive(function(message) {
         $scope.messages.push(message);
     });
     // Send Messages
     $scope.send = function() {
-        Messages.send({ data : $scope.textbox });
+        Messages.send({data: $scope.textbox});
     };
-} ] );
-</script>
+}]);
+```
 
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<!-- view -->
-<!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+In this controller we keep a list of messages in ```$scope.messages``` and 
+push a new message everytime the ```Messages.receive()``` callback is called.
+
+To send a message over the Internet, we use the ```Messages.send()``` method
+and attach it to ```$scope.send()```` so we can call bind it to the DOM.
+
+## Create your view
+
+We use the ```$scope.send()``` method and ```$scope.messages``` variable in 
+our view.
+
+```html
 <div ng-app="BasicChat">
     <div ng-controller="chat">
         <div ng-repeat="message in messages">
-            {{ message.user.name }}:
-            {{ message.data }}
+            <strong>{{message.user.name}}:</strong>
+            <span>{{message.data}}</span>
         </div>
         <form ng-submit="send()">
             <input ng-model="textbox">
@@ -86,12 +98,20 @@ chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     </div>
 </div>
 ```
+
 ### Set User ID
-```javascript
+
+Set some identification for this user.
+
+```js
 Messages.user({ id: MY_USER_ID, name : sillyname() });
 ```
+
 ### Send to User
-```javascript
+
+Send a message to another user.
+
+```js
 Messages.send({ to: target_user_id, data : message_body });
 ```
 
