@@ -11,7 +11,7 @@ var chat = angular.module( 'BasicChat', ['chat'] );
 <script>
 angular.module('chat').constant('config', {
     rltm: {
-        service: "socketio",
+        service: "pubnub",
         config: {
             publishKey: "demo",
             subscribeKey: "demo"
@@ -74,7 +74,7 @@ chat.controller('chat', ['Messages', '$scope', function(Messages, $scope) {
 <div ng-app="BasicChat">
     <div ng-controller="chat">
         <h1>You are support-agent</h1>
-        <p>Open index.html to see start a new chat.</p>
+        <p>Creates new chats for every visitor. Open index.html to see start a new chat.</p>
         
         <div ng-repeat="chat in chats">
             

@@ -59,7 +59,7 @@ angular.module('chat').constant('config', {
 The chat module exposes an object called ```Messages``` which includes
 a ```send``` and ```receive``` method. 
 
-```
+```js
 chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     // Message Inbox
     $scope.messages = [];
@@ -131,10 +131,10 @@ Messages.send({ to: "support-agent", data : { visitor : true } });
 ```javascript
 
 // support agent code
-$scope.visitors = [];
+$scope.chats = {};
 
 // they have a "support-agent" ID.
-Messages.user({ id: "support-agent", name : "Support Agent" });
+Messages.user({id: "support-agent", name: "Support Agent"});
 
 // support agent seeing a new visitor
 Messages.receive(function(msg){
