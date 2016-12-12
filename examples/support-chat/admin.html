@@ -11,10 +11,10 @@ var chat = angular.module( 'BasicChat', ['chat'] );
 <script>
 angular.module('chat').constant('config', {
     rltm: {
-        service: "pubnub",
+        service: "socketio",
         config: {
-            "publishKey"   : "demo",
-            "subscribeKey" : "demo"
+            publishKey: "demo",
+            subscribeKey: "demo"
         }
     }
 });
