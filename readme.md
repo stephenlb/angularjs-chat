@@ -38,9 +38,9 @@ var chat = angular.module('BasicChat', ['chat']);
 
 In order to use angularjs-chat, you must configure a connection to a realtime 
 service. This library includes rltm.js as a dependency which lets you switch 
-between realtime service providers easily. We recommend 
-[setting up with PubNub](https://github.com/pubnub/rltm.js#pubnub) to get 
-started quickly and scale to infinity.
+between realtime service providers like Socket.io and PubNub easily.  We 
+recommend [setting up with PubNub](https://github.com/pubnub/rltm.js#pubnub) 
+to get started quickly and scale to infinity.
 
 ```js
 angular.module('chat').constant('config', {
@@ -69,13 +69,15 @@ chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     });
     // Send Messages
     $scope.send = function() {
-        Messages.send({data: $scope.textbox});
+        Messages.send({ 
+            data: $scope.textbox 
+        });
     };
 }]);
 ```
 
 In this controller we keep a list of messages in ```$scope.messages``` and 
-push a new message everytime the ```Messages.receive()``` callback is called.
+push a new message every time the ```Messages.receive()``` callback is called.
 
 To send a message over the Internet, we use the ```Messages.send()``` method
 and attach it to ```$scope.send()```` so we can call bind it to the DOM.
@@ -115,33 +117,22 @@ Send a message to another user.
 Messages.send({ to: target_user_id, data : message_body });
 ```
 
-If you want random user id's that are transient...  you can publish the LIST of users to the "global" channel and receive each user who has come online.
+If you want random user id's that are transient...  you can publish the LIST 
+of users to the "global" channel and receive each user who has come online.
 
+# Basic Example
 
-# AngularJS Support Desk Chat Agent Example
+Check out ```/examples/basic/index.html``` for an example of a chatroom that
+every visitor can chat in.
 
-### Vistor
-```javascript
-// this is a user comes online
-// send a notice to the support agent.
-Messages.send({ to: "support-agent", data : { visitor : true } });
-```
+# Support Desk (many to one) Example
 
-### Support Agent
-```javascript
+Check out ```/examples/support-chat/index.html``` and 
+```/examples/support-chat/admin.html``` for an example of a embedded support
+type chatroom. The page ```index.html``` can only chat with the user on
+```admin.html```. The page ```admin.html``` creates a new instance of a 
+chatroom for every new user on ```index.html```.
 
-// support agent code
-$scope.chats = {};
-
-// they have a "support-agent" ID.
-Messages.user({id: "support-agent", name: "Support Agent"});
-
-// support agent seeing a new visitor
-Messages.receive(function(msg){
-    if (msg.data.visitor) $scope.visitors.push(msg.user.id);
-    console.log(msg);
-});
-```
 
 ## AngularJS Chat Resources
 
