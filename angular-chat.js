@@ -103,22 +103,16 @@ angular.module('chat').service('ChatCore',
     // Subscribe to new messages
     self.subscribe = function(fn) {
 
-        console.log('i am ', self.user().id)
-
         self.roomGlobal = self.rltm.join('global');
         self.roomPrivate = self.rltm.join(self.user().id);
 
         self.roomGlobal.on('message', function(uuid, data) {
-
-            console.log('public messages', data)
 
             fn(data, false);  
             $rootScope.$apply();
         });
 
         self.roomPrivate.on('message', function(uuid, data) {
-
-            console.log('private messages', data)
 
             fn(data, true);  
             $rootScope.$apply();
