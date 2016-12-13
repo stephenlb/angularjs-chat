@@ -373,9 +373,15 @@ div.subscribe-container input[type="submit"]:active {
     .install-packages {
         flex-direction: column;
     }
+
+    .install-npm,
+    .install-bower,
+    .install-github {
+        max-width: 100vw !important;
+    }
+
 }
 .install-packages {
-    overflow: scroll;
     display: flex;
     margin: 80px auto;
     max-width: 100vw;
@@ -387,6 +393,7 @@ div.subscribe-container input[type="submit"]:active {
 .install-bower,
 .install-github {
     flex: 1;
+    max-width: 33vw;
 }
 .install-npm h3 {
     text-align: left;
