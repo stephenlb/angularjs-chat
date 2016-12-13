@@ -51,7 +51,6 @@ html, body, p, div {
 }
 .clear { clear: both }
 .container {
-    width: 86vw;
     padding-right: 7vw;
     padding-left: 7vw;
     margin-right: auto;
