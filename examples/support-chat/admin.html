@@ -1,0 +1,99 @@
+<!-- includes -->
+<script src="../../bower_components/rltm/web/rltm.js"></script>
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="../../angular-chat.js"></script>
+
+<!-- configuration -->
+<script>
+var chat = angular.module( 'BasicChat', ['chat'] );
+</script>
+
+<script>
+angular.module('chat').constant('config', {
+    rltm: {
+        service: "pubnub",
+        config: {
+            publishKey: "demo",
+            subscribeKey: "demo"
+        }
+    }
+});
+</script>
+
+<!-- controller -->
+<script>
+chat.controller('chat', ['Messages', '$scope', function(Messages, $scope) {
+
+    // Message Inbox
+    $scope.chats = {};
+
+    Messages.user({id: "support-agent", name: "Support Agent"});
+
+    // Receive Messages
+    Messages.receive(function(message, isPrivate) {
+        
+        // isPrivate is always true
+
+        // create a new chat if doesn't exist
+        if(!$scope.chats[message.user.id]) {
+
+            $scope.chats[message.user.id] = {
+                user: message.user,
+                messages: []
+            };
+
+        }
+        
+        // add messages to the chat
+        $scope.chats[message.user.id].messages.push(message);
+
+    });
+
+    // Send Messages
+    $scope.send = function(to, text) {
+
+        var message = { 
+            to: to,
+            data: text,
+            user: Messages.user()
+        };
+
+        Messages.send(message);
+
+        // because we are sending a message to a user's personal channel,
+        // but not subscribing to it we need to keep track of sent messages 
+        // ourselves
+        $scope.chats[to].messages.push(message);
+
+    };
+
+}]);
+</script>
+
+<!-- view -->
+<div ng-app="BasicChat">
+    <div ng-controller="chat">
+        <h1>You are support-agent</h1>
+        <p>Creates new chats for every visitor. Open index.html to see start a new chat.</p>
+        
+        <div ng-repeat="chat in chats">
+            
+            <h2>Chat with {{chat.user.name}}</h2>
+            
+            <hr />
+
+            <div ng-repeat="message in chat.messages">
+                <strong>{{message.user.name}}:</strong>
+                <span>{{message.data}}</span>
+            </div>
+
+            <form ng-submit="send(chat.user.id, chat.textbox)">
+                <input ng-model="chat.textbox">
+            </form>
+
+            <hr />
+
+        </div>
+        
+    </div>
+</div>

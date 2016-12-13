@@ -1,0 +1,66 @@
+<!-- includes -->
+<script src="../../bower_components/rltm/web/rltm.js"></script>
+<script src="../../bower_components/angular/angular.js"></script>
+<script src="../../angular-chat.js"></script>
+
+<!-- configuration -->
+<script>
+var chat = angular.module( 'BasicChat', ['chat'] );
+</script>
+
+<script>
+angular.module('chat').constant('config', {
+    rltm: {
+        service: "pubnub",
+        config: {
+            publishKey: "demo",
+            subscribeKey: "demo"
+        }
+    }
+});
+</script>
+
+<!-- controller -->
+<script>
+chat.controller('chat', ['Messages', '$scope', function(Messages, $scope) {
+
+    // Message Inbox
+    $scope.messages = [];
+
+    // Receive Messages
+    Messages.receive(function(message, isPrivate) {
+        $scope.messages.push(message);
+    });
+
+    // Send Messages
+    $scope.send = function() {
+
+        var message = { 
+            to: 'support-agent',
+            data: $scope.textbox ,
+            user: Messages.user()
+        }; 
+
+        Messages.send(message);
+
+        $scope.messages.push(message);
+
+    };
+
+}]);
+</script>
+
+<!-- view -->
+<div ng-app="BasicChat">
+    <div ng-controller="chat">
+        <h1>Chat with support</h1>
+        <p>Open admin.html to see admin interface.</p>
+        <div ng-repeat="message in messages">
+            <strong>{{message.user.name}}:</strong>
+            <span>{{message.data}}</span>
+        </div>
+        <form ng-submit="send()">
+            <input ng-model="textbox">
+        </form>
+    </div>
+</div>
