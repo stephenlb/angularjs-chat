@@ -5,26 +5,26 @@
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 var basicChat = angular.module( 'BasicChat', ['chat'] );
 
-// angular.module('chat').constant( 'config', {
-//     rltm: {
-//         service: 'pubnub', 
-//         config: {
-//             publishKey: 'demo',
-//             subscribeKey: 'demo'
-//         }
-//     }
-// });
-
-// or use socket.io
-// make sure to run socket.io-server from rltm.js
 angular.module('chat').constant( 'config', {
     rltm: {
-        service: 'socketio', 
+        service: 'pubnub', 
         config: {
-            endpoint: 'http://localhost:9000'
+            publishKey: 'demo',
+            subscribeKey: 'demo'
         }
     }
 });
+
+// or use socket.io
+// make sure to run socket.io-server from rltm.js
+// angular.module('chat').constant( 'config', {
+//     rltm: {
+//         service: 'socketio', 
+//         config: {
+//             endpoint: 'http://localhost:9000'
+//         }
+//     }
+// });
 
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -40,8 +40,6 @@ basicChat.controller( 'BasicController', ['$scope', 'Messages', function($scope,
 
     $scope.me = {name: sillyname()};
 
-    console.log('i am', $scope.me)
-
     // Set User Data
     Messages.user($scope.me);
 
@@ -52,14 +50,12 @@ basicChat.controller( 'BasicController', ['$scope', 'Messages', function($scope,
     var chatmessages = document.querySelector(".chat-messages");
 
     Messages.receive(function(msg) {
-
-        console.log(msg)
         
         $scope.messages.push(msg);
     
-        setTimeout( function() {
+        setTimeout(function() {
             chatmessages.scrollTop = chatmessages.scrollHeight;
-        }, 10 );
+        }, 10);
 
     });
 
