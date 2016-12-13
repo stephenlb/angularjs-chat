@@ -1,65 +1,82 @@
 'use strict';
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// AngularJS Chat Configuration
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').constant( 'config', {
-    rltm: ['pubnub', {
-        publishKey: 'demo',
-        subscribeKey: 'demo',
-        uuid: new Date().getTime()
-    }]
-});
-
-// angular.module('chat').constant('config', {
-//     rltm: ['socketio', {
-//         endpoint: 'http://localhost:9000',
-//         uuid: new Date().getTime()
-//     }]
-// });
-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Chat App Module
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 var basicChat = angular.module( 'BasicChat', ['chat'] );
 
+// angular.module('chat').constant( 'config', {
+//     rltm: {
+//         service: 'pubnub', 
+//         config: {
+//             publishKey: 'demo',
+//             subscribeKey: 'demo'
+//         }
+//     }
+// });
+
+// or use socket.io
+// make sure to run socket.io-server from rltm.js
+angular.module('chat').constant( 'config', {
+    rltm: {
+        service: 'socketio', 
+        config: {
+            endpoint: 'http://localhost:9000'
+        }
+    }
+});
+
+
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Chat App Controller
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-basicChat.controller( 'BasicController', [ 'Messages', function( Messages ) {
-
-    // Self Object
-    var chat = this;
+basicChat.controller( 'BasicController', ['$scope', 'Messages', function($scope, Messages) {
 
     // Sent Indicator
-    chat.status = "";
+    $scope.status = "";
 
     // Keep an Array of Messages
-    chat.messages = [];
+    $scope.messages = [];
+
+    $scope.me = {name: sillyname()};
+
+    console.log('i am', $scope.me)
 
     // Set User Data
-    Messages.user({ name : sillyname() });
+    Messages.user($scope.me);
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Get Received Messages and Add it to Messages Array.
     // This will automatically update the view.
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     var chatmessages = document.querySelector(".chat-messages");
-    Messages.receive(function(msg){
-        chat.messages.push(msg);
+
+    Messages.receive(function(msg) {
+
+        console.log(msg)
+        
+        $scope.messages.push(msg);
+    
         setTimeout( function() {
             chatmessages.scrollTop = chatmessages.scrollHeight;
         }, 10 );
+
     });
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Send Messages
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    chat.send = function() {
-        Messages.send({ data : chat.textbox });
-        chat.status = "sending";
-        chat.textbox = "";
-        setTimeout( function() { chat.status = "" }, 1200 );
+    $scope.send = function() {
+
+        Messages.send({data: $scope.textbox});
+        
+        $scope.status = "sending";
+        $scope.textbox = "";
+
+        setTimeout(function() { 
+            $scope.status = "" 
+        }, 1200 );
+
     };
 
 } ] );

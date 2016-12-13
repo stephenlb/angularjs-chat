@@ -1,118 +1,131 @@
 'use strict';
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// AngularJS Chat Module
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module( 'chat', [] );
+angular.module('chat', []);
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Common JS
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 if (typeof(exports) !== 'undefined') exports.chat = angular.module('chat');
 
+// define Angular Message module
 angular.module('chat').service( 'Messages', [ 'ChatCore', function(ChatCore) {
-    var Messages = this;
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    var self = this;
+
     // Send Messages
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    Messages.send = function(message) {
+    self.send = function(message) {
 
         if (!message.data) return;
 
         ChatCore.publish({
-            channel: message.to || 'global',   
+            to: message.to || 'global',
             message: message.data,   
-            meta: ChatCore.user()
+            user: ChatCore.user()
         });
 
     };
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Receive Messages
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    Messages.receive = function(fn) {
-
-        Messages.subscription = ChatCore.subscribe({
-            channels: [ 'global', ChatCore.user().id ].join(','),
-            message: fn
-        });
+    self.receive = function(fn) {
+        self.subscription = ChatCore.subscribe(fn);
     };
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Set/Get User and Save the World from that Bruce Willis movie.
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    Messages.user = function(data) {
+    // Set/Get User
+    self.user = function(data) {
         return ChatCore.user(data);
     };
 
+    return self;
+
 }]);
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // AngularJS Chat Core Service
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-angular.module('chat').service('ChatCore', 
-    ['$rootScope', '$http', 'config', 
+angular.module('chat').service('ChatCore',
+    ['$rootScope', '$http', 'config',
     function($rootScope, $http, config) {
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // API Keys
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // var pubkey = config.pubnub['publish-key']; 
-    // var subkey = config.pubnub['subscribe-key'];
+    var user = { 
+        id: uuid(),
+        name: 'Anonymous'
+    };
 
-    var user   = { id : uuid(), name : 'Nameless' };
+    var self = this;
 
-    var ChatCore = this;
+    self.rltm = rltm(config.rltm);
+    
+    // the global room everyone is in
+    self.roomGlobal;
 
-    var realtime = rltm(config.rltm[0], config.rltm[1]);
+    // my own private rooms
+    self.roomPrivate;
 
-    var room;
+    // everyone elses private rooms
+    self.rooms = {};
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Set User Data and we have to go Back to The Future.
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    ChatCore.user = function(data) {
-        if (data) angular.extend( user, data );
+    // Set User Data
+    self.user = function(data) {
+
+        if (data) {
+            angular.extend(user, data);
+        }
+
         return user;
-    };
-
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Publish via PubNub
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    ChatCore.publish = function(setup) {
-
-        var meta   = setup.meta || ChatCore.user();
-        var userid = ChatCore.user().id || 'nil';
-
-        room.publish({
-            data: setup.message,
-            user: user
-        });
-
-        return false;
 
     };
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Subscribe via PubNub
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    ChatCore.subscribe = function(setup) {
+    // Publish over network
+    self.publish = function(setup) {
 
-        room = realtime.join(setup.channels[0]);
+        var user = setup.user || self.user();
 
-        room.on('message', function(uuid, data) {
-            setup.message(data);  
+        var data = setup.data;
+
+        if(setup.to) {
+
+            if(!self.rooms[setup.to]) {
+                self.rooms[setup.to] = self.rltm.join(setup.to);   
+            }
+
+            return self.rooms[setup.to].publish({
+                data: setup.message,
+                user: user
+            });
+
+        } else {
+
+            return self.roomGlobal.publish({
+                data: setup.message,
+                user: user
+            });
+
+        }
+
+    };
+
+    // Subscribe to new messages
+    self.subscribe = function(fn) {
+
+        self.roomGlobal = self.rltm.join('global');
+        self.roomPrivate = self.rltm.join(self.user().id);
+
+        self.roomGlobal.on('message', function(uuid, data) {
+
+            fn(data, false);  
             $rootScope.$apply();
         });
 
+        self.roomPrivate.on('message', function(uuid, data) {
+
+            fn(data, true);  
+            $rootScope.$apply();
+
+        });
+
+        return self.room;
+
     };
 
 }]);
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// UUID
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// UUID utility
 function uuid() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
     function(c) {
