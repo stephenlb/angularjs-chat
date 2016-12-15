@@ -24,6 +24,7 @@ bower install angular-chat
 Include the angular chat files in your template.
 
 ```html
+<script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/rltm/web/rltm.js"></script>
 <script src="bower_components/angular-chat/angular-chat.js"></script>
 ```
