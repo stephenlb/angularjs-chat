@@ -107,7 +107,6 @@ angular.module('chat').service('ChatCore',
         self.roomPrivate = self.rltm.join(self.user().id);
 
         self.roomGlobal.on('message', function(uuid, data) {
-
             fn(data, false);  
             $rootScope.$apply();
         });
