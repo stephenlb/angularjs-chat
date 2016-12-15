@@ -19,10 +19,14 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 
         <!-- VIDEO PREVIEW -->
         <div class="container">
+            
             <h1>{{ page.title }}</h1>
-                <!-- Easily add Messaging Experiences to your
-                iOS, Android and Web apps -->
+            
+            <!-- Easily add Messaging Experiences to your
+            iOS, Android and Web apps -->
+
             <div class="live-stream-preview">
+
                 <!--
                 <div class="live-stream-preview-video">
                     <video poster="http://cdn.pubnub.com/angularjs-chat/videos/angularjs-chat-live-stream.jpg" autoplay="" loop="true">
@@ -32,6 +36,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                     </video>
                 </div>
                 -->
+            
                 <div class="live-stream-preview-video">
                     <iframe width="560" height="312"
                     src="https://www.youtube.com/embed/tUp9gylb9E0"
@@ -47,6 +52,7 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
                         {% include follow.html %}
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -126,37 +132,41 @@ description: Tutorial on how you can add Chat Messaging to your AngularJS App
 <!-- configuration -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script>
-angular.module('chat').constant( 'config', {
-    //
-    // Get your PubNub API Keys in link below phone demo.
-    //
-    "pubnub": {
-        "publish-key"   : "YOUR-PUBLISH-KEY",
-        "subscribe-key" : "YOUR-SUBSCRIBE-KEY"
+var chat = angular.module( 'BasicChat', ['chat'] );
+
+angular.module('chat').constant('config', {
+    rltm: {
+        service: "pubnub",
+        config: {
+            publishKey: "demo",
+            subscribeKey: "demo"
+        }
+        // or use socket.io!
+        // https://github.com/pubnub/rltm.js#socketio
     }
-} );
+});
+
 </script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- controller -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <script>
-var chat = angular.module( 'BasicChat', ['chat'] );
-chat.controller( 'chat', [ 'Messages', '$scope',
-function( Messages, $scope ) {
+chat.controller('chat', ['Messages', '$scope', function(Messages, $scope) {
+
     // Message Inbox
     $scope.messages = [];
-
     // Receive Messages
-    Messages.receive(function(message){
+    Messages.receive(function(message) {
         $scope.messages.push(message);
     });
-
     // Send Messages
     $scope.send = function() {
-        Messages.send({ data : $scope.textbox });
+        Messages.send({ 
+            data: $scope.textbox 
+        });
     };
-} ] );
+}]);
 </script>
 
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
@@ -165,8 +175,8 @@ function( Messages, $scope ) {
 <div ng-app="BasicChat">
     <div ng-controller="chat">
         <div ng-repeat="message in messages">
-            {% raw %}{{ message.user.name }}:{% endraw %}
-            {% raw %}{{ message.data }}{% endraw %}
+            <strong>{{message.user.name}}:</strong>
+            <span>{{message.data}}</span>
         </div>
         <form ng-submit="send()">
             <input ng-model="textbox">
@@ -301,22 +311,30 @@ function( Messages, $scope ) {
 <script src="bower_components/angular-chat/angular-chat.js"></script>
 <script>
     // AngularJS Chat Configuration
-    angular.module('chat').constant( 'config', {
-        "pubnub": {
-            "publish-key"   : "YOUR_PUBLISH_API_KEY",
-            "subscribe-key" : "YOUR_SUBSCRIBE_API_KEY"
+    var chat = angular.module( 'BasicChat', ['chat'] );
+    angular.module('chat').constant('config', {
+        rltm: {
+            service: "pubnub",
+            config: {
+                publishKey: "YOUR_PUBLISH_API_KEY",
+                subscribeKey: "YOUR_SUBSCRIBE_API_KEY"
+            }
         }
-    } );
+    });
 </script>
 {% endhighlight %}
 
-    </p><p class="pubnub-api-keys-link">
+    <p>
+        The angular-chat library uses <a href="https://github.com/pubnub/rltm.js">rltm.js</a> for chat network connectivity. Rltm.js can be configured to use either your own hosted <a href="https://github.com/pubnub/rltm.js#socketio">Socket.io</a> server or <a href="https://github.com/pubnub/rltm.js#pubnub">PubNub</a>. We recommend setting up with PubNub to get started quickly and scale to infinity.
+    </p>
+
+    <p class="pubnub-api-keys-link">
         <a target="signup1" href="https://www.pubnub.com/get-started/?medium=sbng2016&source=sbng2016&campaign=sbng2016&keyword=sbangularjs&content=sbng2016">Get PubNub API Keys</a><br>
         You need <strong>PubNub API Keys</strong>.
         This allows the chat communication over a data stream network.
         You can fill in the
-        <code>YOUR_PUBLISH API_KEY</code> and
-        <code>YOUR_SUBSCRIBE API_KEY</code> placeholder
+        <code>YOUR_PUBLISH_API_KEY</code> and
+        <code>YOUR_SUBSCRIBE_API_KEY</code> placeholder
         strings with your API keys that you get on the PubNub website.
     </p><p>
         Now that you have the prerequisites including your PubNub API keys,
@@ -337,9 +355,7 @@ function( Messages, $scope ) {
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // Minimal Chat Controller
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-var chat = angular.module( 'BasicChat', ['chat'] );
-chat.controller( 'chat', [ 'Messages', '$scope',
-function( Messages, $scope ) {
+chat.controller( 'chat', [ 'Messages', '$scope', function( Messages, $scope ) {
     // - - - - - - - - - - - - - - - - - -
     // Message Inbox
     // This array will hold the messages
@@ -351,7 +367,7 @@ function( Messages, $scope ) {
     // Receive Messages
     // Push to Message Inbox.
     // - - - - - - - - - - - - - - - - - -
-    Messages.receive(function(message){
+    Messages.receive(function(message) {
         $scope.messages.push(message);
     });
 
@@ -363,8 +379,11 @@ function( Messages, $scope ) {
     // ng-model="textbox".
     // - - - - - - - - - - - - - - - - - -
     $scope.send = function() {
-        Messages.send({ data : $scope.textbox });
+        Messages.send({ 
+            data: $scope.textbox 
+        });
     };
+
 } );
 {% endhighlight %}
 
@@ -402,14 +421,16 @@ function( Messages, $scope ) {
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 <!-- Chat View in HTML -->
 <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-<div ng-controller="chat">
-    <div ng-repeat="message in messages">
-        {% raw %}{{ message.user.name }}:{% endraw %}
-        {% raw %}{{ message.data }}{% endraw %}
+<div ng-app="BasicChat">
+    <div ng-controller="chat">
+        <div ng-repeat="message in messages">
+            <strong>{{message.user.name}}:</strong>
+            <span>{{message.data}}</span>
+        </div>
+        <form ng-submit="send()">
+            <input ng-model="textbox">
+        </form>
     </div>
-    <form ng-submit="send()">
-        <input ng-model="textbox">
-    </form>
 </div>
 {% endhighlight %}
 

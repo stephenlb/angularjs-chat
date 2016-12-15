@@ -7,48 +7,52 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon-precomposed" href="/media/angularjs-chat.png">
-    <link rel="shortcut icon" href="/media/angularjs-chat.png">
+    <link rel="apple-touch-icon-precomposed" href="/media/angularjs-png">
+    <link rel="shortcut icon" href="/media/angularjs-png">
 
     <title>AngularJS Basic Chat</title>
-
+    
+    <script src="bower_components/rltm.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-chat/angular-chat.js"></script>
     <script src="names.js"></script>
     <script src="app.js"></script>
 </head>
 <body>
+    <div ng-app="BasicChat">
+        <div class="chat-container" ng-controller="BasicController">
 
-    <div class="chat-container" ng-controller="BasicController as chat">
-
-        <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <!-- Chat Messages -->
-        <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <div class="chat-messages">
-            <div class="chat-header">
-                <div class="angularjs-chat-logo"></div>
-                AngularJS Chat
-            </div>
-            <div ng-repeat="message in chat.messages">
-                <div class="sent-message-{{ message.self }}">
-                    <span class="username">{{ message.user.name }}:</span>
-                    {{ message.data }}
+            <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <!-- Chat Messages -->
+            <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <div class="chat-messages">
+                <div class="chat-header">
+                    <div class="angularjs-chat-logo"></div>
+                    AngularJS Chat
                 </div>
-                <div class="clear"></div>
+                <div ng-repeat="message in messages">
+
+                    <div class="sent-message" ng-class="{me: message.user.name == me.name}">
+                        <span class="username">{{ message.user.name }}:</span>
+                        {{ message.data }}
+                    </div>
+
+                    <div class="clear"></div>
+
+                </div>
             </div>
+
+            <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <!-- User Input -->
+            <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <form ng-submit="send()" class="chat-input">
+                <input type="text" ng-model="textbox" autofocus>
+                <input type="submit" class="send-icon" value=" ">
+                <input type="submit" value=" "
+                    class="sent-indicator {{ status }}">
+            </form>
+
         </div>
-
-        <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <!-- User Input -->
-        <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
-        <form ng-submit="chat.send()" class="chat-input">
-            <input type="text" ng-model="chat.textbox" autofocus>
-            <input type="submit" class="send-icon" value=" ">
-            <input type="submit" value=" "
-                class="sent-indicator {{ chat.status }}">
-        </form>
-
     </div>
-
 </body>
 </html>
