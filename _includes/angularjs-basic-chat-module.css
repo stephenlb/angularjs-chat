@@ -34,7 +34,7 @@ div.highlight pre code {
     color: #fff;
 }
 .tutorial-content .angular-js-chat-logo {
-    background: transparent url(/media/angularjs-chat.png);
+    background: transparent url(media/angularjs-chat.png);
     background-size: auto 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -65,7 +65,7 @@ div.highlight pre code {
 .tutorial-content h3.angular-chat-logo {
     text-align: left;
     padding-left: 60px;
-    background: transparent url(/media/angularjs-chat.png);
+    background: transparent url(media/angularjs-chat.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
 }
@@ -79,7 +79,7 @@ div.highlight pre code {
 .install-bower h3 {
     text-align: left;
     padding-left: 60px;
-    background: transparent url(/media/bower.png);
+    background: transparent url(media/bower.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
 }
@@ -201,13 +201,13 @@ div.highlight pre code {
     background-repeat: no-repeat;
 }
 .welcome-hacker-news {
-    background-image: url(/media/hacker-news.png);
+    background-image: url(media/hacker-news.png);
 }
 .welcome-product-hunt {
-    background-image: url(/media/product-hunt.png);
+    background-image: url(media/product-hunt.png);
 }
 .welcome-reddit {
-    background-image: url(/media/reddit.png);
+    background-image: url(media/reddit.png);
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -398,21 +398,21 @@ div.subscribe-container input[type="submit"]:active {
 .install-npm h3 {
     text-align: left;
     padding-left: 130px;
-    background: transparent url(/media/npm.png);
+    background: transparent url(media/npm.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
 }
 .install-bower h3 {
     text-align: left;
     padding-left: 60px;
-    background: transparent url(/media/bower.png);
+    background: transparent url(media/bower.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
 }
 .install-github h3 {
     text-align: left;
     padding-left: 60px;
-    background: transparent url(/media/github.png);
+    background: transparent url(media/github.png);
     background-size: auto 100%;
     background-repeat: no-repeat;
 }
@@ -487,7 +487,7 @@ div.subscribe-container input[type="submit"]:active {
     left: 0px;
     height: 634px;
     width: 302px;
-    background: transparent url(/media/iphone-wireframe.png);
+    background: transparent url(media/iphone-wireframe.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }

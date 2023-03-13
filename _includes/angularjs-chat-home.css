@@ -88,7 +88,7 @@ input::-webkit-input-placeholder {
 .angularjs-chat-bubble-white {
     position: absolute;
     display: inline-block;
-    background: transparent url(../media/angularjs-chat-bubble-white.png);
+    background: transparent url(media/angularjs-chat-bubble-white.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }

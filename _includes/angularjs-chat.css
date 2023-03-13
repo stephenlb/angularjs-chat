@@ -58,13 +58,13 @@ html, body, p, div {
 }
 .angularjs-chat-logo {
     display: inline-block;
-    background: transparent url(/media/angularjs-chat.png);
+    background: transparent url(media/angularjs-chat.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }
 .angularjs-chat-logo-white {
     display: inline-block;
-    background: transparent url(/media/angularjs-chat-white.png);
+    background: transparent url(media/angularjs-chat-white.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }
